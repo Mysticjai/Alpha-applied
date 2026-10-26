@@ -1,0 +1,143 @@
+{
+  "audit_metadata": {
+    "target": "Alpha Applied Analytics Solutions",
+    "methodology": "Claude SEO Framework v2.5.0",
+    "engine": "Playwright / Chromium (MS Edge) & Node.js Inspection Suite",
+    "timestamp": "2026-10-25T16:08:00Z",
+    "local_test_url": "http://localhost:5173",
+    "production_domain": "https://alphaanalyticssol.com",
+    "health_score": 80
+  },
+  "findings": [
+    {
+      "id": "PROD-001",
+      "category": "Production Deployment & DNS",
+      "severity": "High",
+      "status": "OWNER CONFIRMATION REQUIRED",
+      "title": "Production Domain (alphaanalyticssol.com) Points to Wix Hosting, Returning 404/429",
+      "affected_routes": ["https://alphaanalyticssol.com/*"],
+      "evidence": "DNS lookup for alphaanalyticssol.com resolves to 185.230.63.107 (Wix/Pepyaka server). Direct HTTPS requests return 404 (Not Found) or 429 (Rate Limited).",
+      "impact": "The modern React/Vite application built in this repository is not yet published to the production domain. Search engines crawling the live domain currently hit a Wix 404 page.",
+      "recommendation": "Configure DNS records (A/CNAME) to point to the production host serving the Vite build output (e.g. Vercel, Cloudflare Pages, Netlify, AWS)."
+    },
+    {
+      "id": "CONT-001",
+      "category": "NAP & Contact Information",
+      "severity": "Medium",
+      "status": "OWNER CONFIRMATION REQUIRED",
+      "title": "Conflicting Telephone Numbers Between Footer and Legal Policies",
+      "affected_routes": ["/", "/terms-of-service", "/privacy-policy"],
+      "evidence": "SiteFooter.tsx and ContactSection.tsx publish +91 93915 69629 (WhatsApp). Terms of Service (§17) and Privacy Policy (§12) publish +1 (224) 217-9863 (Illinois, USA).",
+      "impact": "Discrepancy prevents telephone from being included in Schema.org Organization structured data without risking NAP inconsistency penalties in search knowledge graphs.",
+      "recommendation": "Owner should confirm whether the Illinois US number or the international WhatsApp number is the primary corporate contact point."
+    },
+    {
+      "id": "META-001",
+      "category": "Metadata Optimization",
+      "severity": "Low",
+      "status": "FIXED AND VERIFIED",
+      "title": "Litigation Support Page Title Exceeded Google SERP Truncation Threshold",
+      "affected_routes": ["/litigationsupport.html"],
+      "evidence": "Original title was 'Litigation Support & Investigation | Litigation Services | Alpha Applied Analytics Solutions' (92 characters), which causes trailing truncation on search engine result pages.",
+      "impact": "Brand and secondary keywords were truncated in search snippets.",
+      "recommendation": "Shortened to 'Litigation Support & Investigation | Alpha Applied Analytics Solutions' (70 characters). Synchronized across seoData.ts and litigationsupport.html."
+    },
+    {
+      "id": "TECH-001",
+      "category": "Crawlability & Robots",
+      "severity": "High",
+      "status": "PASS",
+      "title": "Robots.txt Properly Permits All Search & AI Crawlers and Declares Sitemap",
+      "affected_routes": ["/robots.txt"],
+      "evidence": "HTTP GET /robots.txt returns 200 OK with User-agent: * and Allow: /, referencing Sitemap: https://alphaanalyticssol.com/sitemap.xml.",
+      "impact": "Search crawlers (Googlebot, Bingbot) and AI discovery bots (OAI-SearchBot, Claude-SearchBot, PerplexityBot) can discover and crawl the public pages without artificial blockers.",
+      "recommendation": "Maintain open crawl directives."
+    },
+    {
+      "id": "TECH-002",
+      "category": "Crawlability & Sitemap",
+      "severity": "High",
+      "status": "PASS",
+      "title": "XML Sitemap Contains Exactly 12 Canonical Public URLs",
+      "affected_routes": ["/sitemap.xml"],
+      "evidence": "HTTP GET /sitemap.xml returns 200 OK with valid XML. Contains 12 URLs matching page canonicals. Zero localhost/staging domains, zero anchor fragments.",
+      "impact": "Facilitates comprehensive indexation of all core service pillars, practice areas, and legal disclosures.",
+      "recommendation": "Keep sitemap.xml updated when new practices or public pages are added."
+    },
+    {
+      "id": "TECH-003",
+      "category": "Routing & Canonicalization",
+      "severity": "High",
+      "status": "PASS",
+      "title": "Dual-Layer Static and Dynamic Metadata Synchronization",
+      "affected_routes": ["All 12 public routes"],
+      "evidence": "Static HTML entry points serve pre-rendered title, meta description, Open Graph, Twitter cards, and JSON-LD. React useSEO hook updates document.title and canonical on client-side SPA navigation.",
+      "impact": "Guarantees immediate metadata capture by static crawlers (LinkedIn, Twitterbot, Googlebot) and seamless UI state for human visitors.",
+      "recommendation": "Maintain the useSEO synchronization hook across all current and future routes."
+    },
+    {
+      "id": "SCHM-001",
+      "category": "Structured Data",
+      "severity": "High",
+      "status": "PASS",
+      "title": "Valid Schema.org WebSite, Organization, and BreadcrumbList JSON-LD",
+      "affected_routes": ["All 12 public routes"],
+      "evidence": "Homepage embeds WebSite and Organization schemas with verified legal name and logo. All 11 internal routes embed valid BreadcrumbList schemas reflecting navigation hierarchy. 0 JSON syntax errors.",
+      "impact": "Provides machine-readable entity identity and site structure to search engines and answer engines.",
+      "recommendation": "Add telephone to Organization schema once owner resolves the contact number discrepancy."
+    },
+    {
+      "id": "PERF-001",
+      "category": "Images & Performance",
+      "severity": "Medium",
+      "status": "PASS",
+      "title": "Optimized Image Loading Attributes and Alt Text Accessibility",
+      "affected_routes": ["/"],
+      "evidence": "Above-the-fold Lady Justice hero image uses loading='eager' decoding='async' with descriptive alt text. Below-the-fold practice and audience cards use loading='lazy'. Decorative geometry uses alt='' role='presentation'.",
+      "impact": "Prevents Largest Contentful Paint (LCP) delays while eliminating below-fold bandwidth waste and avoiding screen-reader clutter.",
+      "recommendation": "Preserve eager/lazy dichotomy on future image additions."
+    },
+    {
+      "id": "CONT-002",
+      "category": "Content Quality & E-E-A-T",
+      "severity": "Informational",
+      "status": "WARNING",
+      "title": "Practice Detail Pages Under 500-Word Coverage Floor",
+      "affected_routes": [
+        "/litigationservices.html",
+        "/alphalens.html",
+        "/divorcefamilylaw.html",
+        "/economicdamages.html",
+        "/documentanalysis.html",
+        "/bankruptcyrestructuring.html",
+        "/intellectualproperty.html",
+        "/litigationsupport.html"
+      ],
+      "evidence": "Word counts on practice detail pages range between 287 and 381 words, below Claude SEO's 500-word topical coverage guideline.",
+      "impact": "While word count is not a direct ranking factor, search engines reward deep topical coverage and comprehensive dispute methodologies.",
+      "recommendation": "When approved by client, expand practice pages with methodology walkthroughs, deliverable formats, and engagement FAQs without changing existing visual card styling."
+    },
+    {
+      "id": "AI-001",
+      "category": "AI Search & Agentic Readiness",
+      "severity": "Informational",
+      "status": "PASS",
+      "title": "Text Extractability and AI Crawler Permissibility Verified",
+      "affected_routes": ["All 12 public routes"],
+      "evidence": "All critical practice definitions, Alpha Lens tools, and legal disclaimers are available in semantic DOM text (not trapped in bitmaps). Robots.txt does not block GPTBot, ClaudeBot, or PerplexityBot.",
+      "impact": "LLM answer engines (ChatGPT Search, Perplexity, Google AI Overviews) can crawl, extract, and accurately ground citations on Alpha's services.",
+      "recommendation": "An optional llms.txt summary file can be deployed if direct LLM scraping discovery is desired in the future."
+    },
+    {
+      "id": "EXT-001",
+      "category": "External Google Data & Backlinks",
+      "severity": "Informational",
+      "status": "UNAVAILABLE",
+      "title": "Google Search Console, GA4, and Paid Backlink APIs Unavailable",
+      "affected_routes": ["All"],
+      "evidence": "Audit executed strictly within local repository constraints without external API credentials (GSC, Moz, DataForSEO) or unauthorized tracking tags.",
+      "impact": "Live search impressions, CTR, real-world CrUX field data, and historical backlink authority cannot be verified until production deployment and GSC authorization.",
+      "recommendation": "Perform Google Search Console URL inspection post-deployment once domain DNS is active."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# robots.txt for https://alphaanalyticssol.com/
+User-agent: *
+Allow: /
+
+# Sitemap Index
+Sitemap: https://alphaanalyticssol.com/sitemap.xml

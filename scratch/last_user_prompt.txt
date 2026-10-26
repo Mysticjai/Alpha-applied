@@ -1,0 +1,99 @@
+<USER_REQUEST>
+# AG TASK — IMPLEMENT TECHNICAL AND ON-PAGE SEO FOUNDATIONS FOR ALPHA APPLIED ANALYTICS SOLUTIONS
+
+## Objective
+
+Audit and implement foundational technical and on-page SEO improvements for the existing Alpha Applied Analytics Solutions website.
+
+The aim is to make the public pages discoverable, correctly described, crawlable, accessible, and well-presented in search and social-sharing previews.
+
+This is an SEO foundation pass, not a full SEO marketing campaign. Do not redesign the website, create blog posts, fabricate claims, add unnecessary dependencies, or promise search-ranking improvements.
+
+## 1. Inspect Before Editing
+
+Inspect the actual project and identify:
+
+- The production domain and deployment configuration.
+- The actual public routes and their current page titles and descriptions.
+- The React/Vite rendering and routing architecture.
+- Existing metadata, canonical URLs, and social-preview configuration.
+- Existing sitemap and robots.txt files.
+- Existing structured data, if any.
+- Image assets, alt attributes, font loading, and page performance.
+- Existing redirects, route fallbacks, and indexability restrictions.
+
+Do not assume route names or invent production URLs. Inspect the project and use the confirmed production domain.
+
+If the production domain cannot be verified, report the blocker rather than generating canonical URLs or sitemap entries from localhost, a preview deployment, or an assumed domain.
+
+Do not install packages. Reuse the existing project architecture.
+
+## 2. Establish a Page-Specific SEO Metadata System
+
+Implement unique, descriptive title and meta description values for each actual public page.
+
+Inspect and account for these existing content areas:
+
+- Homepage.
+- AI Consulting & Implementation.
+- Litigation Services.
+- Alpha Lens Platform.
+- Terms of Service.
+- Privacy Policy.
+- Any other genuine, indexable public routes found in the project.
+
+The Founder and Who We Serve sections belong to the homepage. Do not create sepa
+<truncated 8270 bytes>
+anchor.
+- AI Consulting & Implementation.
+- Litigation Services.
+- Alpha Lens Platform.
+- Who We Serve.
+- The Contact form.
+- The shared navigation and footer.
+- The deep-teal cover-and-reveal transition.
+- Existing legal pages and links.
+
+Do not remove content, redesign pages, or add unnecessary dependencies.
+
+## 12. Verification
+
+Run the existing project and inspect the actual rendered pages.
+
+Verify:
+
+1. Every public route has the correct title and description.
+2. Titles and descriptions are not unintentionally duplicated.
+3. Canonical URLs use the confirmed production domain.
+4. The sitemap contains only legitimate canonical URLs.
+5. robots.txt permits intended public pages and assets.
+6. Public routes do not have accidental noindex directives.
+7. Internal links and breadcrumbs lead to valid routes.
+8. Structured data is valid and uses verified information.
+9. Informative images have appropriate alt text.
+10. Social-preview metadata references accessible assets.
+11. Route changes do not break metadata.
+12. Desktop and mobile layouts remain visually intact.
+13. The website's contact details and legal pages have not been silently rewritten.
+
+Use available local checks and browser testing. If a live Google indexing check requires Search Console access, skip it and report that it was not performed.
+
+Do not claim that the site is indexed, ranking, or SEO-certified without evidence.
+
+## Final Report
+
+Report:
+
+- Files modified.
+- Metadata created for each route.
+- Sitemap and robots.txt status.
+- Structured data added or updated.
+- Any rendering or indexing limitations.
+- Contact-detail inconsistencies found.
+- Actual validation and browser tests performed.
+
+**Acceptance criterion:** The site has clean, accurate, technically sound SEO foundations without changing the approved design, fabricating business information, or adding unapproved tracking services.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-25T15:37:23+05:30.
+</ADDITIONAL_METADATA>

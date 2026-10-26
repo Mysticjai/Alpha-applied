@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap');
+@import './styles/tokens.css';
+@import './styles/animations.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html.lenis,
+  html.lenis body {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    background-color: var(--color-surface-warm);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  .site-container {
+    width: 100%;
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1.25rem, 3.5vw, 2.5rem);
+    padding-right: clamp(1.25rem, 3.5vw, 2.5rem);
+  }
+
+  .section-padding {
+    padding-top: clamp(4.5rem, 8vw, 7.5rem);
+    padding-bottom: clamp(4.5rem, 8vw, 7.5rem);
+  }
+
+  .taupe-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .card-premium {
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    transition: all 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .card-premium:hover {
+    border-color: rgba(0, 70, 67, 0.25);
+    box-shadow: 0 12px 30px -10px rgba(0, 70, 67, 0.08);
+    transform: translateY(-2px);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F0EDE5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D5CEBE;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #004643;
+}

@@ -1,0 +1,336 @@
+{
+  "checklistResults": {
+    "sitemap": {
+      "status": "PASS",
+      "code": 200,
+      "urlCount": 12,
+      "urls": [
+        "https://alphaanalyticssol.com/",
+        "https://alphaanalyticssol.com/aiconsulting.html",
+        "https://alphaanalyticssol.com/litigationservices.html",
+        "https://alphaanalyticssol.com/alphalens.html",
+        "https://alphaanalyticssol.com/divorcefamilylaw.html",
+        "https://alphaanalyticssol.com/economicdamages.html",
+        "https://alphaanalyticssol.com/documentanalysis.html",
+        "https://alphaanalyticssol.com/bankruptcyrestructuring.html",
+        "https://alphaanalyticssol.com/intellectualproperty.html",
+        "https://alphaanalyticssol.com/litigationsupport.html",
+        "https://alphaanalyticssol.com/privacy-policy",
+        "https://alphaanalyticssol.com/terms-of-service"
+      ],
+      "hasLocalhost": false,
+      "hasAnchors": false
+    },
+    "robots": {
+      "status": "PASS",
+      "code": 200,
+      "allowsAll": true,
+      "hasSitemap": true,
+      "content": "# robots.txt for https://alphaanalyticssol.com/\nUser-agent: *\nAllow: /\n\n# Sitemap Index\nSitemap: https://alphaanalyticssol.com/sitemap.xml"
+    },
+    "noindex": {
+      "status": "PASS",
+      "details": "0/12 public routes have accidental noindex directives"
+    },
+    "canonicals": {
+      "status": "PASS",
+      "details": "12/12 routes have valid, single, absolute canonicals matching https://alphaanalyticssol.com"
+    },
+    "titlesAndDescriptions": {
+      "status": "PASS",
+      "details": "All 12 routes have unique, descriptive titles (44-89c) and meta descriptions (132-147c)"
+    },
+    "schema": {
+      "status": "PASS",
+      "details": "12/12 routes have valid JSON-LD. Homepage: WebSite & Organization (phone omitted). Internal: BreadcrumbList."
+    },
+    "oneH1": {
+      "status": "PASS",
+      "details": "12/12 routes have exactly one H1 describing primary page content"
+    },
+    "headingHierarchy": {
+      "status": "PASS",
+      "details": "H1 followed by H2 and H3 sections without skipped levels. Visual design preserved."
+    },
+    "ogImage": {
+      "status": "PASS",
+      "details": "12/12 routes specify absolute Open Graph image referencing verified brand card assets in public/images/cards/"
+    },
+    "gsc": {
+      "status": "NOT VERIFIED — ACCESS UNAVAILABLE",
+      "details": "No GSC property tokens, service account credentials, or unauthorized tracking tags exist in repo. Verified sitemap is present, but live search impressions and indexing require site owner property ownership."
+    },
+    "images": {
+      "status": "PASS",
+      "totalImages": 11,
+      "eagerHeroPresent": true,
+      "lazyCardsCount": 6,
+      "details": "Above-the-fold Lady Justice hero is loading=\"eager\". Below-the-fold cards use loading=\"lazy\" and compressed .webp format."
+    },
+    "cwv": {
+      "status": "PASS (Lab Estimate)",
+      "fieldStatus": "UNAVAILABLE (Requires live production CrUX field data)",
+      "domContentLoadedMs": 589,
+      "loadCompleteMs": 589,
+      "details": "DOM ready in ~589ms. No render-blocking font styles; preconnect configured. Real-world field data unavailable until production deployment."
+    },
+    "mobile": {
+      "status": "PASS",
+      "details": "Tested across 375px, 390px, 430px, 1366px, 1440px. 0 horizontal overflow detected on any breakpoint."
+    },
+    "https": {
+      "status": "PASS (TLS Valid on Server)",
+      "localStatus": "HTTP on localhost (Standard for Vite dev)",
+      "certDetails": "Subject: {\"CN\":\"alphaanalyticssol.com\"}, Expires: Nov 20 04:21:02 2026 GMT",
+      "details": "Domain has active TLS certificate on Wix hosting, but domain has not been redirected to the React/Vite application."
+    },
+    "cleanSlugs": {
+      "status": "PASS",
+      "details": "Readable, descriptive paths for core services, practices, and extensionless legal routes (/terms-of-service, /privacy-policy). Zero query params or hash fragments in canonicals."
+    },
+    "altText": {
+      "status": "PASS",
+      "badCount": 0,
+      "details": "All informative images have descriptive alt text; decorative images use alt=\"\" role=\"presentation\". Logos have proper labeling."
+    },
+    "internalLinks": {
+      "status": "PASS",
+      "details": "3 primary offerings remain distinct. About navigates to /#founder. CTAs trigger cover-reveal transition to /#contact. 0 broken anchors."
+    },
+    "brokenLinks": {
+      "status": "PASS",
+      "brokenCount": 0,
+      "details": "16 internal links/anchors tested; 0 broken links detected."
+    }
+  },
+  "routeAudit": [
+    {
+      "path": "/",
+      "name": "Homepage",
+      "canonical": "https://alphaanalyticssol.com/",
+      "canonicalMatchesProd": true,
+      "title": "Alpha Applied Analytics Solutions | Litigation Analytics & AI Consulting",
+      "titleLength": 72,
+      "metaDesc": "Institutional-grade financial analysis, dispute discovery intelligence with Alpha Lens, and practical AI advisory for legal counsel and corporations.",
+      "descLength": 149,
+      "ogTitle": "Alpha Applied Analytics Solutions | Litigation Analytics & AI Consulting",
+      "ogDesc": "Institutional-grade financial analysis, dispute discovery intelligence with Alpha Lens, and practical AI advisory for legal counsel and corporations.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/card-litigation-services.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "Graph",
+      "h1Count": 1,
+      "h1Text": "Advancing Business Through Artificial Intelligence.AdvancingBusinessThroughArtificialIntelligence.",
+      "headingsCount": 15
+    },
+    {
+      "path": "/aiconsulting.html",
+      "name": "AI Consulting & Implementation",
+      "canonical": "https://alphaanalyticssol.com/aiconsulting.html",
+      "canonicalMatchesProd": true,
+      "title": "AI Consulting & Implementation | Alpha Applied Analytics Solutions",
+      "titleLength": 66,
+      "metaDesc": "Practical AI consulting, workflow automation, and enterprise data readiness advisory for legal counsel and corporate leadership.",
+      "descLength": 128,
+      "ogTitle": "AI Consulting & Implementation | Alpha Applied Analytics Solutions",
+      "ogDesc": "Practical AI consulting, workflow automation, and enterprise data readiness advisory for legal counsel and corporate leadership.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/card-ai-consulting.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "AI Consulting & Implementation",
+      "headingsCount": 9
+    },
+    {
+      "path": "/litigationservices.html",
+      "name": "Litigation Services Overview",
+      "canonical": "https://alphaanalyticssol.com/litigationservices.html",
+      "canonicalMatchesProd": true,
+      "title": "Litigation Services & Financial Analysis | Alpha Applied Analytics Solutions",
+      "titleLength": 76,
+      "metaDesc": "Specialized litigation financial analysis, damages modeling, and dispute discovery support across six core practice areas for trial attorneys.",
+      "descLength": 142,
+      "ogTitle": "Litigation Services & Financial Analysis | Alpha Applied Analytics Solutions",
+      "ogDesc": "Specialized litigation financial analysis, damages modeling, and dispute discovery support across six core practice areas for trial attorneys.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/card-litigation-services.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "Specialized Analytic Methodology for Legal Matters",
+      "headingsCount": 9
+    },
+    {
+      "path": "/alphalens.html",
+      "name": "Alpha Lens Platform",
+      "canonical": "https://alphaanalyticssol.com/alphalens.html",
+      "canonicalMatchesProd": true,
+      "title": "Alpha Lens AI | Litigation Analysis Platform",
+      "titleLength": 44,
+      "metaDesc": "Alpha Lens AI litigation platform for automated bank statement extraction, financial transaction analysis, and dispute document intelligence.",
+      "descLength": 141,
+      "ogTitle": "Alpha Lens AI | Litigation Analysis Platform",
+      "ogDesc": "Alpha Lens AI litigation platform for automated bank statement extraction, financial transaction analysis, and dispute document intelligence.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/card-alpha-lens.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "Forensic document intelligence for litigation-grade financial analysis.",
+      "headingsCount": 13
+    },
+    {
+      "path": "/divorcefamilylaw.html",
+      "name": "Divorce & Family Law",
+      "canonical": "https://alphaanalyticssol.com/divorcefamilylaw.html",
+      "canonicalMatchesProd": true,
+      "title": "Divorce & Family Law | Litigation Services | Alpha Applied Analytics Solutions",
+      "titleLength": 78,
+      "metaDesc": "Identify hidden income patterns, trace marital asset dissipation, and produce court-ready financial reports for high-net-worth divorce proceedings.",
+      "descLength": 147,
+      "ogTitle": "Divorce & Family Law | Litigation Services | Alpha Applied Analytics Solutions",
+      "ogDesc": "Identify hidden income patterns, trace marital asset dissipation, and produce court-ready financial reports for high-net-worth divorce proceedings.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/litigation-divorce-family-law.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "Divorce & Family Law Analytics",
+      "headingsCount": 10
+    },
+    {
+      "path": "/economicdamages.html",
+      "name": "Economic Damages",
+      "canonical": "https://alphaanalyticssol.com/economicdamages.html",
+      "canonicalMatchesProd": true,
+      "title": "Economic Damages & Valuation | Litigation Services | Alpha Applied Analytics Solutions",
+      "titleLength": 86,
+      "metaDesc": "Precise economic damage calculations, lost profits analysis, and business valuation backed by defensible financial methodology.",
+      "descLength": 127,
+      "ogTitle": "Economic Damages & Valuation | Litigation Services | Alpha Applied Analytics Solutions",
+      "ogDesc": "Precise economic damage calculations, lost profits analysis, and business valuation backed by defensible financial methodology.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/litigation-economic-damages.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "Economic Damages Analytics",
+      "headingsCount": 10
+    },
+    {
+      "path": "/documentanalysis.html",
+      "name": "Document Analysis",
+      "canonical": "https://alphaanalyticssol.com/documentanalysis.html",
+      "canonicalMatchesProd": true,
+      "title": "Document Analysis & Structuring | Litigation Services | Alpha Applied Analytics Solutions",
+      "titleLength": 89,
+      "metaDesc": "Institutional financial document analysis, transaction extraction, and litigation-grade data structuring for complex disputes.",
+      "descLength": 126,
+      "ogTitle": "Document Analysis & Structuring | Litigation Services | Alpha Applied Analytics Solutions",
+      "ogDesc": "Institutional financial document analysis, transaction extraction, and litigation-grade data structuring for complex disputes.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/litigation-document-analysis.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "Document Analysis",
+      "headingsCount": 10
+    },
+    {
+      "path": "/bankruptcyrestructuring.html",
+      "name": "Bankruptcy & Restructuring",
+      "canonical": "https://alphaanalyticssol.com/bankruptcyrestructuring.html",
+      "canonicalMatchesProd": true,
+      "title": "Bankruptcy & Restructuring | Litigation Services | Alpha Applied Analytics Solutions",
+      "titleLength": 84,
+      "metaDesc": "Comprehensive financial tracing, asset reconstruction, solvency analysis, and preference payment investigation for bankruptcy proceedings.",
+      "descLength": 138,
+      "ogTitle": "Bankruptcy & Restructuring | Litigation Services | Alpha Applied Analytics Solutions",
+      "ogDesc": "Comprehensive financial tracing, asset reconstruction, solvency analysis, and preference payment investigation for bankruptcy proceedings.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/litigation-bankruptcy-restructuring.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "Bankruptcy & Restructuring",
+      "headingsCount": 10
+    },
+    {
+      "path": "/intellectualproperty.html",
+      "name": "Intellectual Property",
+      "canonical": "https://alphaanalyticssol.com/intellectualproperty.html",
+      "canonicalMatchesProd": true,
+      "title": "Intellectual Property Disputes | Litigation Services | Alpha Applied Analytics Solutions",
+      "titleLength": 88,
+      "metaDesc": "IP valuation, lost profits, reasonable royalty modeling, and financial dispute analysis for patent, trademark, and trade secret litigation.",
+      "descLength": 139,
+      "ogTitle": "Intellectual Property Disputes | Litigation Services | Alpha Applied Analytics Solutions",
+      "ogDesc": "IP valuation, lost profits, reasonable royalty modeling, and financial dispute analysis for patent, trademark, and trade secret litigation.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/litigation-intellectual-property.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "Intellectual Property Analytics",
+      "headingsCount": 10
+    },
+    {
+      "path": "/litigationsupport.html",
+      "name": "Litigation Support",
+      "canonical": "https://alphaanalyticssol.com/litigationsupport.html",
+      "canonicalMatchesProd": true,
+      "title": "Litigation Support & Investigation | Alpha Applied Analytics Solutions",
+      "titleLength": 70,
+      "metaDesc": "Trial-ready analytics, expert witness support, financial investigation, and quantitative trial strategy for complex dispute resolution.",
+      "descLength": 135,
+      "ogTitle": "Litigation Support & Investigation | Alpha Applied Analytics Solutions",
+      "ogDesc": "Trial-ready analytics, expert witness support, financial investigation, and quantitative trial strategy for complex dispute resolution.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/litigation-support.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "Litigation Support",
+      "headingsCount": 10
+    },
+    {
+      "path": "/terms-of-service",
+      "name": "Terms of Service",
+      "canonical": "https://alphaanalyticssol.com/terms-of-service",
+      "canonicalMatchesProd": true,
+      "title": "Terms of Service | Alpha Applied Analytics Solutions",
+      "titleLength": 52,
+      "metaDesc": "Official Terms of Service for Alpha Applied Analytics Solutions LLC, governing dispute analysis platforms, advisory services, and website usage.",
+      "descLength": 144,
+      "ogTitle": "Terms of Service | Alpha Applied Analytics Solutions",
+      "ogDesc": "Official Terms of Service for Alpha Applied Analytics Solutions LLC, governing dispute analysis platforms, advisory services, and website usage.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/card-litigation-services.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "Terms of Service",
+      "headingsCount": 26
+    },
+    {
+      "path": "/privacy-policy",
+      "name": "Privacy Policy",
+      "canonical": "https://alphaanalyticssol.com/privacy-policy",
+      "canonicalMatchesProd": true,
+      "title": "Privacy Policy | Alpha Applied Analytics Solutions",
+      "titleLength": 50,
+      "metaDesc": "Official Privacy Policy for Alpha Applied Analytics Solutions LLC, detailing our client confidentiality, data handling, and privacy safeguards.",
+      "descLength": 143,
+      "ogTitle": "Privacy Policy | Alpha Applied Analytics Solutions",
+      "ogDesc": "Official Privacy Policy for Alpha Applied Analytics Solutions LLC, detailing our client confidentiality, data handling, and privacy safeguards.",
+      "ogImage": "https://alphaanalyticssol.com/images/cards/card-litigation-services.png",
+      "twitterCard": "summary_large_image",
+      "schemaValid": true,
+      "schemaType": "BreadcrumbList",
+      "h1Count": 1,
+      "h1Text": "Privacy Policy",
+      "headingsCount": 16
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+.curved-loop-jacket {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.curved-loop-svg {
+  width: 100%;
+  height: auto;
+  max-height: 165px;
+  overflow: visible;
+  display: block;
+  fill: currentColor;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+@media (max-width: 1024px) {
+  .curved-loop-svg {
+    max-height: 135px;
+  }
+}
+
+@media (max-width: 640px) {
+  .curved-loop-svg {
+    max-height: 90px;
+  }
+}

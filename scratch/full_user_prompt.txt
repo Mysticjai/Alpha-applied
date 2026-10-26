@@ -1,0 +1,290 @@
+<USER_REQUEST>
+# AG TASK — IMPLEMENT TECHNICAL AND ON-PAGE SEO FOUNDATIONS FOR ALPHA APPLIED ANALYTICS SOLUTIONS
+
+## Objective
+
+Audit and implement foundational technical and on-page SEO improvements for the existing Alpha Applied Analytics Solutions website.
+
+The aim is to make the public pages discoverable, correctly described, crawlable, accessible, and well-presented in search and social-sharing previews.
+
+This is an SEO foundation pass, not a full SEO marketing campaign. Do not redesign the website, create blog posts, fabricate claims, add unnecessary dependencies, or promise search-ranking improvements.
+
+## 1. Inspect Before Editing
+
+Inspect the actual project and identify:
+
+- The production domain and deployment configuration.
+- The actual public routes and their current page titles and descriptions.
+- The React/Vite rendering and routing architecture.
+- Existing metadata, canonical URLs, and social-preview configuration.
+- Existing sitemap and robots.txt files.
+- Existing structured data, if any.
+- Image assets, alt attributes, font loading, and page performance.
+- Existing redirects, route fallbacks, and indexability restrictions.
+
+Do not assume route names or invent production URLs. Inspect the project and use the confirmed production domain.
+
+If the production domain cannot be verified, report the blocker rather than generating canonical URLs or sitemap entries from localhost, a preview deployment, or an assumed domain.
+
+Do not install packages. Reuse the existing project architecture.
+
+## 2. Establish a Page-Specific SEO Metadata System
+
+Implement unique, descriptive title and meta description values for each actual public page.
+
+Inspect and account for these existing content areas:
+
+- Homepage.
+- AI Consulting & Implementation.
+- Litigation Services.
+- Alpha Lens Platform.
+- Terms of Service.
+- Privacy Policy.
+- Any other genuine, indexable public routes found in the project.
+
+The Founder and Who We Serve sections belong to the homepage. Do not create separate page metadata or routes for those sections.
+
+### Suggested title directions
+
+Use these as initial drafts and adapt them to the actual page content:
+
+Homepage:
+`Alpha Applied Analytics Solutions | Litigation Analytics & AI Consulting`
+
+AI Consulting & Implementation:
+`AI Consulting & Implementation | Alpha Applied Analytics Solutions`
+
+Litigation Services:
+`Litigation Services & Financial Analysis | Alpha Applied Analytics Solutions`
+
+Alpha Lens Platform:
+`Alpha Lens AI | Litigation Analysis Platform`
+
+Terms of Service:
+`Terms of Service | Alpha Applied Analytics Solutions`
+
+Privacy Policy:
+`Privacy Policy | Alpha Applied Analytics Solutions`
+
+Write a distinct, concise meta description for each page that explains what the visitor will find.
+
+Descriptions should be natural, relevant, and useful to prospective clients. Do not cram lists of keywords into them.
+
+Do not imply that Google will necessarily display the supplied meta description unchanged.
+
+If a shared SEO metadata component already exists, reuse it. Otherwise, implement the smallest maintainable solution using the existing stack.
+
+Ensure client-side route changes update the page title and metadata correctly. If the current architecture does not expose route-specific metadata reliably to crawlers or social-preview systems, document the limitation and propose the smallest compatible solution without installing dependencies.
+
+## 3. Keyword and Content Alignment
+
+Keep the existing service structure as the source of truth.
+
+Use relevant search terminology naturally in page titles, descriptions, headings, and existing page copy where appropriate.
+
+Potential themes include:
+
+Homepage:
+- Litigation analytics.
+- Financial analysis.
+- AI consulting.
+
+AI Consulting & Implementation:
+- AI consulting and implementation.
+- Workflow automation.
+- Data readiness and analytics.
+
+Litigation Services:
+- Litigation financial analysis.
+- Bank statement analysis.
+- Economic damages.
+- Document analysis.
+- Asset tracing.
+- Litigation support.
+
+Alpha Lens Platform:
+- Litigation document analysis.
+- Bank statement extraction.
+- Financial transaction analysis.
+- Bates stamping.
+
+These are starting points, not mandatory keyword lists. Choose terms according to each page's actual content and the client's real offerings.
+
+Do not keyword-stuff, duplicate phrases across every page, create additional landing pages, or rewrite approved service descriptions without authorization.
+
+Do not invent local service areas, office locations, statistics, client results, testimonials, certifications, accuracy guarantees, or technical capabilities.
+
+## 4. Titles, Headings, and Semantic HTML
+
+Audit public pages to ensure:
+
+- Every page has an appropriate document title.
+- Every main page has one clear primary H1 describing its content.
+- H2 and H3 headings follow a sensible hierarchy.
+- Important content is available as rendered text, not only embedded in images.
+- Links use descriptive text and standard crawlable anchor elements.
+- Internal navigation points to the correct canonical routes.
+- Breadcrumbs, when displayed, represent the actual navigation hierarchy.
+
+Do not change typography sizes, the Instrument Serif + Manrope pairing, colors, layouts, animations, or page content solely to satisfy arbitrary SEO rules.
+
+Avoid unnecessary duplicate headings or hidden keyword text.
+
+## 5. Canonical URLs and Indexability
+
+For each public route:
+
+- Establish the correct canonical URL using the confirmed production domain.
+- Use one consistent canonical URL per page.
+- Ensure internal links use the preferred canonical routes.
+- Check for unintended duplicate paths or redirect loops.
+- Preserve legitimate redirects and existing route behavior.
+- Check that intended public pages are not accidentally marked `noindex`.
+- Check that the production site is not accidentally blocked by robots.txt.
+- Avoid generating canonical URLs for homepage anchor fragments.
+
+Do not remove existing noindex protections from preview or staging deployments without understanding the deployment configuration.
+
+Do not use robots.txt as a substitute for canonicalization or a noindex directive.
+
+## 6. XML Sitemap and robots.txt
+
+Inspect the current files before creating or modifying them.
+
+If a valid sitemap does not exist, create a sitemap containing the confirmed, canonical, public URLs that should be discoverable.
+
+Include actual public page routes and exclude:
+
+- Localhost and development URLs.
+- Preview/staging deployment URLs.
+- Duplicate or redirected URLs.
+- Homepage hash anchors.
+- Nonexistent pages.
+
+Check that robots.txt allows crawling of intended public pages and important resources.
+
+Include a sitemap reference using the verified production sitemap URL.
+
+Do not invent a domain, claim sitemap submission, or state that Google has indexed the pages unless that has actually been verified.
+
+## 7. Structured Data
+
+Implement accurate structured data only where appropriate.
+
+Potential types:
+
+- Organization and WebSite on an appropriate main page.
+- BreadcrumbList on relevant public pages with a meaningful breadcrumb hierarchy.
+
+Use the actual organization name, confirmed official website URL, accessible logo asset, and other verified details.
+
+Do not invent a postal address, geographic service area, legal business name, social profile, opening hours, employee count, or business telephone number.
+
+The project currently contains potentially conflicting contact details across its supplied content. In particular, compare the published footer telephone number with the number in the supplied legal policy text.
+
+Do not silently choose one number and embed it in structured data. Use only confirmed company details and report unresolved inconsistencies.
+
+Do not add fake ratings, review markup, testimonials, or unsupported claims.
+
+Validate the syntax of the structured data and do not claim eligibility for enhanced search appearances is guaranteed.
+
+## 8. Image and Performance Checks
+
+Audit the existing images without redesigning the website.
+
+- Add meaningful alt text to informative images.
+- Use empty alt attributes for purely decorative images.
+- Preserve the existing Lady Justice hero artwork and its responsive positioning.
+- Provide explicit image dimensions or aspect ratios where appropriate to reduce layout shifts.
+- Use efficient image formats or compression when genuinely beneficial and visually safe.
+- Lazy-load below-the-fold images where appropriate.
+- Do not lazy-load the main above-the-fold hero image if doing so would delay its display.
+- Avoid unnecessary font weights and duplicate font requests.
+- Check page-loading behavior, mobile layout, and the most important Core Web Vitals opportunities.
+
+Do not replace existing artwork, reduce visual quality noticeably, or modify animations just to chase a score.
+
+## 9. Social Sharing Metadata
+
+Add suitable Open Graph and, where appropriate, Twitter/X card metadata for public pages.
+
+Use page-specific titles and descriptions where practical.
+
+Use existing brand assets for social-preview images. Do not generate new artwork or reference missing image assets.
+
+Ensure image URLs and metadata use the correct production origin.
+
+If social-preview crawlers cannot access route-specific metadata because of the current rendering setup, report that limitation honestly and recommend a compatible fix without adding dependencies.
+
+## 10. Privacy and Scope Restrictions
+
+Do not connect or configure Google Search Console, Google Analytics, advertising pixels, or third-party marketing services.
+
+Do not request access to external accounts.
+
+Do not create a keyword-tracking system or paid SEO integration.
+
+Do not add cookies or tracking scripts.
+
+Do not change the supplied Privacy Policy or Terms of Service without authorization.
+
+If broader SEO work is requested later, separate content strategy, keyword research, local SEO, and analytics setup from this foundational task.
+
+## 11. Preserve Existing Website Behavior
+
+Preserve:
+
+- The homepage hero and Lady Justice illustration.
+- The Founder section and About anchor.
+- AI Consulting & Implementation.
+- Litigation Services.
+- Alpha Lens Platform.
+- Who We Serve.
+- The Contact form.
+- The shared navigation and footer.
+- The deep-teal cover-and-reveal transition.
+- Existing legal pages and links.
+
+Do not remove content, redesign pages, or add unnecessary dependencies.
+
+## 12. Verification
+
+Run the existing project and inspect the actual rendered pages.
+
+Verify:
+
+1. Every public route has the correct title and description.
+2. Titles and descriptions are not unintentionally duplicated.
+3. Canonical URLs use the confirmed production domain.
+4. The sitemap contains only legitimate canonical URLs.
+5. robots.txt permits intended public pages and assets.
+6. Public routes do not have accidental noindex directives.
+7. Internal links and breadcrumbs lead to valid routes.
+8. Structured data is valid and uses verified information.
+9. Informative images have appropriate alt text.
+10. Social-preview metadata references accessible assets.
+11. Route changes do not break metadata.
+12. Desktop and mobile layouts remain visually intact.
+13. The website's contact details and legal pages have not been silently rewritten.
+
+Use available local checks and browser testing. If a live Google indexing check requires Search Console access, skip it and report that it was not performed.
+
+Do not claim that the site is indexed, ranking, or SEO-certified without evidence.
+
+## Final Report
+
+Report:
+
+- Files modified.
+- Metadata created for each route.
+- Sitemap and robots.txt status.
+- Structured data added or updated.
+- Any rendering or indexing limitations.
+- Contact-detail inconsistencies found.
+- Actual validation and browser tests performed.
+
+**Acceptance criterion:** The site has clean, accurate, technically sound SEO foundations without changing the approved design, fabricating business information, or adding unapproved tracking services.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-25T15:37:23+05:30.
+</ADDITIONAL_METADATA>

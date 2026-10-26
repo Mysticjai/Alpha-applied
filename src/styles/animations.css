@@ -1,0 +1,969 @@
+/* =================================================================
+   Alpha Applied Analytics Solutions — Coordinated Animations
+   ================================================================= */
+
+/* 1. KEYFRAMES */
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hero Line Stagger (for lines wrapped in overflow:hidden) */
+@keyframes hero-line-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Layer A: Geometry - subtle scale & fade */
+@keyframes hero-layer-geom {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Layer B: Courthouse Architecture - directional upward rise */
+@keyframes hero-layer-arch {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Layer C: Lady Justice - upward settle & elevation */
+@keyframes hero-layer-statue {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Sweeping Teal Ribbon Reveal */
+@keyframes hero-ribbon-reveal {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 600;
+  }
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Soft pulse for scroll indicator */
+@keyframes scroll-line {
+  0%, 100% {
+    transform: scaleY(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scaleY(1.4);
+    opacity: 1;
+  }
+}
+
+/* AlphaLens Pipeline Flow Animations */
+@keyframes pipeline-node-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pipeline-arrow-pulse {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(3px);
+    opacity: 0.95;
+    color: #004643;
+  }
+}
+
+/* Tool List Item Entrance */
+@keyframes tool-item-slide {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Editorial Panel Mount Entrance */
+@keyframes editorial-panel-mount {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Outcome Highlight Entrance */
+@keyframes outcome-card-reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 2. ANIMATION UTILITY CLASSES */
+
+.anim-hero-overline {
+  opacity: 0;
+  animation: reveal-fade 800ms var(--ease-reveal) 200ms both;
+}
+
+.anim-hero-headline {
+  opacity: 1;
+}
+
+.anim-hero-line-1 {
+  display: block;
+  opacity: 0;
+  animation: hero-line-reveal 750ms var(--ease-reveal) 100ms both;
+}
+
+.anim-hero-line-2 {
+  display: block;
+  opacity: 0;
+  animation: hero-line-reveal 750ms var(--ease-reveal) 190ms both;
+}
+
+.anim-hero-line-3 {
+  display: block;
+  opacity: 0;
+  animation: hero-line-reveal 750ms var(--ease-reveal) 280ms both;
+}
+
+.anim-hero-line-4 {
+  display: block;
+  opacity: 0;
+  animation: hero-line-reveal 750ms var(--ease-reveal) 370ms both;
+}
+
+.anim-hero-body {
+  opacity: 0;
+  animation: reveal-up 750ms var(--ease-reveal) 480ms both;
+}
+
+.anim-hero-cta {
+  opacity: 0;
+  animation: reveal-up 750ms var(--ease-reveal) 580ms both;
+}
+
+.anim-hero-service-strip {
+  opacity: 0;
+  animation: reveal-up 850ms var(--ease-reveal) 980ms both;
+}
+
+.anim-hero-scroll {
+  opacity: 0;
+  animation: reveal-fade 900ms var(--ease-reveal) 1100ms both;
+}
+
+.anim-scroll-pulse {
+  animation: scroll-line 2.4s ease-in-out infinite;
+  transform-origin: top;
+}
+
+/* Accenture-Inspired Hero Typographic Assembly & Disintegration */
+.hero-line-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.hero-line-inner {
+  display: block;
+  transform-origin: 50% 100%;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.disintegrate-word {
+  display: inline-block;
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.word-inner {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.p-mask {
+  overflow: hidden;
+}
+
+.p1-inner,
+.p2-inner,
+.cta-inner,
+.strip-inner,
+.overline-inner {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.disintegrate-p1,
+.disintegrate-p2 {
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line-mask,
+  .hero-line-inner,
+  .disintegrate-word,
+  .word-mask,
+  .word-inner,
+  .p-mask,
+  .p1-inner,
+  .p2-inner,
+  .cta-inner,
+  .strip-inner,
+  .overline-inner,
+  .disintegrate-p1,
+  .disintegrate-p2,
+  .disintegrate-cta,
+  .disintegrate-strip,
+  .disintegrate-cue,
+  .disintegrate-overline,
+  .disintegrate-art-geometry,
+  .disintegrate-art-architecture,
+  .disintegrate-art-statue {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Layered Artwork Entrance */
+.anim-layer-geometry {
+  opacity: 0;
+  animation: hero-layer-geom 1200ms var(--ease-reveal) 150ms both;
+}
+
+.anim-layer-architecture {
+  opacity: 0;
+  animation: hero-layer-arch 1200ms var(--ease-reveal) 450ms both;
+}
+
+.anim-layer-justice {
+  opacity: 0;
+  animation: hero-layer-statue 1200ms var(--ease-reveal) 700ms both;
+}
+
+/* General Scroll Reveal utilities */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms var(--ease-reveal), transform 700ms var(--ease-reveal);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Linear Horizontal Marquee */
+@keyframes linear-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-linear-marquee {
+  display: flex;
+  width: max-content;
+  animation-name: linear-marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--marquee-duration, 34s);
+}
+
+.animate-linear-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* AI Consulting Animated Visualizations */
+@keyframes consulting-line-draw {
+  from {
+    stroke-dashoffset: 80;
+    opacity: 0.2;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes consulting-vertical-path {
+  from {
+    transform: scaleY(0);
+    opacity: 0.2;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes consulting-hub-scale {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes consulting-node-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-consulting-connector-1 {
+  animation: consulting-line-draw 400ms ease-out 150ms both;
+}
+
+.anim-consulting-connector-2 {
+  animation: consulting-line-draw 400ms ease-out 350ms both;
+}
+
+.anim-consulting-connector-3 {
+  animation: consulting-line-draw 400ms ease-out 550ms both;
+}
+
+.anim-assessment-line {
+  transform-origin: top;
+  animation: consulting-vertical-path 600ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+}
+
+.anim-integration-hub {
+  animation: consulting-hub-scale 500ms var(--ease-reveal) 80ms both;
+}
+
+.anim-integration-spoke {
+  animation: consulting-line-draw 450ms ease-out 400ms both;
+}
+
+/* AlphaLens Infographic Animations */
+@keyframes draw-vertical-line {
+  0% {
+    stroke-dashoffset: 32;
+    opacity: 0.3;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes arrow-tip-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes draw-horizontal-line {
+  0% {
+    stroke-dashoffset: 60;
+    opacity: 0.3;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes hero-pipeline-node {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+    border-color: rgba(167, 146, 119, 0.3);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0) scale(1.01);
+    border-color: rgba(0, 70, 67, 0.7);
+    box-shadow: 0 4px 14px -3px rgba(0, 70, 67, 0.15);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    border-color: rgba(167, 146, 119, 0.45);
+    box-shadow: none;
+  }
+}
+
+@keyframes principle-stage-card {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.28);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: none;
+  }
+}
+
+@keyframes crypto-central-node {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+    box-shadow: none;
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px -4px rgba(0, 70, 67, 0.25);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 4px 12px -2px rgba(0, 70, 67, 0.12);
+  }
+}
+
+@keyframes crypto-branch-draw {
+  0% {
+    stroke-dashoffset: 140;
+    opacity: 0.2;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes crypto-source-node {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-1px) scale(1.01);
+    border-color: rgba(0, 70, 67, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    border-color: rgba(167, 146, 119, 0.35);
+  }
+}
+
+@keyframes tool-panel-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tool-row-enter {
+  from {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* AlphaLens Pipeline Sequence Utilities */
+.anim-pipeline-node-1 {
+  animation: hero-pipeline-node 550ms var(--ease-reveal) 80ms both;
+}
+
+.anim-pipeline-node-2 {
+  animation: hero-pipeline-node 550ms var(--ease-reveal) 750ms both;
+}
+
+.anim-pipeline-node-3 {
+  animation: hero-pipeline-node 550ms var(--ease-reveal) 1400ms both;
+}
+
+.anim-pipeline-node-4 {
+  animation: hero-pipeline-node 550ms var(--ease-reveal) 2050ms both;
+}
+
+.anim-pipeline-connector-1 {
+  animation: draw-vertical-line 400ms ease-out 450ms both;
+}
+
+.anim-pipeline-connector-2 {
+  animation: draw-vertical-line 400ms ease-out 1100ms both;
+}
+
+.anim-pipeline-connector-3 {
+  animation: draw-vertical-line 400ms ease-out 1750ms both;
+}
+
+.anim-pipeline-tip-1 {
+  animation: arrow-tip-appear 250ms ease-out 700ms both;
+}
+
+.anim-pipeline-tip-2 {
+  animation: arrow-tip-appear 250ms ease-out 1350ms both;
+}
+
+.anim-pipeline-tip-3 {
+  animation: arrow-tip-appear 250ms ease-out 2000ms both;
+}
+
+.anim-principle-stage-1 {
+  animation: principle-stage-card 550ms var(--ease-reveal) 100ms both;
+}
+
+.anim-principle-stage-2 {
+  animation: principle-stage-card 550ms var(--ease-reveal) 800ms both;
+}
+
+.anim-principle-stage-3 {
+  animation: principle-stage-card 550ms var(--ease-reveal) 1500ms both;
+}
+
+.anim-principle-connector-1 {
+  animation: draw-horizontal-line 400ms ease-out 500ms both;
+}
+
+.anim-principle-connector-2 {
+  animation: draw-horizontal-line 400ms ease-out 1200ms both;
+}
+
+.anim-crypto-hub {
+  animation: crypto-central-node 500ms var(--ease-reveal) 100ms both;
+}
+
+.anim-crypto-connectors {
+  animation: crypto-branch-draw 450ms ease-out 500ms both;
+}
+
+.anim-crypto-spoke-1 {
+  animation: crypto-source-node 450ms var(--ease-reveal) 750ms both;
+}
+
+.anim-crypto-spoke-2 {
+  animation: crypto-source-node 450ms var(--ease-reveal) 880ms both;
+}
+
+.anim-crypto-spoke-3 {
+  animation: crypto-source-node 450ms var(--ease-reveal) 1010ms both;
+}
+
+.anim-crypto-spoke-4 {
+  animation: crypto-source-node 450ms var(--ease-reveal) 1140ms both;
+}
+
+/* Editorial Panel Mount Animation */
+.anim-editorial-panel {
+  animation: editorial-panel-mount 650ms var(--ease-reveal) 50ms both;
+}
+
+/* Interactive Card & Tile Micro-Interactions */
+.interactive-card {
+  transition: transform 260ms var(--ease-reveal), box-shadow 260ms var(--ease-reveal), border-color 260ms var(--ease-reveal), background-color 260ms var(--ease-reveal);
+}
+
+.interactive-tile {
+  transition: transform 220ms var(--ease-reveal), background-color 220ms var(--ease-reveal);
+}
+
+.interactive-arrow {
+  transition: transform 200ms var(--ease-reveal), color 200ms var(--ease-reveal);
+}
+
+/* Cinematic Image Card Interaction Language */
+.cinematic-card {
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms ease;
+  will-change: transform, box-shadow;
+}
+
+.cinematic-img {
+  transition: transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.cinematic-overlay {
+  transition: opacity 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =================================================================
+   SERVICE CARD IMAGE-TO-TEXT TRANSITION (Physical Pull-Off & Solid State)
+   ================================================================= */
+
+/* 1. Base card styling and connected color transition */
+.service-interactive-card {
+  background-color: var(--card-base, #F8F7F4);
+  transition: background-color 380ms ease-out 0ms,
+              transform 380ms ease-out 0ms,
+              box-shadow 380ms ease-out 0ms,
+              border-color 380ms ease-out 0ms;
+  will-change: transform, box-shadow, background-color;
+}
+
+/* Explicit Revealed State (for mobile tap-to-reveal & active interaction) */
+.service-interactive-card.is-revealed {
+  background-color: #FFFFFF !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 36px -10px rgba(0, 70, 67, 0.12), 0 2px 8px -2px rgba(0, 70, 67, 0.04) !important;
+  border-color: rgba(0, 70, 67, 0.35) !important;
+  transition: background-color 450ms cubic-bezier(0.2, 0, 0.25, 1) 0ms,
+              transform 500ms cubic-bezier(0.16, 1, 0.3, 1) 0ms,
+              box-shadow 500ms cubic-bezier(0.16, 1, 0.3, 1) 0ms,
+              border-color 400ms cubic-bezier(0.16, 1, 0.3, 1) 0ms;
+}
+
+.service-interactive-card.is-revealed .card-top-accent {
+  height: 3.5px !important;
+}
+
+@media (min-width: 640px) {
+  .service-interactive-card:hover,
+  .service-interactive-card:focus-within,
+  .group:hover .service-interactive-card,
+  .group:focus-within .service-interactive-card {
+    background-color: #FFFFFF;
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px -10px rgba(0, 70, 67, 0.12), 0 2px 8px -2px rgba(0, 70, 67, 0.04);
+    border-color: rgba(0, 70, 67, 0.35);
+    transition: background-color 450ms cubic-bezier(0.2, 0, 0.25, 1) 0ms,
+                transform 500ms cubic-bezier(0.16, 1, 0.3, 1) 0ms,
+                box-shadow 500ms cubic-bezier(0.16, 1, 0.3, 1) 0ms,
+                border-color 400ms cubic-bezier(0.16, 1, 0.3, 1) 0ms;
+  }
+}
+
+/* 2. Physical Image Pull-Off Animation:
+   - Moves DOWNWARD (translateY(36px), 28–44px displacement)
+   - Scales down slightly (scale(0.97), 0.96–0.98 range)
+   - Traveling clipping mask: clip-path: inset(100% 0% 0% 0%)
+   - Progressive opacity reduction to 0.00
+   - Clean 0ms delay reversal on pointer leave
+*/
+.service-card-image-sheet {
+  transform: translateY(0px) scale(1);
+  clip-path: inset(0% 0% 0% 0%);
+  opacity: 0.85;
+  transition: transform 340ms ease-out 0ms,
+              clip-path 340ms ease-out 0ms,
+              opacity 300ms ease-out 0ms;
+  will-change: transform, clip-path, opacity;
+}
+
+.service-interactive-card.is-revealed .service-card-image-sheet {
+  transform: translateY(36px) scale(0.97) !important;
+  clip-path: inset(100% 0% 0% 0%) !important;
+  opacity: 0 !important;
+  transition: transform 480ms cubic-bezier(0.25, 0, 0.2, 1) 0ms,
+              clip-path 450ms cubic-bezier(0.25, 0, 0.2, 1) 60ms,
+              opacity 400ms ease-out 40ms !important;
+}
+
+@media (min-width: 640px) {
+  .service-interactive-card:hover .service-card-image-sheet,
+  .service-interactive-card:focus-within .service-card-image-sheet,
+  .group:hover .service-card-image-sheet,
+  .group:focus-within .service-card-image-sheet {
+    transform: translateY(36px) scale(0.97);
+    clip-path: inset(100% 0% 0% 0%);
+    opacity: 0;
+    transition: transform 480ms cubic-bezier(0.25, 0, 0.2, 1) 0ms,
+                clip-path 450ms cubic-bezier(0.25, 0, 0.2, 1) 60ms,
+                opacity 400ms ease-out 40ms;
+  }
+}
+
+/* 3. Resting Image Top Gradient Overlay:
+   Softly blends top edge into warm off-white surface at rest, fades smoothly as surface transitions to white */
+.service-card-image-gradient {
+  background: linear-gradient(to bottom, var(--card-base, #F8F7F4) 0%, rgba(248, 247, 244, 0.6) 30%, transparent 80%);
+  opacity: 1;
+  transition: opacity 320ms ease-out 0ms;
+}
+
+.service-interactive-card.is-revealed .service-card-image-gradient {
+  opacity: 0 !important;
+  transition: opacity 320ms cubic-bezier(0.2, 0, 0.25, 1) 0ms !important;
+}
+
+@media (min-width: 640px) {
+  .service-interactive-card:hover .service-card-image-gradient,
+  .service-interactive-card:focus-within .service-card-image-gradient,
+  .group:hover .service-card-image-gradient,
+  .group:focus-within .service-card-image-gradient {
+    opacity: 0;
+    transition: opacity 320ms cubic-bezier(0.2, 0, 0.25, 1) 0ms;
+  }
+}
+
+/* 4. High-Contrast Description Reveal:
+   - Locked heading: stationary 0px vertical shift
+   - Description emerges upward from +16px (14–18px range)
+   - Color: readable dark slate / muted teal-grey #1E2D2B
+   - Duration: 380ms, Delay: 180ms
+*/
+.service-card-desc-block {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 240ms ease-out 0ms,
+              transform 240ms ease-out 0ms;
+  will-change: opacity, transform;
+}
+
+.service-interactive-card.is-revealed .service-card-desc-block {
+  opacity: 1 !important;
+  transform: translateY(0px) !important;
+  pointer-events: auto !important;
+  transition: opacity 380ms cubic-bezier(0.16, 1, 0.3, 1) 180ms,
+              transform 380ms cubic-bezier(0.16, 1, 0.3, 1) 180ms !important;
+}
+
+@media (min-width: 640px) {
+  .service-interactive-card:hover .service-card-desc-block,
+  .service-interactive-card:focus-within .service-card-desc-block,
+  .group:hover .service-card-desc-block,
+  .group:focus-within .service-card-desc-block {
+    opacity: 1 !important;
+    transform: translateY(0px) !important;
+    transition: opacity 380ms cubic-bezier(0.16, 1, 0.3, 1) 180ms,
+                transform 380ms cubic-bezier(0.16, 1, 0.3, 1) 180ms;
+  }
+}
+
+/* 5. Directional CTA Prompt:
+   - Transition to crimson #C62835
+   - Arrow advances 6px
+   - Delay: 260ms, Duration: 320ms
+*/
+.service-card-cta-row {
+  transition: color 240ms ease-out 0ms,
+              border-color 240ms ease-out 0ms;
+}
+
+.service-card-cta-arrow {
+  transition: transform 240ms ease-out 0ms;
+}
+
+.service-interactive-card.is-revealed .service-card-cta-row {
+  color: #C62835 !important;
+  border-color: rgba(0, 70, 67, 0.2) !important;
+  transition: color 320ms cubic-bezier(0.16, 1, 0.3, 1) 260ms,
+              border-color 320ms cubic-bezier(0.16, 1, 0.3, 1) 260ms !important;
+}
+
+.service-interactive-card.is-revealed .service-card-cta-arrow {
+  transform: translateX(6px) !important;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1) 260ms !important;
+}
+
+@media (min-width: 640px) {
+  .service-interactive-card:hover .service-card-cta-row,
+  .service-interactive-card:focus-within .service-card-cta-row,
+  .group:hover .service-card-cta-row,
+  .group:focus-within .service-card-cta-row {
+    color: #C62835 !important;
+    border-color: rgba(0, 70, 67, 0.2) !important;
+    transition: color 320ms cubic-bezier(0.16, 1, 0.3, 1) 260ms,
+                border-color 320ms cubic-bezier(0.16, 1, 0.3, 1) 260ms;
+  }
+
+  .service-interactive-card:hover .service-card-cta-arrow,
+  .service-interactive-card:focus-within .service-card-cta-arrow,
+  .group:hover .service-card-cta-arrow,
+  .group:focus-within .service-card-cta-arrow {
+    transform: translateX(6px);
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1) 260ms;
+  }
+}
+
+/* 2b. TOUCH DEVICE PROTECTION (PREVENT STICKY HOVER) */
+@media (hover: none) {
+  .pillar-card:hover:not(.is-revealed),
+  .litigation-service-card:hover:not(.is-revealed),
+  .interactive-card:hover:not(.is-revealed),
+  .cinematic-card:hover:not(.is-revealed),
+  .service-interactive-card:hover:not(.is-revealed) {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .cinematic-img:not(.is-revealed *),
+  .service-interactive-card:not(.is-revealed) .service-card-image-sheet {
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+
+/* 3. ACCESSIBILITY: REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .anim-hero-overline,
+  .anim-hero-headline,
+  .anim-hero-line-1,
+  .anim-hero-line-2,
+  .anim-hero-line-3,
+  .anim-hero-line-4,
+  .anim-hero-body,
+  .anim-hero-cta,
+  .anim-hero-service-strip,
+  .anim-hero-scroll,
+  .anim-layer-geometry,
+  .anim-layer-architecture,
+  .anim-layer-justice,
+  .reveal-on-scroll,
+  .animate-linear-marquee,
+  .anim-pipeline-node-1,
+  .anim-pipeline-node-2,
+  .anim-pipeline-node-3,
+  .anim-pipeline-node-4,
+  .anim-pipeline-connector-1,
+  .anim-pipeline-connector-2,
+  .anim-pipeline-connector-3,
+  .anim-pipeline-tip-1,
+  .anim-pipeline-tip-2,
+  .anim-pipeline-tip-3,
+  .anim-principle-stage-1,
+  .anim-principle-stage-2,
+  .anim-principle-stage-3,
+  .anim-principle-connector-1,
+  .anim-principle-connector-2,
+  .anim-crypto-hub,
+  .anim-crypto-connectors,
+  .anim-crypto-spoke-1,
+  .anim-crypto-spoke-2,
+  .anim-crypto-spoke-3,
+  .anim-crypto-spoke-4,
+  .anim-consulting-connector-1,
+  .anim-consulting-connector-2,
+  .anim-consulting-connector-3,
+  .anim-assessment-line,
+  .anim-integration-hub,
+  .anim-integration-spoke,
+  .anim-editorial-panel,
+  .service-interactive-card,
+  .service-card-image-sheet,
+  .service-card-image-gradient,
+  .service-card-desc-block,
+  .service-card-cta-row,
+  .service-card-cta-arrow {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    animation: none !important;
+    transition: none !important;
+    stroke-dashoffset: 0 !important;
+    background-size: 100% 100% !important;
+  }
+}

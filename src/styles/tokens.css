@@ -1,0 +1,25 @@
+:root {
+  color-scheme: light;
+  --color-primary: #004643;
+  --color-primary-dark: #003634;
+  --color-primary-light: #005a56;
+  --color-surface-warm: #F0EDE5;
+  --color-surface-warm-light: #F8F6F2;
+  --color-surface-warm-card: #FAF9F6;
+  --color-surface-sand: #E6E1D5;
+  --color-background: #FFFFFF;
+  --color-accent: #C62835;
+  --color-accent-hover: #A81E29;
+  --color-accent-muted: #A79277;
+  --color-text: #243432;
+  --color-text-muted: #526174;
+  --color-border: #E4E2DA;
+
+  --font-heading: "Instrument Serif", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-body: "Manrope", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --page-gutter: clamp(1.25rem, 4vw, 4rem);
+  --container-max: 1240px;
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
