@@ -51,10 +51,10 @@ const WIPES: Record<string, string> = {
 export const AnimatedContent: React.FC<AnimatedContentProps> = ({
   children,
   container,
-  distance = 30,
+  distance = 16,
   direction = 'vertical',
   reverse = false,
-  duration = 0.7,
+  duration = 0.55,
   ease = 'power2.out',
   initialOpacity = 0,
   animateOpacity = true,
@@ -95,6 +95,14 @@ export const AnimatedContent: React.FC<AnimatedContentProps> = ({
 
       if (reduce) {
         el.style.opacity = '1';
+        el.style.transform = 'none';
+        if (el.children.length) {
+          Array.from(el.children).forEach((child) => {
+            const htmlChild = child as HTMLElement;
+            htmlChild.style.opacity = '1';
+            htmlChild.style.transform = 'none';
+          });
+        }
         callbacksRef.current.onComplete?.();
         return undefined;
       }

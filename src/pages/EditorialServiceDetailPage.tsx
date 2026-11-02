@@ -39,7 +39,7 @@ export const EditorialServiceDetailPage: React.FC<EditorialServiceDetailPageProp
         <section className="border-b border-black/[0.06] bg-white/50 backdrop-blur-xs">
           <div className="site-container py-3 sm:py-3.5">
             <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono text-brand-slate">
-              <a href="/#home" className="hover:text-primary transition-colors">
+              <a href="/#home" data-direction="backward" data-restore-scroll="true" className="hover:text-primary transition-colors">
                 Home
               </a>
               <span className="text-black/30 select-none">/</span>
@@ -64,6 +64,7 @@ export const EditorialServiceDetailPage: React.FC<EditorialServiceDetailPageProp
                   <div>
                     <a
                       href="/litigationservices.html"
+                      data-direction="backward"
                       className="inline-flex items-center gap-2 text-xs sm:text-[13px] font-mono uppercase tracking-wider text-brand-taupe hover:text-primary transition-colors mb-6 group select-none"
                     >
                       <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1 text-brand-taupe group-hover:text-primary" />
@@ -72,7 +73,7 @@ export const EditorialServiceDetailPage: React.FC<EditorialServiceDetailPageProp
                   </div>
 
                   {/* Exact Title */}
-                  <h1 className="font-serif text-3xl sm:text-4xl xl:text-[42px] text-[#004643] font-normal leading-[1.16] tracking-tight mb-5">
+                  <h1 className="font-serif text-3xl sm:text-4xl xl:text-[42px] text-[#004643] font-semibold leading-[1.16] tracking-tight mb-5">
                     {service.title}
                   </h1>
 
@@ -129,7 +130,7 @@ export const EditorialServiceDetailPage: React.FC<EditorialServiceDetailPageProp
                 {/* List Header */}
                 <AnimatedContent distance={14} duration={0.5} threshold={0.1}>
                   <div className="border-b border-black/[0.1] pb-5 mb-2">
-                    <h2 className="font-serif text-2xl sm:text-3xl text-[#004643] font-normal tracking-tight">
+                    <h2 className="font-serif text-2xl sm:text-3xl text-[#004643] font-semibold tracking-tight">
                       Core Analytical Deliverables
                     </h2>
                   </div>
@@ -148,7 +149,7 @@ export const EditorialServiceDetailPage: React.FC<EditorialServiceDetailPageProp
                       </span>
                       <div className="flex-grow">
                         {/* Cyprus Green (#004643) Serif Heading */}
-                        <h3 className="font-serif text-xl sm:text-2xl text-[#004643] group-hover:text-primary-dark transition-colors duration-200 font-normal tracking-tight mb-2 sm:mb-2.5">
+                        <h3 className="font-serif text-xl sm:text-2xl text-[#004643] group-hover:text-primary-dark transition-colors duration-200 font-medium tracking-tight mb-2 sm:mb-2.5">
                           {item.title}
                         </h3>
                         {/* Readable Muted Body Copy */}
@@ -161,9 +162,9 @@ export const EditorialServiceDetailPage: React.FC<EditorialServiceDetailPageProp
                 </AnimatedContent>
 
                 {/* Closing Consultation Card */}
-                <AnimatedContent distance={20} duration={0.6} threshold={0.15}>
+                <AnimatedContent distance={16} duration={0.55} threshold={0.15}>
                   <div className="mt-12 sm:mt-16 p-8 sm:p-10 rounded-xl bg-white border border-brand-border/80 shadow-xs hover:border-[#004643]/30 hover:shadow-sm transition-all duration-300">
-                    <h3 className="font-serif text-2xl sm:text-3xl text-[#004643] font-normal mb-3">
+                    <h3 className="font-serif text-2xl sm:text-3xl text-[#004643] font-semibold mb-3">
                       {service.cta.heading}
                     </h3>
                     <p className="text-brand-slate text-sm sm:text-base leading-relaxed mb-6 max-w-xl">

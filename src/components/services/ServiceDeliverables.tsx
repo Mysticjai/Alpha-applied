@@ -17,7 +17,7 @@ interface ServiceDeliverablesProps {
 }
 
 export const ServiceDeliverables: React.FC<ServiceDeliverablesProps> = ({
-  badge = 'WHAT WE DELIVER',
+  badge,
   title,
   subtitle,
   deliverables,

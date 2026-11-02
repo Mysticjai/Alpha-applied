@@ -1,5 +1,5 @@
 /* =================================================================
-   Alpha Applied Analytics Solutions — Coordinated Animations
+   Alpha Applied Analytics Solutions: Coordinated Animations
    ================================================================= */
 
 /* 1. KEYFRAMES */
@@ -830,6 +830,7 @@
   .group:focus-within .service-card-desc-block {
     opacity: 1 !important;
     transform: translateY(0px) !important;
+    pointer-events: auto !important;
     transition: opacity 380ms cubic-bezier(0.16, 1, 0.3, 1) 180ms,
                 transform 380ms cubic-bezier(0.16, 1, 0.3, 1) 180ms;
   }

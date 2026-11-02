@@ -206,7 +206,7 @@ export const AlphaLensPage: React.FC = () => {
             {/* Breadcrumb Navigation */}
             <AnimatedContent distance={10} duration={0.4}>
               <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-taupe mb-6 sm:mb-8">
-                <a href="/#home" className="hover:text-primary transition-colors">
+                <a href="/#home" data-direction="backward" data-restore-scroll="true" className="hover:text-primary transition-colors">
                   Home
                 </a>
                 <span className="text-brand-border/80 select-none">/</span>
@@ -221,7 +221,7 @@ export const AlphaLensPage: React.FC = () => {
                   <div className="mb-5 sm:mb-6">
                     <img
                       src="/images/alphalens-logo.svg"
-                      alt="AlphaLens AI — Legal Intelligence. Amplified."
+                      alt="AlphaLens AI: Legal Intelligence. Amplified."
                       className="w-[230px] sm:w-[270px] lg:w-[300px] h-auto object-contain select-none"
                       width={300}
                       height={86}
@@ -230,7 +230,7 @@ export const AlphaLensPage: React.FC = () => {
 
                   <h1
                     ref={headlineRef}
-                    className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-primary font-normal leading-[1.14] tracking-tight mb-5 will-change-[transform,opacity]"
+                    className="font-serif text-3xl sm:text-4xl lg:text-[44px] text-primary font-semibold leading-[1.14] tracking-tight mb-5 will-change-[transform,opacity]"
                   >
                     {alphaLens.headline}
                   </h1>
@@ -253,7 +253,9 @@ export const AlphaLensPage: React.FC = () => {
 
                     <a
                       href="/#home"
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary hover:text-accent transition-colors py-2 px-2 rounded"
+                      data-direction="backward"
+                      data-restore-scroll="true"
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary hover:text-accent transition-colors py-2 px-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
                     >
                       <ArrowLeft className="w-3.5 h-3.5" />
                       <span>Back to Homepage</span>
@@ -453,7 +455,7 @@ export const AlphaLensPage: React.FC = () => {
           <div className="site-container">
             <AnimatedContent distance={16} duration={0.5}>
               <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-                <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] font-normal tracking-tight text-white">
+                <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] font-semibold tracking-tight text-white">
                   {alphaLens.principle.headline}
                 </h2>
               </div>
@@ -493,7 +495,7 @@ export const AlphaLensPage: React.FC = () => {
                           </span>
                         </div>
 
-                        <h3 className="font-serif text-xl sm:text-2xl text-white font-normal mb-2 tracking-tight">
+                        <h3 className="font-serif text-xl sm:text-2xl text-white font-medium mb-2 tracking-tight">
                           {stg.title}
                         </h3>
 
@@ -580,7 +582,7 @@ export const AlphaLensPage: React.FC = () => {
           <div className="site-container">
             <AnimatedContent distance={16} duration={0.5}>
               <div className="max-w-3xl mb-10 sm:mb-14">
-                <h2 className="font-serif text-3xl sm:text-4xl text-primary font-normal tracking-tight mb-4">
+                <h2 className="font-serif text-3xl sm:text-4xl text-primary font-semibold tracking-tight mb-4">
                   Four Modules. Sixteen Specialized Tools.
                 </h2>
                 <p className="text-base sm:text-lg text-brand-slate leading-relaxed font-normal">
@@ -679,7 +681,7 @@ export const AlphaLensPage: React.FC = () => {
                         {alphaLens.modules[activeModule].subtitle}
                       </span>
                     </div>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-primary font-normal tracking-tight">
+                    <h3 className="font-serif text-2xl sm:text-3xl text-primary font-medium tracking-tight">
                       {alphaLens.modules[activeModule].title}
                     </h3>
                   </div>
@@ -741,6 +743,7 @@ export const AlphaLensPage: React.FC = () => {
                       minHeightClass="min-h-[340px] sm:min-h-[360px]"
                       topAccent={idx % 2 === 0 ? '#004643' : '#A79277'}
                       className="border border-brand-border/80"
+                      titleClassName="font-heading text-lg sm:text-xl font-semibold text-primary tracking-tight leading-snug group-hover:text-primary-dark transition-colors duration-200 transform-none"
                     />
                   </div>
                 ))}
@@ -761,7 +764,7 @@ export const AlphaLensPage: React.FC = () => {
               {/* Left Column: Core Crypto Positioning & Messaging */}
               <div className="lg:col-span-6">
                 <AnimatedContent distance={16} duration={0.5}>
-                  <h2 className="font-serif text-3xl sm:text-4xl text-primary font-normal tracking-tight mb-4">
+                  <h2 className="font-serif text-3xl sm:text-4xl text-primary font-semibold tracking-tight mb-4">
                     {alphaLens.cryptoCapabilities.title}
                   </h2>
 
@@ -917,13 +920,13 @@ export const AlphaLensPage: React.FC = () => {
         {/* ========================================================================= */}
         <section className="py-16 sm:py-20 lg:py-24 bg-primary text-white">
           <div className="site-container text-center max-w-2xl mx-auto">
-            <AnimatedContent distance={20} duration={0.65} threshold={0.15}>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] font-normal tracking-tight text-white leading-tight mb-5">
+            <AnimatedContent distance={16} duration={0.55} threshold={0.15}>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-white leading-tight mb-5">
                 Ready to Streamline Your Litigation Discovery?
               </h2>
 
               <p className="text-base sm:text-lg text-surface-warm/85 leading-relaxed mb-8 font-normal">
-                Experience how AlphaLens AI transforms complex, fragmented financial documents into structured, defensible evidentiary schedules.
+                Experience how AlphaLens AI structures complex, multi-account financial productions into clear, defensible evidentiary schedules.
               </p>
 
               <div className="flex flex-wrap items-center justify-center gap-4">

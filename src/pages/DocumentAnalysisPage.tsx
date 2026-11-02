@@ -13,7 +13,7 @@ export const DocumentAnalysisPage: React.FC = () => {
   useEffect(() => {
     // Scroll to top on page mount
     window.scrollTo(0, 0);
-    document.title = 'Document Analysis — Alpha Applied Analytics Solutions';
+    document.title = 'Document Analysis | Alpha Applied Analytics Solutions';
   }, []);
 
   const breadcrumb = [
@@ -136,7 +136,7 @@ export const DocumentAnalysisPage: React.FC = () => {
         <ServiceDetailHero
           breadcrumb={breadcrumb}
           title="Document Analysis"
-          description="Transforming complex financial data into actionable insights. We combine AI-driven tools with human expertise to extract meaningful insights from complex datasets."
+          description="Converting complex financial records into court-ready schedules. We combine machine extraction with forensic accountant review to deliver defensible work product."
           primaryCta={{
             label: 'Book a Call',
             href: '/#contact',
@@ -152,7 +152,7 @@ export const DocumentAnalysisPage: React.FC = () => {
         <ServiceOverview
           heading="AI-Powered Financial Document Analysis"
           paragraphs={[
-            'We transform unstructured financial documents into organized, actionable intelligence. Our platform processes bank statements, credit card records, and transaction data at scale—categorizing transactions, identifying patterns, and flagging anomalies automatically. We trace fund flows across multiple accounts and entities, converting complex financial data into clear, structured formats that save legal teams time and reduce manual review effort.',
+            'We organize unstructured financial documents into structured, courtroom-ready schedules. Our platform processes bank statements, credit card records, and transaction data at scale, categorizing transactions, identifying patterns, and flagging anomalies with precision. We trace fund flows across multiple accounts and entities, delivering clear schedules that save legal teams time and reduce manual review effort.',
             'Our analysis highlights suspicious or unusual financial behavior, ensuring nothing critical is overlooked. We deliver comprehensive summaries and red-flag reports organized for case preparation, giving legal teams clear visibility into financial activities and actionable insights for litigation strategy.',
           ]}
           capabilities={overviewCapabilities}
@@ -180,8 +180,8 @@ export const DocumentAnalysisPage: React.FC = () => {
 
         {/* Section 7: Closing CTA (Clear & Prominent, No Excessive Decoration) */}
         <ServiceClosingCta
-          heading="Drowning in Documents?"
-          subtitle="Let us transform your document chaos into structured, production-ready data in days instead of weeks."
+          heading="High-Volume Financial Production?"
+          subtitle="We convert complex financial document productions into structured, production-ready work product with rapid turnaround."
           primaryCtaLabel="Book a Call"
           primaryCtaHref="/#contact"
           emailSubject="Document Analysis Inquiry"

@@ -29,10 +29,9 @@ export const AlphaLensSection: React.FC = () => {
 
       <div className="site-container relative z-10">
         {/* Header (Theme B - Light variant) */}
-        <AnimatedContent distance={20} duration={0.6} threshold={0.2}>
+        <AnimatedContent distance={16} duration={0.55} threshold={0.15}>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/15">
             <SectionHeading
-              badge={alphaLens.badge}
               title={alphaLens.title}
               subtitle={alphaLens.subtitle}
               variant="light"
@@ -53,7 +52,7 @@ export const AlphaLensSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-12 items-start">
 
           {/* Left Column: 4 Feature Tabs (5 cols) */}
-          <AnimatedContent distance={24} stagger={0.08} threshold={0.15} className="lg:col-span-5 flex flex-col space-y-4">
+          <AnimatedContent distance={16} duration={0.55} stagger={0.08} threshold={0.15} className="lg:col-span-5 flex flex-col space-y-4">
             {alphaLens.features.map((feature, idx) => {
               const isSelected = activeTab === idx;
               return (
@@ -104,7 +103,7 @@ export const AlphaLensSection: React.FC = () => {
           </AnimatedContent>
 
           {/* Right Column: Platform Architecture Showcase (7 cols) */}
-          <AnimatedContent distance={24} duration={0.7} delay={0.12} threshold={0.15} className="lg:col-span-7">
+          <AnimatedContent distance={16} duration={0.55} delay={0.08} threshold={0.15} className="lg:col-span-7">
             <div className="bg-[#003432] rounded-xl border border-white/15 shadow-2xl overflow-hidden flex flex-col">
 
             {/* Window Chrome Header */}
@@ -131,7 +130,7 @@ export const AlphaLensSection: React.FC = () => {
                   <span className="text-xs text-surface-warm/60 font-mono">
                     Active Workflow: {alphaLens.features[activeTab].categoryLabel}
                   </span>
-                  <div className="font-serif text-lg text-white font-normal mt-0.5">
+                  <div className="font-heading text-lg text-white font-semibold mt-0.5">
                     {alphaLens.features[activeTab].title}
                   </div>
                 </div>
@@ -167,19 +166,19 @@ export const AlphaLensSection: React.FC = () => {
                           <td className="p-2.5 text-surface-warm/70">2024-03-12</td>
                           <td className="p-2.5 text-white">Wire Transfer - Corporate Disbursement</td>
                           <td className="p-2.5 text-right text-accent-light">$45,000.00</td>
-                          <td className="p-2.5 text-right text-surface-warm/50">—</td>
+                          <td className="p-2.5 text-right text-surface-warm/50">-</td>
                         </tr>
                         <tr>
                           <td className="p-2.5 text-surface-warm/70">2024-03-15</td>
                           <td className="p-2.5 text-white">Client Retainer Depository Credit</td>
-                          <td className="p-2.5 text-right text-surface-warm/50">—</td>
+                          <td className="p-2.5 text-right text-surface-warm/50">-</td>
                           <td className="p-2.5 text-right text-[#22C55E]">$18,500.00</td>
                         </tr>
                         <tr>
                           <td className="p-2.5 text-surface-warm/70">2024-03-20</td>
                           <td className="p-2.5 text-white">Interbank Operating Transfer</td>
                           <td className="p-2.5 text-right text-accent-light">$12,500.00</td>
-                          <td className="p-2.5 text-right text-surface-warm/50">—</td>
+                          <td className="p-2.5 text-right text-surface-warm/50">-</td>
                         </tr>
                       </tbody>
                     </table>
@@ -195,7 +194,7 @@ export const AlphaLensSection: React.FC = () => {
               {activeTab === 1 && (
                 <div className="mt-6 font-mono text-xs space-y-4">
                   <div className="flex items-center justify-between text-[11px] font-semibold uppercase text-brand-taupe-light tracking-wider">
-                    <span>Statement Coverage — Chase ••2281</span>
+                    <span>Statement Coverage: Chase ••2281</span>
                     <span className="text-surface-warm/60">Annual Scope</span>
                   </div>
 
@@ -229,7 +228,7 @@ export const AlphaLensSection: React.FC = () => {
                     <div>
                       <div className="font-semibold text-white">2 gaps detected: Mar 2024, Jun 2024</div>
                       <div className="text-[11px] text-surface-warm/80 mt-0.5">
-                        Production gap identified — request from opposing counsel
+                        Production gap identified: request from opposing counsel
                       </div>
                     </div>
                   </div>
@@ -264,7 +263,7 @@ export const AlphaLensSection: React.FC = () => {
 
                   <div className="p-3.5 rounded bg-primary-dark/80 border border-white/15 flex items-center justify-between">
                     <div>
-                      <div className="text-white font-bold text-sm">100% — QC Score — Litigation Grade</div>
+                      <div className="text-white font-bold text-sm">100% QC Score: Litigation Grade</div>
                       <div className="text-[10px] text-surface-warm/70">
                         Two-layer validation combining 9 rule-based checks with AI review
                       </div>
@@ -277,7 +276,7 @@ export const AlphaLensSection: React.FC = () => {
               {activeTab === 3 && (
                 <div className="mt-6 font-mono text-xs space-y-3">
                   <div className="flex items-center justify-between text-[11px] font-semibold uppercase text-brand-taupe-light tracking-wider">
-                    <span>Analytics Engine for Divorce — Output Preview</span>
+                    <span>Analytics Engine for Divorce: Output Preview</span>
                     <span className="text-surface-warm/60">Flagship Engine</span>
                   </div>
 
@@ -318,13 +317,13 @@ export const AlphaLensSection: React.FC = () => {
                       </div>
                       <div className="grid grid-cols-12 gap-2 p-2.5 items-center">
                         <span className="col-span-3 text-surface-warm/70">04-01-24</span>
-                        <span className="col-span-5 text-white">ATM WITHDRAWAL — CASH</span>
+                        <span className="col-span-5 text-white">ATM WITHDRAWAL: CASH</span>
                         <span className="col-span-2 text-right text-accent-light font-bold">$15,000</span>
                         <span className="col-span-2 text-right text-accent-light font-bold">8.1</span>
                       </div>
                       <div className="grid grid-cols-12 gap-2 p-2.5 items-center bg-white/[0.02]">
                         <span className="col-span-3 text-surface-warm/70">04-11-24</span>
-                        <span className="col-span-5 text-white">CHECK #4472 — UNKNOWN</span>
+                        <span className="col-span-5 text-white">CHECK #4472: UNKNOWN</span>
                         <span className="col-span-2 text-right text-accent-light font-bold">$22,750</span>
                         <span className="col-span-2 text-right text-accent-light font-bold">7.9</span>
                       </div>

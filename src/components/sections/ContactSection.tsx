@@ -140,35 +140,35 @@ export function buildInquiryEmail(
   // 1. Context-Aware Subject Line
   let subject = '';
   if (actionType === 'sample-report') {
-    subject = `Sample Report Request — ${orgOrName}`;
+    subject = `Sample Report Request: ${orgOrName}`;
   } else {
     switch (formData.primaryOffering) {
       case 'ai-consulting':
         subject = subCategoryLabel && formData.subCategory
-          ? `AI Consulting (${subCategoryLabel}) Inquiry — ${orgOrName}`
-          : `AI Consulting Inquiry — ${orgOrName}`;
+          ? `AI Consulting (${subCategoryLabel}) Inquiry: ${orgOrName}`
+          : `AI Consulting Inquiry: ${orgOrName}`;
         break;
       case 'litigation-services':
         subject = subCategoryLabel && formData.subCategory
-          ? `Litigation Services (${subCategoryLabel}) Inquiry — ${orgOrName}`
-          : `Litigation Services Inquiry — ${orgOrName}`;
+          ? `Litigation Services (${subCategoryLabel}) Inquiry: ${orgOrName}`
+          : `Litigation Services Inquiry: ${orgOrName}`;
         break;
       case 'alpha-lens-platform':
         subject = subCategoryLabel && formData.subCategory
-          ? `Alpha Lens Platform (${subCategoryLabel}) Inquiry — ${orgOrName}`
-          : `Alpha Lens Platform Inquiry — ${orgOrName}`;
+          ? `Alpha Lens Platform (${subCategoryLabel}) Inquiry: ${orgOrName}`
+          : `Alpha Lens Platform Inquiry: ${orgOrName}`;
         break;
       case 'multiple-services':
-        subject = `Multiple Services Inquiry — ${orgOrName}`;
+        subject = `Multiple Services Inquiry: ${orgOrName}`;
         break;
       case 'general-inquiry':
-        subject = `General Inquiry — ${orgOrName}`;
+        subject = `General Inquiry: ${orgOrName}`;
         break;
       case 'other':
       default:
         subject = formData.otherDescription.trim()
-          ? `Inquiry (${formData.otherDescription.trim()}) — ${orgOrName}`
-          : `Inquiry — ${orgOrName}`;
+          ? `Inquiry (${formData.otherDescription.trim()}): ${orgOrName}`
+          : `Inquiry: ${orgOrName}`;
         break;
     }
   }
@@ -462,7 +462,7 @@ export const ContactSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
           {/* Left Column: Context, Verified Direct Contact & Protocols (5 cols) */}
-          <AnimatedContent distance={24} duration={0.7} threshold={0.15} className="lg:col-span-5">
+          <AnimatedContent distance={16} duration={0.55} threshold={0.15} className="lg:col-span-5">
             <SectionHeading
               title={contact.title}
               subtitle={contact.subtitle}
@@ -542,7 +542,7 @@ export const ContactSection: React.FC = () => {
           </AnimatedContent>
 
           {/* Right Column: Intake Inquiry Form (7 cols) */}
-          <AnimatedContent distance={24} duration={0.7} delay={0.12} threshold={0.15} className="lg:col-span-7">
+          <AnimatedContent distance={16} duration={0.55} delay={0.08} threshold={0.15} className="lg:col-span-7">
             <div
               id="contact-form"
               className="bg-[#002F2D] p-7 sm:p-9 rounded-2xl border border-white/15 shadow-2xl relative"
@@ -557,7 +557,7 @@ export const ContactSection: React.FC = () => {
                     <div className="inline-block px-3 py-0.5 rounded-full bg-white/10 text-[11px] font-mono uppercase tracking-wider text-accent-light mb-2">
                       {preparedEmail.actionType === 'sample-report' ? 'Sample Report Request' : 'Strategy Call Inquiry'}
                     </div>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal">
+                    <h3 className="font-serif text-2xl sm:text-3xl text-white font-semibold">
                       Your Email Draft Is Ready
                     </h3>
                     <p className="mt-2.5 text-xs sm:text-sm text-surface-warm/85 max-w-lg mx-auto leading-relaxed">
@@ -1006,19 +1006,19 @@ export const ContactSection: React.FC = () => {
                   <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
                     <button
                       type="submit"
-                      className="flex-1 py-3.5 px-6 bg-accent hover:bg-accent-hover text-white text-[14.5px] font-semibold rounded-md shadow-lg shadow-accent/25 transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 active:translate-y-px cursor-pointer"
+                      className="flex-1 py-3 sm:py-3.5 px-4 sm:px-6 bg-accent hover:bg-accent-hover text-white text-[13.5px] sm:text-[14px] font-semibold rounded-md shadow-lg shadow-accent/25 transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 active:translate-y-px cursor-pointer"
                     >
                       <span>Open Email to Book a Call</span>
-                      <PaperPlaneTilt className="w-4 h-4" />
+                      <PaperPlaneTilt className="w-4 h-4 shrink-0" />
                     </button>
 
                     <button
                       type="button"
                       onClick={handleSampleReportClick}
-                      className="py-3.5 px-6 rounded-md border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-[14px] font-semibold transition-all flex items-center justify-center gap-2 text-center cursor-pointer"
+                      className="py-3 sm:py-3.5 px-4 sm:px-6 rounded-md border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-[13px] sm:text-[13.5px] font-semibold transition-all flex items-center justify-center gap-2 text-center cursor-pointer"
                     >
                       <span>Request Sample Report</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3.5 h-3.5 shrink-0" />
                     </button>
                   </div>
 

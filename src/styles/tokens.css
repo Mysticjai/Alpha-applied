@@ -15,8 +15,8 @@
   --color-text-muted: #526174;
   --color-border: #E4E2DA;
 
-  --font-heading: "Instrument Serif", Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-body: "Manrope", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Bespoke Slab", Georgia, "Times New Roman", serif;
 
   --page-gutter: clamp(1.25rem, 4vw, 4rem);
   --container-max: 1240px;

@@ -20,7 +20,7 @@ export const LinearTrustMarquee: React.FC<LinearTrustMarqueeProps> = ({
     <div
       role="region"
       aria-label="Trust statements marquee"
-      className={`w-full overflow-hidden relative border-b border-brand-border/60 bg-white py-4 sm:py-[18px] lg:py-[19px] select-none ${className}`}
+      className={`w-full overflow-hidden relative border-b border-brand-border/60 bg-white py-5 sm:py-[22px] lg:py-[23px] select-none ${className}`}
       style={{
         maskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
         WebkitMaskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
@@ -37,10 +37,10 @@ export const LinearTrustMarquee: React.FC<LinearTrustMarqueeProps> = ({
         <div className="flex items-center shrink-0">
           {trackItems.map((item, idx) => (
             <div key={`track-a-${idx}`} className="inline-flex items-center shrink-0 whitespace-nowrap">
-              <span className="text-[13.25px] sm:text-[14.5px] font-semibold tracking-wider text-[#004643] uppercase font-sans px-4 sm:px-6">
+              <span className="text-[14.75px] sm:text-[16px] font-semibold tracking-wider text-[#004643] uppercase font-heading px-[18px] sm:px-[28px]">
                 {item.label}
               </span>
-              <span className="text-[#C62835] text-[12.5px] sm:text-[13.5px] font-serif px-2 sm:px-3 select-none" aria-hidden="true">
+              <span className="text-[#C62835] text-[13.5px] sm:text-[15px] font-serif px-[10px] sm:px-[14px] select-none" aria-hidden="true">
                 ✦
               </span>
             </div>
@@ -51,10 +51,10 @@ export const LinearTrustMarquee: React.FC<LinearTrustMarqueeProps> = ({
         <div className="flex items-center shrink-0" aria-hidden="true">
           {trackItems.map((item, idx) => (
             <div key={`track-b-${idx}`} className="inline-flex items-center shrink-0 whitespace-nowrap">
-              <span className="text-[13.25px] sm:text-[14.5px] font-semibold tracking-wider text-[#004643] uppercase font-sans px-4 sm:px-6">
+              <span className="text-[14.75px] sm:text-[16px] font-semibold tracking-wider text-[#004643] uppercase font-heading px-[18px] sm:px-[28px]">
                 {item.label}
               </span>
-              <span className="text-[#C62835] text-[12.5px] sm:text-[13.5px] font-serif px-2 sm:px-3 select-none">
+              <span className="text-[#C62835] text-[13.5px] sm:text-[15px] font-serif px-[10px] sm:px-[14px] select-none" aria-hidden="true">
                 ✦
               </span>
             </div>

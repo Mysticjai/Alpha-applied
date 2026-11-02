@@ -59,6 +59,23 @@ export const cardImages = {
     },
   },
   whoWeServe: {
+    professionalServices: {
+      src: '/images/cards/alphalens-project-tracking.webp',
+      alt: 'Professional services workflow automation and operational intelligence',
+    },
+    financialServices: {
+      src: '/images/cards/who-we-serve-cdfa.webp',
+      alt: 'Financial data extraction and reporting automation',
+    },
+    technologyEnterprises: {
+      src: '/images/cards/alphalens-interactive-visualizations.webp',
+      alt: 'Scalable AI integration and custom analytical tools',
+    },
+    legalLitigation: {
+      src: '/images/cards/who-we-serve-attorneys.webp',
+      alt: 'Litigation support and specialized legal evidence analysis',
+    },
+    // Backwards-compatible aliases
     lawFirms: {
       src: '/images/cards/who-we-serve-attorneys.webp',
       alt: 'Attorneys and Law Firms Litigation Analysis Work',

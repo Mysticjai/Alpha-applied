@@ -77,6 +77,11 @@ const RouteScrollManager: React.FC<RouteScrollManagerProps> = ({ currentPath }) 
       return;
     }
 
+    // Check if scroll is currently being preserved and restored (e.g. "Back to Homepage")
+    if (typeof window !== 'undefined' && ((window as any).__alpha_restoring_scroll || sessionStorage.getItem('alpha_restoring_scroll') === 'true')) {
+      return;
+    }
+
     // When changing routes or on initial subpage load without anchor:
     // Synchronize both native window scroll and Lenis virtual scroll to 0 immediately
     if (isPathChange || (isInitialMount && currentPath !== '/')) {
@@ -96,6 +101,11 @@ const RouteScrollManager: React.FC<RouteScrollManagerProps> = ({ currentPath }) 
 
       // 4. Secondary micro-task check to ensure post-render DOM shifts don't restore old scroll
       const rafId = requestAnimationFrame(() => {
+        // Double-check if scroll restoration became active in the interim
+        if ((window as any).__alpha_restoring_scroll || sessionStorage.getItem('alpha_restoring_scroll') === 'true') {
+          return;
+        }
+
         const currentHash = window.location.hash ? window.location.hash.replace('#', '') : '';
         if (!currentHash || currentHash === 'home') {
           window.scrollTo(0, 0);

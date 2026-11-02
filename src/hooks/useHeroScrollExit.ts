@@ -18,63 +18,9 @@ export interface UseHeroScrollExitOptions {
 }
 
 /**
- * Dynamically splits a paragraph element into lines matching its actual rendered text wrapping.
- * Wraps each line in an overflow-hidden mask with safe vertical padding/margin to prevent descender clipping.
- */
-function splitParagraphIntoLines(element: HTMLElement): HTMLElement[] {
-  // If already split into lines, return existing line inners
-  const existingInners = element.querySelectorAll<HTMLElement>('.p-line-inner');
-  if (existingInners.length > 0) {
-    return Array.from(existingInners);
-  }
-
-  const originalText = element.textContent?.trim() || '';
-  if (!originalText) return [];
-
-  // Split words by whitespace
-  const words = originalText.split(/\s+/).filter(Boolean);
-  if (words.length === 0) return [];
-
-  // Wrap each word in a temporary measurement span with trailing non-breaking space
-  element.innerHTML = words
-    .map((word) => `<span class="inline-block measuring-word">${word}&nbsp;</span>`)
-    .join('');
-
-  const wordSpans = Array.from(element.querySelectorAll<HTMLElement>('.measuring-word'));
-  const linesMap: { top: number; words: string[] }[] = [];
-
-  wordSpans.forEach((span) => {
-    const top = Math.round(span.offsetTop);
-    const existingLine = linesMap.find((line) => Math.abs(line.top - top) <= 4);
-    const cleanWord = span.textContent?.replace(/\u00a0/g, ' ').trim() || '';
-    if (existingLine) {
-      existingLine.words.push(cleanWord);
-    } else {
-      linesMap.push({ top, words: [cleanWord] });
-    }
-  });
-
-  // Reconstruct lines HTML with overflow-hidden mask and inner reveal span.
-  // padding-top: 3px; padding-bottom: 3px; margin-top: -3px; margin-bottom: -3px;
-  // guarantees safe clearance for descenders ('g', 'p', 'y', 'q') without changing line height or layout.
-  element.innerHTML = linesMap
-    .map((line) => {
-      const lineText = line.words.join(' ');
-      return (
-        `<span class="p-line-mask block overflow-hidden" style="padding-top: 3px; padding-bottom: 3px; margin-top: -3px; margin-bottom: -3px;">` +
-        `<span class="p-line-inner block will-change-[transform,opacity] opacity-0" style="opacity: 0;">${lineText}</span>` +
-        `</span>`
-      );
-    })
-    .join('');
-
-  return Array.from(element.querySelectorAll<HTMLElement>('.p-line-inner'));
-}
-
-/**
  * Two-Tier Motion Architecture for Homepage Hero:
  * 
- * Phase 1 — Entrance Sequence (Heading-to-Copy Sequence):
+ * Phase 1: Entrance Sequence (Heading-to-Copy Sequence):
  *  1. Act 1: Headline Directional Entrance (0–980ms)
  *     - Line 1 ("Advancing Business"): enters from left (-40px, 750ms)
  *     - Line 2 ("Through"): gentle upward reveal (+18px, subtle blur, 650ms)
@@ -87,7 +33,7 @@ function splitParagraphIntoLines(element: HTMLElement): HTMLElement[] {
  *     - CTA button: fades in with slight upward rise
  *     - Service shortcuts: cascade in immediately afterward
  * 
- * Phase 2 — Responsive Scroll Behavior (gsap.matchMedia):
+ * Phase 2: Responsive Scroll Behavior (gsap.matchMedia):
  *  - Desktop (>= 1024px): Preserves 100% of the existing 3D disintegration exit scrub across 500px.
  *  - Mobile (< 1024px): Bounded natural scrolling with zero text disappearing, zero blur,
  *    and zero stuck artwork over the marquee/ticker.
@@ -177,117 +123,95 @@ export function useHeroScrollExit({
           );
         }
 
-        // 2. Headline: Directional Entrance with Blur-to-Sharp Reveal
+        // 2. Headline: Subtle Fade-Up Entrance (Power2.out, 16px upward rise)
         const line1 = trigger.querySelector<HTMLElement>('.hero-line-1');
         const line2 = trigger.querySelector<HTMLElement>('.hero-line-2');
         const line3 = trigger.querySelector<HTMLElement>('.hero-line-3');
 
-        const editorialEase = 'power3.out';
+        const editorialEase = 'power2.out';
 
         if (line1 && line2 && line3) {
           entranceTl.fromTo(
             line1,
-            { x: -36, opacity: 0, filter: 'blur(4px)' },
-            { x: 0, opacity: 1, filter: 'blur(0px)', duration: 0.70, ease: editorialEase },
+            { y: 16, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.48, ease: editorialEase },
             0
           );
 
           entranceTl.fromTo(
             line2,
-            { y: 18, opacity: 0, filter: 'blur(3px)' },
-            { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.60, ease: editorialEase },
-            0.10
+            { y: 16, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.48, ease: editorialEase },
+            0.06
           );
 
           entranceTl.fromTo(
             line3,
-            { x: 36, opacity: 0, filter: 'blur(4px)' },
-            { x: 0, opacity: 1, filter: 'blur(0px)', duration: 0.75, ease: editorialEase },
-            0.19
+            { y: 16, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.48, ease: editorialEase },
+            0.12
           );
         } else {
           const lineInners = trigger.querySelectorAll<HTMLElement>('.hero-line-inner');
           if (lineInners.length > 0) {
             entranceTl.fromTo(
               lineInners,
-              { y: 28, opacity: 0, filter: 'blur(3px)' },
-              { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.85, stagger: 0.12, ease: editorialEase },
+              { y: 16, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.48, stagger: 0.06, ease: editorialEase },
               0
             );
           } else if (headlineRef?.current) {
             entranceTl.fromTo(
               headlineRef.current,
-              { opacity: 0, y: 28 },
-              { opacity: 1, y: 0, duration: 0.85, ease: editorialEase },
+              { opacity: 0, y: 16 },
+              { opacity: 1, y: 0, duration: 0.48, ease: editorialEase },
               0
             );
           }
         }
 
-        // Supporting copy sequence begins after headline settle (~1.34s)
-        const p1StartTime = 1.34;
+        // Supporting copy sequence begins smoothly as headline settles (~0.18s)
+        const p1StartTime = 0.18;
 
-        // Split paragraphs dynamically into lines based on current viewport wrapping
         const p1Inner = trigger.querySelector<HTMLElement>('.p1-inner');
-        const p1Lines = p1Inner ? splitParagraphIntoLines(p1Inner) : [];
-
         const p2Inner = trigger.querySelector<HTMLElement>('.p2-inner');
-        const p2Lines = p2Inner ? splitParagraphIntoLines(p2Inner) : [];
-
         const ctaInner = trigger.querySelector<HTMLElement>('.cta-inner');
         const stripInner = trigger.querySelector<HTMLElement>('.strip-inner');
         const shortcutItems = trigger.querySelectorAll<HTMLElement>('.service-shortcut-item');
 
         // Explicitly set all delayed elements to opacity 0, initial offset and scale at t = 0
-        if (p1Lines.length > 0) entranceTl.set(p1Lines, { opacity: 0, y: 10 }, 0);
-        if (p2Lines.length > 0) entranceTl.set(p2Lines, { opacity: 0, y: 10 }, 0);
-        if (ctaInner) entranceTl.set(ctaInner, { opacity: 0, y: 8, scale: 0.97 }, 0);
+        if (p1Inner) entranceTl.set(p1Inner, { opacity: 0, y: 12 }, 0);
+        if (p2Inner) entranceTl.set(p2Inner, { opacity: 0, y: 12 }, 0);
+        if (ctaInner) entranceTl.set(ctaInner, { opacity: 0, y: 8, scale: 0.98 }, 0);
         if (stripInner) entranceTl.set(stripInner, { opacity: 0 }, 0);
         if (shortcutItems.length > 0) entranceTl.set(shortcutItems, { opacity: 0, y: 6 }, 0);
 
-        // 3. First Supporting Paragraph — Line-by-Line Reveal
-        if (p1Lines.length > 0) {
-          entranceTl.to(
-            p1Lines,
-            { opacity: 1, y: 0, duration: 0.26, stagger: 0.05, ease: 'power2.out' },
-            p1StartTime
-          );
-        } else if (p1Inner) {
+        // 3. First Supporting Paragraph
+        if (p1Inner) {
           entranceTl.to(
             p1Inner,
-            { opacity: 1, y: 0, duration: 0.32, ease: 'power2.out' },
+            { opacity: 1, y: 0, duration: 0.38, ease: 'power2.out' },
             p1StartTime
           );
         }
 
         // 4. Second Supporting Paragraph
-        const p1LineCount = p1Lines.length || 1;
-        const p1FinalLineStart = p1StartTime + (p1LineCount - 1) * 0.05;
-        const p2StartTime = p1FinalLineStart + 0.14;
-
-        if (p2Lines.length > 0) {
-          entranceTl.to(
-            p2Lines,
-            { opacity: 1, y: 0, duration: 0.26, stagger: 0.05, ease: 'power2.out' },
-            p2StartTime
-          );
-        } else if (p2Inner) {
+        const p2StartTime = p1StartTime + 0.08;
+        if (p2Inner) {
           entranceTl.to(
             p2Inner,
-            { opacity: 1, y: 0, duration: 0.32, ease: 'power2.out' },
+            { opacity: 1, y: 0, duration: 0.38, ease: 'power2.out' },
             p2StartTime
           );
         }
 
         // 5. Schedule AI Consultation button & Service Shortcuts
-        const p2LineCount = p2Lines.length || 1;
-        const p2FinalLineStart = p2StartTime + (p2LineCount - 1) * 0.05;
-        const ctaStartTime = p2FinalLineStart + 0.12;
+        const ctaStartTime = p2StartTime + 0.08;
 
         if (ctaInner) {
           entranceTl.to(
             ctaInner,
-            { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: 'power2.out' },
+            { opacity: 1, y: 0, scale: 1, duration: 0.30, ease: 'power2.out' },
             ctaStartTime
           );
         }
@@ -296,17 +220,17 @@ export function useHeroScrollExit({
         if (stripInner) {
           entranceTl.to(
             stripInner,
-            { opacity: 1, duration: 0.28, ease: 'power2.out' },
+            { opacity: 1, duration: 0.24, ease: 'power2.out' },
             ctaStartTime + 0.04
           );
         }
 
-        // Three individual service shortcuts
-        const shortcutsStartTime = ctaStartTime + 0.08;
+        // Three individual service shortcuts (short cascade sequence)
+        const shortcutsStartTime = ctaStartTime + 0.06;
         if (shortcutItems.length > 0) {
           entranceTl.to(
             shortcutItems,
-            { opacity: 1, y: 0, duration: 0.28, stagger: 0.05, ease: 'power2.out' },
+            { opacity: 1, y: 0, duration: 0.26, stagger: 0.06, ease: 'power2.out' },
             shortcutsStartTime
           );
         }

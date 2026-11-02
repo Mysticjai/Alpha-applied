@@ -16,7 +16,7 @@ interface ServiceWorkflowProps {
 }
 
 export const ServiceWorkflow: React.FC<ServiceWorkflowProps> = ({
-  badge = 'METHODOLOGY',
+  badge,
   title,
   subtitle,
   stages,

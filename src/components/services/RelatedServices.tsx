@@ -23,7 +23,6 @@ export const RelatedServices: React.FC<RelatedServicesProps> = ({
         <AnimatedContent distance={14} duration={0.5}>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8 lg:mb-10">
             <SectionHeading
-              badge="RELATED SERVICES"
               title="Complementary Practice Areas"
               subtitle="Analytical expertise tailored for specific dispute types and litigation requirements."
             />

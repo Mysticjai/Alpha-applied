@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowRight, Scales, TrendDown, FileText, Bank, ShieldCheck, Briefcase } from '@phosphor-icons/react';
+import { ArrowRight, ArrowLeft, Scales, TrendDown, FileText, Bank, ShieldCheck, Briefcase } from '@phosphor-icons/react';
 import { siteContent } from '../content/siteContent';
 import { AnimatedContent } from '../components/ui/AnimatedContent';
 import { SectionHeading } from '../components/ui/SectionHeading';
@@ -97,7 +97,7 @@ export const LitigationServicesPage: React.FC = () => {
             {/* Breadcrumb */}
             <AnimatedContent distance={10} duration={0.4}>
               <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-taupe mb-5 sm:mb-6">
-                <a href="/#home" className="hover:text-primary transition-colors">Home</a>
+                <a href="/#home" data-direction="backward" data-restore-scroll="true" className="hover:text-primary transition-colors">Home</a>
                 <span className="text-brand-border/80">/</span>
                 <span className="text-primary font-semibold">Litigation Services</span>
               </nav>
@@ -107,7 +107,7 @@ export const LitigationServicesPage: React.FC = () => {
               <AnimatedContent distance={16} duration={0.5} delay={0.05}>
                 <h1
                   ref={headlineRef}
-                  className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-primary font-normal tracking-tight leading-[1.14] will-change-[transform,opacity]"
+                  className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] text-primary font-semibold tracking-tight leading-[1.14] will-change-[transform,opacity]"
                 >
                   {litigationServices.title}
                 </h1>
@@ -119,13 +119,23 @@ export const LitigationServicesPage: React.FC = () => {
                   {litigationServices.subtitle}
                 </p>
 
-                <div ref={ctaRef} className="mt-7 sm:mt-8 will-change-[transform,opacity]">
+                <div ref={ctaRef} className="mt-7 sm:mt-8 flex flex-wrap items-center gap-4 will-change-[transform,opacity]">
                   <a
                     href="/#contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-hover text-white text-[14px] font-semibold rounded-md shadow-sm shadow-accent/20 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent active:translate-y-px"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent hover:bg-accent-hover text-white text-[14px] font-semibold rounded-md shadow-sm shadow-accent/20 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent active:translate-y-px"
                   >
                     <span>{litigationServices.cta.label}</span>
                     <ArrowRight className="w-4 h-4" />
+                  </a>
+
+                  <a
+                    href="/#home"
+                    data-direction="backward"
+                    data-restore-scroll="true"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary hover:text-accent transition-colors py-2 px-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5" />
+                    <span>Back to Homepage</span>
                   </a>
                 </div>
               </AnimatedContent>
@@ -146,7 +156,7 @@ export const LitigationServicesPage: React.FC = () => {
             </AnimatedContent>
 
             {/* 6 Core Service Cards Grid (3 columns on desktop, 2 on tablet, 1 on mobile) */}
-            <AnimatedContent distance={22} duration={0.65} stagger={0.08} threshold={0.12} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <AnimatedContent distance={16} duration={0.55} stagger={0.08} threshold={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {litigationServices.services.map((service, index) => {
                 const meta = serviceCardsMeta[index];
                 const img = litigationImageMap[service.id] || cardImages.litigation.divorceFamilyLaw;
@@ -176,7 +186,7 @@ export const LitigationServicesPage: React.FC = () => {
             <AnimatedContent distance={16} duration={0.5} delay={0.1} threshold={0.15}>
               <div className="mt-14 p-7 sm:p-9 rounded-xl bg-surface-warm border border-brand-border/80 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xs">
                 <div>
-                  <h4 className="font-serif text-xl sm:text-2xl text-primary font-normal">
+                  <h4 className="font-serif text-xl sm:text-2xl text-primary font-medium">
                     Have an active dispute or quantitative matter requiring analysis?
                   </h4>
                   <p className="mt-1.5 text-sm text-brand-slate">

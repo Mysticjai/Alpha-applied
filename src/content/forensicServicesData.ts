@@ -38,7 +38,7 @@ export const forensicServicesData: Record<string, ForensicServiceData> = {
       'Data-driven financial clarity for complex family law matters. We specialize in financial analysis tailored for divorce and family law cases, uncovering and interpreting complex financial information.',
     overviewHeading: 'Comprehensive Financial Analysis for Family Law',
     overviewParagraphs: [
-      'We provide expert litigation analysis financial services tailored for divorce and family law cases. Our services include income analysis and reconstruction—uncovering hidden or irregular earnings to present a complete financial picture. We trace and identify assets across accounts, businesses, and investments, ensuring full transparency and leaving no stone unturned.',
+      'We provide expert litigation analysis financial services tailored for divorce and family law cases. Our services include income analysis and reconstruction to identify irregular earnings and present a complete financial picture. We trace and verify assets across accounts, businesses, and investments to ensure comprehensive disclosure.',
       'Our team evaluates lifestyle spending patterns to determine actual financial capacity and standard of living. We organize and analyze large volumes of bank statements, credit card data, and financial records with precision, delivering clear, litigation-ready insights that support fair outcomes in complex family law matters.',
     ],
     items: [
@@ -92,7 +92,7 @@ export const forensicServicesData: Record<string, ForensicServiceData> = {
     overviewHeading: 'Expert Economic Damage Quantification',
     overviewParagraphs: [
       'We provide comprehensive economic damage analysis for business litigation, combining litigation analysis accounting with advanced financial modeling. Our services include lost profits analysis using historical data, industry benchmarks, and predictive models to quantify damages in contract breaches, intellectual property disputes, and commercial conflicts. We investigate financial discrepancies, assess damages from fraud or misconduct, and deliver defensible evaluations backed by rigorous methodology.',
-      'Our approach accounts for all direct and indirect costs—including incidental and consequential damages—while integrating market conditions and external economic factors. We deliver clear, litigation-ready reports that support high-stakes cases with accurate, fair, and defensible damage assessments.',
+      'Our approach accounts for all direct and indirect costs, including incidental and consequential damages, while integrating market conditions and external economic factors. We deliver clear, litigation-ready reports that support high-stakes cases with accurate, fair, and defensible damage assessments.',
     ],
     items: [
       {
@@ -141,10 +141,10 @@ export const forensicServicesData: Record<string, ForensicServiceData> = {
     eyebrow: 'AI Document Processing',
     title: 'Document Analysis',
     intro:
-      'Transforming complex financial data into actionable insights. We combine AI-driven tools with human expertise to extract meaningful insights from complex datasets.',
+      'Converting complex financial records into court-ready schedules. We combine machine extraction with forensic accountant review to deliver defensible work product.',
     overviewHeading: 'AI-Powered Financial Document Analysis',
     overviewParagraphs: [
-      'We transform unstructured financial documents into organized, actionable intelligence. Our platform processes bank statements, credit card records, and transaction data at scale—categorizing transactions, identifying patterns, and flagging anomalies automatically. We trace fund flows across multiple accounts and entities, converting complex financial data into clear, structured formats that save legal teams time and reduce manual review effort.',
+      'We organize unstructured financial documents into structured, courtroom-ready schedules. Our platform processes bank statements, credit card records, and transaction data at scale, categorizing transactions, identifying patterns, and flagging anomalies with precision. We trace fund flows across multiple accounts and entities, delivering clear schedules that save legal teams time and reduce manual review effort.',
       'Our analysis highlights suspicious or unusual financial behavior, ensuring nothing critical is overlooked. We deliver comprehensive summaries and red-flag reports organized for case preparation, giving legal teams clear visibility into financial activities and actionable insights for litigation strategy.',
     ],
     items: [
@@ -180,9 +180,9 @@ export const forensicServicesData: Record<string, ForensicServiceData> = {
       },
     ],
     cta: {
-      heading: 'Drowning in Documents?',
+      heading: 'High-Volume Financial Production?',
       description:
-        'Let us transform your document chaos into structured, production-ready data in days instead of weeks.',
+        'We convert complex financial document productions into structured, production-ready work product with rapid turnaround.',
       buttonText: 'Book a Call',
       buttonHref: '/#contact',
     },
@@ -197,7 +197,7 @@ export const forensicServicesData: Record<string, ForensicServiceData> = {
       'Strategic financial analysis for distressed situations. We provide analytical support for bankruptcy and restructuring cases with data-backed strategies.',
     overviewHeading: 'Bankruptcy & Restructuring Financial Analysis',
     overviewParagraphs: [
-      'We provide comprehensive financial analysis for bankruptcy and restructuring matters, assessing assets, liabilities, and cash flow to determine financial stability and viability. Our services include detailed creditor and liability review—analyzing outstanding obligations, prioritizing claims, and helping legal and financial professionals understand complex financial positions during insolvency proceedings.',
+      'We provide comprehensive financial analysis for bankruptcy and restructuring matters, assessing assets, liabilities, and cash flow to determine financial stability and viability. Our services include detailed creditor and liability review, analyzing outstanding obligations, prioritizing claims, and helping legal and financial professionals understand complex financial positions during insolvency proceedings.',
       'We evaluate liquidity, forecast future financial scenarios, and deliver data-driven cash flow modeling that supports restructuring plans and creditor negotiations. Our analysis provides stakeholders with the insights needed to make informed decisions in high-pressure financial scenarios, backed by rigorous financial modeling and clear reporting.',
     ],
     items: [
@@ -251,7 +251,7 @@ export const forensicServicesData: Record<string, ForensicServiceData> = {
     overviewHeading: 'Intellectual Property Damage Analysis',
     overviewParagraphs: [
       'We provide expert financial analysis for intellectual property disputes, including IP valuation, royalty analysis, and infringement damage assessment. Our services evaluate the financial value of patents, trademarks, copyrights, and trade secrets, determining appropriate royalty rates and licensing structures to support litigation and negotiation. We quantify losses resulting from unauthorized IP use, combining financial expertise with industry understanding to capture the true economic impact.',
-      'Our comprehensive approach analyzes how infringement affects market position, revenue, and competitive advantage. We deliver defensible valuations and damage assessments backed by rigorous methodology, market analysis, and financial modeling—giving legal teams the expert support needed in complex IP litigation.',
+      'Our comprehensive approach analyzes how infringement affects market position, revenue, and competitive advantage. We deliver defensible valuations and damage assessments backed by rigorous methodology, market analysis, and financial modeling, providing legal teams with the quantitative support needed in complex IP litigation.',
     ],
     items: [
       {
@@ -304,7 +304,7 @@ export const forensicServicesData: Record<string, ForensicServiceData> = {
     overviewHeading: 'Comprehensive Litigation Support Services',
     overviewParagraphs: [
       'We provide comprehensive litigation support, analyzing complex financial datasets to extract meaningful insights for legal proceedings. Our services include structured case documentation, evidence organization, and expert assistance that helps legal teams understand and present financial findings effectively. We prepare detailed reports and supporting materials tailored for litigation, working closely with attorneys to enhance case preparation and strengthen legal strategy.',
-      'Our team organizes financial data into formats suitable for courtroom presentation, ensuring clarity and precision. We deliver reliable, defensible analysis that supports stronger arguments and better outcomes—whether for discovery, depositions, mediation, or trial. Our goal is to be your strategic partner in navigating the financial complexities of litigation.',
+      'Our team organizes financial data into formats suitable for courtroom presentation, ensuring clarity and precision. We deliver reliable, defensible analysis that supports stronger arguments and clearer outcomes across discovery, depositions, mediation, and trial. We serve as a trusted analytical partner to navigate the financial complexities of litigation.',
     ],
     items: [
       {

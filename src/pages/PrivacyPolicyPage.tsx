@@ -34,7 +34,7 @@ export const PrivacyPolicyPage: React.FC = () => {
             {/* Top Navigation & Breadcrumbs */}
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-surface-warm/70">
-                <a href="/#home" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <a href="/#home" data-direction="backward" data-restore-scroll="true" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>Home</span>
                 </a>
@@ -65,7 +65,7 @@ export const PrivacyPolicyPage: React.FC = () => {
                 <span>Information Governance &amp; Confidentiality</span>
               </div>
 
-              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white leading-tight">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white leading-tight">
                 Privacy Policy
               </h1>
 
@@ -131,7 +131,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 1. Information We Collect */}
               <section id="information-collected" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">1.</span>
                   <span>Information We Collect</span>
                 </h2>
@@ -141,16 +141,16 @@ export const PrivacyPolicyPage: React.FC = () => {
 
                 <div className="space-y-5">
                   <div className="p-4 rounded-lg bg-surface-warm/50 border border-brand-border/70">
-                    <h3 className="font-serif text-lg text-primary font-normal tracking-tight mb-1.5">
+                    <h3 className="font-serif text-lg text-primary font-medium tracking-tight mb-1.5">
                       Personal Information
                     </h3>
                     <p className="text-[14.5px] sm:text-[15px] text-brand-slate leading-relaxed font-normal">
-                      Name, email address, phone number, company name, and job title — provided voluntarily when you contact us, schedule a consultation, or submit an inquiry through our website.
+                      Name, email address, phone number, company name, and job title, provided voluntarily when you contact us, schedule a consultation, or submit an inquiry through our website.
                     </p>
                   </div>
 
                   <div className="p-4 rounded-lg bg-surface-warm/50 border border-brand-border/70">
-                    <h3 className="font-serif text-lg text-primary font-normal tracking-tight mb-1.5">
+                    <h3 className="font-serif text-lg text-primary font-medium tracking-tight mb-1.5">
                       Client Data
                     </h3>
                     <p className="text-[14.5px] sm:text-[15px] text-brand-slate leading-relaxed font-normal">
@@ -159,7 +159,7 @@ export const PrivacyPolicyPage: React.FC = () => {
                   </div>
 
                   <div className="p-4 rounded-lg bg-surface-warm/50 border border-brand-border/70">
-                    <h3 className="font-serif text-lg text-primary font-normal tracking-tight mb-1.5">
+                    <h3 className="font-serif text-lg text-primary font-medium tracking-tight mb-1.5">
                       Usage Data
                     </h3>
                     <p className="text-[14.5px] sm:text-[15px] text-brand-slate leading-relaxed font-normal">
@@ -171,7 +171,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 2. How We Use Your Information */}
               <section id="use-of-information" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">2.</span>
                   <span>How We Use Your Information</span>
                 </h2>
@@ -217,7 +217,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 3. Data Sharing and Disclosure */}
               <section id="data-sharing" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">3.</span>
                   <span>Data Sharing and Disclosure</span>
                 </h2>
@@ -254,7 +254,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 4. Data Security */}
               <section id="data-security" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">4.</span>
                   <span>Data Security</span>
                 </h2>
@@ -285,7 +285,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 5. Data Retention */}
               <section id="data-retention" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">5.</span>
                   <span>Data Retention</span>
                 </h2>
@@ -296,7 +296,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 6. Your Rights and Choices */}
               <section id="rights-choices" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">6.</span>
                   <span>Your Rights and Choices</span>
                 </h2>
@@ -342,7 +342,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 7. Cookies and Tracking Technologies */}
               <section id="cookies-tracking" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">7.</span>
                   <span>Cookies and Tracking Technologies</span>
                 </h2>
@@ -353,7 +353,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 8. Third-Party Links */}
               <section id="third-party" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">8.</span>
                   <span>Third-Party Links</span>
                 </h2>
@@ -364,7 +364,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 9. Children's Privacy */}
               <section id="children-privacy" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">9.</span>
                   <span>Children&apos;s Privacy</span>
                 </h2>
@@ -375,7 +375,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 10. International Data Transfers */}
               <section id="international-transfers" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">10.</span>
                   <span>International Data Transfers</span>
                 </h2>
@@ -386,7 +386,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 11. Changes to This Privacy Policy */}
               <section id="changes" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">11.</span>
                   <span>Changes to This Privacy Policy</span>
                 </h2>
@@ -397,7 +397,7 @@ export const PrivacyPolicyPage: React.FC = () => {
 
               {/* 12. Contact Us */}
               <section id="contact" className="scroll-mt-28">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">12.</span>
                   <span>Contact Us</span>
                 </h2>
@@ -425,10 +425,10 @@ export const PrivacyPolicyPage: React.FC = () => {
                     <Phone className="w-4 h-4 text-accent shrink-0" />
                     <span className="font-medium text-brand-dark">Phone:</span>
                     <a
-                      href="tel:+12242179863"
+                      href="tel:+919391569629"
                       className="text-primary font-semibold hover:text-accent transition-colors"
                     >
-                      +1 (224) 217-9863
+                      +91 93915 69629
                     </a>
                   </div>
 

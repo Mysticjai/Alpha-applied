@@ -1,24 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   ArrowUpRight,
-  User,
-  PaperPlaneTilt,
-  ArrowCircleDown,
-  BookOpen,
+  CaretDown,
 } from '@phosphor-icons/react';
 import { AnimatedContent } from '../ui/AnimatedContent';
+import { siteContent } from '../../content/siteContent';
+import { ProfessionalJourneyTimeline } from './ProfessionalJourneyTimeline';
 
 // =========================================================================
 // FOUNDER PHOTO CONFIGURATION
 // =========================================================================
-// When Krishna Dornadula's approved headshot is available, set this path string:
-// e.g., export const FOUNDER_PHOTO_SRC: string | null = '/assets/founder/krishna-dornadula.jpg';
-// Setting to null renders the integrated editorial placeholder.
+export const FOUNDER_PHOTO_SRC = '/images/krishna-dornadula.png';
 // =========================================================================
-export const FOUNDER_PHOTO_SRC: string | null = null;
 
 export const FounderAboutSection: React.FC = () => {
+  const { founderAbout } = siteContent;
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Re-synchronize Lenis and ScrollTrigger dimensions upon expand/collapse transition
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const lenis = (window as any).__lenis;
+      if (lenis) {
+        lenis.resize();
+      }
+      if (typeof (window as any).ScrollTrigger !== 'undefined') {
+        (window as any).ScrollTrigger.refresh();
+      }
+    }, 450);
+    return () => clearTimeout(timer);
+  }, [isExpanded]);
+
+  const toggleExpanded = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
+  const handleCollapseFromBottom = () => {
+    setIsExpanded(false);
+    const el = document.getElementById('founder');
+    if (el) {
+      const targetY = Math.max(0, Math.round(el.getBoundingClientRect().top + window.scrollY - 80));
+      const lenis = (window as any).__lenis;
+      if (lenis) lenis.scrollTo(targetY, { duration: 0.5 });
+      else window.scrollTo({ top: targetY, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section
       id="founder"
@@ -28,200 +56,173 @@ export const FounderAboutSection: React.FC = () => {
       <span id="about" className="absolute -top-20 pointer-events-none" aria-hidden="true" />
 
       <div className="site-container relative z-10">
-        {/* ── Top Hero: 3 Coordinated Visual Zones (Intro, Portrait, Approach) ── */}
-        <AnimatedContent distance={16} duration={0.6} threshold={0.15}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[46%_32%_22%] xl:grid-cols-[45%_33%_22%] items-center gap-8 lg:gap-4 xl:gap-8">
-            {/* Zone 1 (Left ~45-46%): Eyebrow, Editorial Title, Bio, CTAs */}
-            <div className="md:col-start-1 md:row-start-1 md:row-span-2 lg:col-start-1 lg:row-start-1 lg:row-span-1 pr-0 lg:pr-4 xl:pr-6">
+        {/* ── Top Hero: 2 Coordinated Visual Zones (Left: Introduction & CTAs, Right: Layered Portrait Frame) ── */}
+        <AnimatedContent distance={16} duration={0.55} threshold={0.15}>
+          <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-8 md:gap-10 lg:gap-12 xl:gap-16">
+            {/* Zone 1 (Left ~58-60%): Eyebrow, Founder Name Heading, Bio, CTAs */}
+            <div className="md:col-span-7 lg:col-span-7 pr-0 lg:pr-2">
               {/* Eyebrow with Restrained Crimson Accent */}
-              <div className="flex items-center gap-2 mb-3.5">
+              <div className="flex items-center gap-2 mb-3 sm:mb-3.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
                 <span className="text-xs font-mono font-semibold tracking-[0.16em] uppercase text-primary">
-                  FOUNDER &amp; PRINCIPAL
+                  {founderAbout.badge}
                 </span>
               </div>
 
-              {/* Deliberate 3-Line Editorial Headline */}
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] font-normal leading-[1.12] tracking-tight text-primary mb-4 max-w-[520px]">
-                A Background{' '}
-                <br className="hidden sm:inline" />
-                in Analytics.{' '}
-                <br className="hidden sm:inline" />
-                A Focus on Defensible Outcomes.
+              {/* Founder Name as Primary Heading */}
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-semibold leading-[1.15] tracking-tight text-primary mb-3 sm:mb-3.5 max-w-[540px]">
+                {founderAbout.founderName}
               </h2>
 
-              {/* Compact Biography */}
-              <p className="text-[14.5px] sm:text-[15px] xl:text-[15.5px] text-brand-slate leading-relaxed font-normal mb-6 max-w-[460px]">
-                Krishna Dornadula founded Alpha Applied Analytics Solutions to bring forensic analytics,
-                financial investigation, and practical AI together to help clients make sense of complex evidence.
+              {/* Refined Introductory Paragraph (Visible by Default) */}
+              <p className="text-[14.5px] sm:text-[15px] xl:text-[15.5px] text-brand-slate leading-relaxed font-normal mb-5 sm:mb-6 max-w-[520px]">
+                {founderAbout.bio}
               </p>
 
-              {/* Founder CTAs (Side by Side) */}
-              <div className="flex flex-wrap items-center gap-4 pt-0.5">
+              {/* Founder CTAs (Book a Call, Connect on LinkedIn, Read More Toggle) */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-0.5">
                 <a
                   href="/#contact"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-accent hover:bg-accent-hover text-white text-[14px] font-semibold rounded-md shadow-xs transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent active:translate-y-px"
+                  className="font-heading inline-flex items-center gap-2 px-6 py-2.5 bg-accent hover:bg-accent-hover text-white text-[14px] font-semibold rounded-md shadow-xs transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-accent active:translate-y-px"
                 >
                   <span>Book a Call</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
+
                 <a
-                  href="https://www.linkedin.com/in/krishna-dornadula-606b5113"
+                  href={founderAbout.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:text-accent transition-colors py-2 px-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
+                  className="font-heading inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:text-accent transition-colors py-2 px-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
                 >
                   <span>Connect on LinkedIn</span>
                   <ArrowUpRight className="w-4 h-4 text-brand-taupe" />
                 </a>
+
+                {/* Read More / Read Less Interaction Button */}
+                <button
+                  type="button"
+                  onClick={toggleExpanded}
+                  aria-expanded={isExpanded}
+                  aria-controls="founder-expanded-profile"
+                  className="font-heading inline-flex items-center gap-1.5 text-[14px] font-semibold text-primary hover:text-accent transition-colors py-2 px-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded cursor-pointer group"
+                >
+                  <span>{isExpanded ? 'Read Less' : 'Read More'}</span>
+                  <CaretDown
+                    className={`w-3.5 h-3.5 text-brand-taupe group-hover:text-accent transition-transform duration-300 ${
+                      isExpanded ? 'rotate-180 text-accent' : ''
+                    }`}
+                  />
+                </button>
               </div>
             </div>
 
-            {/* Zone 2 (Center-Right ~32-33%): Integrated Editorial Portrait Placeholder */}
-            <div className="md:col-start-2 md:row-start-1 lg:col-start-2 lg:row-start-1 flex justify-center items-center py-2 sm:py-0">
-              <div className="relative w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[310px] xl:max-w-[330px]">
-                {/* Restrained Sand-Colored Geometric Backdrop Shape Behind the Portrait */}
+            {/* Zone 2 (Right ~40-42%): Editorial Layered Portrait Frame */}
+            <div className="md:col-span-5 lg:col-span-5 flex justify-center lg:justify-end items-center py-2 sm:py-0">
+              <div className="relative w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[330px] xl:max-w-[350px]">
+                {/* Layer 1: Rear Archival Paper Sheet */}
                 <div
-                  className="absolute -top-3 sm:-top-5 -bottom-3 sm:-bottom-5 -left-4 sm:-left-6 -right-3 sm:-right-5 bg-[#E6DFD4] pointer-events-none -z-10"
-                  style={{
-                    clipPath: 'polygon(14% 0%, 100% 5%, 88% 100%, 0% 92%)',
-                  }}
+                  className="absolute -inset-3 sm:-inset-3.5 bg-[#DDD5C7]/70 rounded-xl transform rotate-1.5 sm:rotate-2 border border-[#D0C7B8]/50 shadow-2xs pointer-events-none -z-20"
                   aria-hidden="true"
                 />
 
-                {/* Dedicated Portrait Slot with Angled Lower Edge */}
+                {/* Layer 2: Intermediate Layered Paper Sheet */}
                 <div
-                  className="relative w-full aspect-[4/5] overflow-hidden"
-                  style={{
-                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 88%)',
-                  }}
-                >
-                  {FOUNDER_PHOTO_SRC ? (
-                    /* Real approved photograph (when path is set) */
-                    <img
-                      src={FOUNDER_PHOTO_SRC}
-                      alt="Krishna Dornadula — Founder & Principal"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  ) : (
-                    /* Integrated Editorial Tonal Placeholder (blends into warm ivory) */
-                    <div className="w-full h-full relative bg-gradient-to-b from-[#ECE7DD] via-[#E4DDD1] to-[#D8CFBF] flex items-end justify-center">
-                      {/* Subtle Tone-on-Tone Silhouette (evokes a founder portrait cutout without fabricating facial features) */}
-                      <svg
-                        viewBox="0 0 320 400"
-                        className="w-full h-full object-cover pointer-events-none select-none"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <circle cx="160" cy="155" r="95" fill="#E0D7C9" fillOpacity="0.5" />
-                        <path
-                          d="M50 380 C60 305, 95 260, 130 248 C140 244, 180 244, 190 248 C225 260, 260 305, 270 380 Z"
-                          fill="#004643"
-                          fillOpacity="0.10"
-                        />
-                        <path
-                          d="M144 246 L160 272 L176 246 C170 248, 150 248, 144 246 Z"
-                          fill="#F0EDE5"
-                          fillOpacity="0.7"
-                        />
-                        <path
-                          d="M148 210 L148 248 C152 250, 168 250, 172 248 L172 210 Z"
-                          fill="#004643"
-                          fillOpacity="0.08"
-                        />
-                        <ellipse
-                          cx="160"
-                          cy="165"
-                          rx="46"
-                          ry="56"
-                          fill="#004643"
-                          fillOpacity="0.12"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+                  className="absolute -inset-2 sm:-inset-2.5 bg-[#E6DFD4] rounded-xl transform -rotate-1.5 sm:-rotate-2 border border-[#D8D0C2]/80 shadow-xs pointer-events-none -z-10"
+                  aria-hidden="true"
+                />
 
-            {/* Zone 3 (Far Right ~20-22%): Unboxed Editorial Approach Statement */}
-            <div className="md:col-start-2 md:row-start-2 lg:col-start-3 lg:row-start-1 text-left flex flex-col justify-center">
-              <div className="max-w-[260px] xl:max-w-[280px]">
-                {/* Small Eyebrow with Restrained Muted-Sand Accent */}
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-3.5 h-[1.5px] bg-brand-taupe/60 inline-block" />
-                  <span className="text-[11px] font-mono font-semibold tracking-[0.18em] uppercase text-brand-taupe">
-                    OUR APPROACH
-                  </span>
+                {/* Layer 3: Main Portrait Card */}
+                <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-gradient-to-b from-[#FBF9F5] via-[#EDE7DC] to-[#DDD5C5] shadow-md border border-[#DDD5C7]">
+                  <img
+                    src={FOUNDER_PHOTO_SRC}
+                    alt="Krishna Dornadula, Founder and Principal of Alpha Applied Analytics Solutions"
+                    className="w-full h-full object-cover object-top select-none"
+                    width={959}
+                    height={1024}
+                    loading="eager"
+                    decoding="async"
+                  />
                 </div>
-
-                {/* Statement Body (Directly on page background, unboxed, natural 4-5 lines) */}
-                <p className="text-[13.5px] sm:text-[14px] lg:text-[13.5px] xl:text-[14.5px] text-brand-slate leading-[1.65] font-normal">
-                  Analytical rigor should lead to practical implementation—helping clients turn complex evidence into clearer, more confident decisions.
-                </p>
               </div>
             </div>
           </div>
         </AnimatedContent>
 
-        {/* ── Four-Feature Strip Directly Beneath the Hero ── */}
-        <div className="mt-10 lg:mt-12 pt-8 lg:pt-10 border-t border-brand-border/60">
-          <AnimatedContent distance={16} duration={0.6} delay={0.1} threshold={0.15}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-0 lg:divide-x lg:divide-brand-border/60">
-              {/* 1. Analytical Thinking */}
-              <div className="px-0 lg:px-6 xl:px-8 first:pl-0 flex flex-col justify-start">
-                <div className="text-primary mb-2.5">
-                  <User weight="regular" className="w-5 h-5 text-primary" />
+        {/* ── Expandable Comprehensive Founder Profile (Biography, Timeline, Education & Highlights) ── */}
+        <div
+          id="founder-expanded-profile"
+          className={`grid transition-[grid-template-rows,opacity,margin] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            isExpanded
+              ? 'grid-rows-[1fr] opacity-100 mt-10 mb-4'
+              : 'grid-rows-[0fr] opacity-0 mt-0 mb-0 pointer-events-none'
+          }`}
+          aria-hidden={!isExpanded}
+        >
+          <div className="overflow-hidden">
+            <div className="bg-[#FAF8F5] border border-brand-border/80 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xs relative">
+              {/* Header Bar of Expanded Profile */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-8 border-b border-brand-border/60 gap-4">
+                <div>
+                  <h3 className="font-heading text-2xl sm:text-3xl text-primary font-semibold tracking-tight">
+                    Krishna Dornadula, Founder &amp; Principal
+                  </h3>
+                  <p className="text-xs sm:text-[13.5px] text-brand-slate mt-1.5">
+                    Forensic analytics, financial investigation, enterprise data systems, and practical artificial intelligence.
+                  </p>
                 </div>
-                <h3 className="font-serif text-base sm:text-[17px] text-primary font-normal tracking-tight mb-1.5">
-                  Analytical Thinking
-                </h3>
-                <p className="text-xs sm:text-[13px] text-brand-slate leading-relaxed font-normal">
-                  Turning complex information into clear, structured insights.
-                </p>
+
+                {/* Top Quick Collapse Button */}
+                <button
+                  type="button"
+                  onClick={toggleExpanded}
+                  className="self-start sm:self-center shrink-0 font-heading text-xs font-semibold text-brand-taupe hover:text-primary transition-colors inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md border border-brand-border/70 hover:border-brand-border bg-white cursor-pointer"
+                  aria-label="Collapse detailed profile"
+                >
+                  <span>Read Less</span>
+                  <CaretDown className="w-3.5 h-3.5 rotate-180" />
+                </button>
               </div>
 
-              {/* 2. Real-World Focus */}
-              <div className="px-0 lg:px-6 xl:px-8 flex flex-col justify-start">
-                <div className="text-primary mb-2.5">
-                  <PaperPlaneTilt weight="regular" className="w-5 h-5 text-primary" />
+              {/* Two-Column Editorial Grid: Executive Biography (Left) + Professional Journey Timeline (Right) */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                {/* ── LEFT COLUMN (7 COLS): Comprehensive Executive Biography ── */}
+                <div className="lg:col-span-7">
+                  <div>
+                    <h4 className="font-heading text-lg sm:text-xl font-semibold text-primary tracking-tight mb-4 flex items-center gap-2">
+                      <span>Executive Biography</span>
+                    </h4>
+                    <div className="space-y-4 text-[14.5px] sm:text-[15px] text-[#1E2D2B] leading-relaxed font-normal">
+                      {founderAbout.detailedBio?.map((paragraph, idx) => (
+                        <p key={idx}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-serif text-base sm:text-[17px] text-primary font-normal tracking-tight mb-1.5">
-                  Real-World Focus
-                </h3>
-                <p className="text-xs sm:text-[13px] text-brand-slate leading-relaxed font-normal">
-                  Practical AI and analytics built around real client needs.
-                </p>
+
+                {/* ── RIGHT COLUMN (5 COLS): Professional Journey Timeline with Scroll Animations ── */}
+                <div className="lg:col-span-5">
+                  <ProfessionalJourneyTimeline
+                    items={founderAbout.experienceTimeline || []}
+                    isParentExpanded={isExpanded}
+                  />
+                </div>
               </div>
 
-              {/* 3. Client Collaboration */}
-              <div className="px-0 lg:px-6 xl:px-8 flex flex-col justify-start">
-                <div className="text-primary mb-2.5">
-                  <ArrowCircleDown weight="regular" className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="font-serif text-base sm:text-[17px] text-primary font-normal tracking-tight mb-1.5">
-                  Client Collaboration
-                </h3>
-                <p className="text-xs sm:text-[13px] text-brand-slate leading-relaxed font-normal">
-                  Working closely with teams to understand complex questions.
-                </p>
-              </div>
-
-              {/* 4. Continuous Learning */}
-              <div className="px-0 lg:px-6 xl:px-8 last:pr-0 flex flex-col justify-start">
-                <div className="text-primary mb-2.5">
-                  <BookOpen weight="regular" className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="font-serif text-base sm:text-[17px] text-primary font-normal tracking-tight mb-1.5">
-                  Continuous Learning
-                </h3>
-                <p className="text-xs sm:text-[13px] text-brand-slate leading-relaxed font-normal">
-                  Staying curious as analytical tools and methods evolve.
-                </p>
+              {/* Bottom Concluding Bar with Read Less Action */}
+              <div className="mt-8 pt-6 border-t border-brand-border/60 flex items-center justify-end">
+                <button
+                  type="button"
+                  onClick={handleCollapseFromBottom}
+                  className="font-heading inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-semibold text-primary hover:text-accent transition-colors py-2 px-3.5 rounded-lg border border-brand-border/70 hover:border-brand-border bg-white shadow-2xs hover:shadow-xs cursor-pointer group"
+                  aria-label="Collapse detailed profile"
+                >
+                  <span>Read Less</span>
+                  <CaretDown className="w-3.5 h-3.5 rotate-180 text-brand-taupe group-hover:text-accent transition-transform duration-200" />
+                </button>
               </div>
             </div>
-          </AnimatedContent>
+          </div>
         </div>
       </div>
     </section>

@@ -20,10 +20,9 @@ export const AIConsultingSection: React.FC = () => {
     >
       <div className="site-container">
         {/* Section Heading */}
-        <AnimatedContent distance={20} duration={0.6} threshold={0.2}>
+        <AnimatedContent distance={16} duration={0.55} threshold={0.15}>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-brand-border/60">
             <SectionHeading
-              badge={aiConsulting.badge}
               title={aiConsulting.title}
               subtitle={aiConsulting.subtitle}
             />
@@ -40,7 +39,7 @@ export const AIConsultingSection: React.FC = () => {
         </AnimatedContent>
 
         {/* 3 Content Blocks Grid */}
-        <AnimatedContent distance={24} stagger={0.1} threshold={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <AnimatedContent distance={16} duration={0.55} stagger={0.08} threshold={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           {aiConsulting.blocks.map((block, idx) => (
             <div key={block.id} className="h-full">
               <div
@@ -56,7 +55,7 @@ export const AIConsultingSection: React.FC = () => {
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-2xl text-primary font-normal tracking-tight group-hover:text-primary-dark transition-colors">
+                  <h3 className="font-heading text-2xl text-primary font-semibold tracking-tight group-hover:text-primary-dark transition-colors">
                     {block.title}
                   </h3>
 

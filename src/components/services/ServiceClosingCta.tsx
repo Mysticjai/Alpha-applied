@@ -11,8 +11,8 @@ interface ServiceClosingCtaProps {
 }
 
 export const ServiceClosingCta: React.FC<ServiceClosingCtaProps> = ({
-  heading = 'Drowning in Documents?',
-  subtitle = 'Let us transform your document chaos into structured, production-ready data in days instead of weeks.',
+  heading = 'High-Volume Financial Production?',
+  subtitle = 'We convert complex financial document productions into structured, production-ready work product with rapid turnaround.',
   primaryCtaLabel = 'Book a Call',
   primaryCtaHref = '/#contact',
   emailSubject = 'Document Analysis Inquiry',

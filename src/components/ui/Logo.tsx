@@ -5,6 +5,8 @@ interface LogoProps {
   variant?: 'light' | 'default';
   showTagline?: boolean;
   onClick?: () => void;
+  isTransparent?: boolean;
+  currentPath?: string;
 }
 
 /**
@@ -15,7 +17,7 @@ interface LogoProps {
  * - Alpha crimson right diagonal (#ed0b1e)
  */
 export const OfficialLogoSymbol: React.FC<{ className?: string }> = ({
-  className = 'h-8 sm:h-9 xl:h-[42px] w-auto',
+  className = 'h-8 sm:h-9 xl:h-[38px] 2xl:h-[42px] w-auto',
 }) => {
   return (
     <svg
@@ -61,12 +63,12 @@ export const CompanyWordmark: React.FC<{
     <div
       className={`flex flex-col justify-center select-none font-sans leading-[1.12] ${className}`}
     >
-      <div className="text-[11.5px] sm:text-[12.5px] xl:text-[13.5px] font-extrabold uppercase tracking-[0.04em] whitespace-nowrap">
+      <div className="text-[11px] sm:text-[12px] xl:text-[12.5px] 2xl:text-[13.5px] font-extrabold uppercase tracking-[0.04em] whitespace-nowrap">
         <span style={{ color: navyColor }}>ALPHA</span>{' '}
         <span style={{ color: crimsonColor }}>APPLIED</span>
       </div>
       <div
-        className="text-[9.5px] sm:text-[10.5px] xl:text-[11.5px] font-extrabold uppercase tracking-[0.04em] whitespace-nowrap mt-[1.5px]"
+        className="text-[9px] sm:text-[10px] xl:text-[10.5px] 2xl:text-[11.5px] font-extrabold uppercase tracking-[0.04em] whitespace-nowrap mt-[1.5px]"
         style={{ color: navyColor }}
       >
         <span style={{ color: navyColor }}>ANALYTICS SOLUTIONS</span>
@@ -84,31 +86,30 @@ export const Logo: React.FC<LogoProps> = ({
   className = '',
   variant = 'default',
   onClick,
+  isTransparent = false,
+  currentPath,
 }) => {
   const isLight = variant === 'light';
+  const wordmarkNavy = isTransparent ? '#FFFFFF' : '#003d8c';
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const rawPath = (currentPath || (typeof window !== 'undefined' ? (window.location.pathname + window.location.hash) : '')).toLowerCase();
+  const isInternal = rawPath && !rawPath.endsWith('/') && !rawPath.includes('index.html') && (
+    rawPath.includes('aiconsulting') ||
+    rawPath.includes('litigationservices') ||
+    rawPath.includes('alphalens') ||
+    rawPath.includes('divorcefamilylaw') ||
+    rawPath.includes('economicdamages') ||
+    rawPath.includes('documentanalysis') ||
+    rawPath.includes('bankruptcyrestructuring') ||
+    rawPath.includes('intellectualproperty') ||
+    rawPath.includes('litigationsupport') ||
+    rawPath.includes('terms-of-service') ||
+    rawPath.includes('privacy-policy')
+  );
+
+  const handleClick = () => {
     if (onClick) {
       onClick();
-    }
-
-    const currentPath = typeof window !== 'undefined' ? window.location.pathname.toLowerCase() : '';
-    // If on a dedicated subpage, allow click to bubble to App.tsx router for seamless SPA transition to /#home
-    if (currentPath !== '/' && currentPath !== '' && !currentPath.endsWith('index.html')) {
-      return;
-    }
-
-    // On home page: smooth scroll to absolute top of page without reload
-    e.preventDefault();
-    const lenis = (window as any).__lenis;
-    if (lenis) {
-      lenis.scrollTo(0, { immediate: false });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    if (window.location.hash !== '#home') {
-      window.history.pushState(null, '', '#home');
     }
   };
 
@@ -116,7 +117,9 @@ export const Logo: React.FC<LogoProps> = ({
     return (
       <a
         href="/#home"
-        aria-label="Alpha Applied Analytics Solutions — Home"
+        data-direction={isInternal ? 'backward' : undefined}
+        data-fresh-nav="true"
+        aria-label="Alpha Applied Analytics Solutions, Home"
         onClick={handleClick}
         className={`inline-flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-surface-warm focus-visible:ring-offset-2 focus-visible:ring-offset-[#00201E] rounded-lg transition-transform active:scale-[0.98] ${className}`}
       >
@@ -131,12 +134,16 @@ export const Logo: React.FC<LogoProps> = ({
   return (
     <a
       href="/#home"
-      aria-label="Alpha Applied Analytics Solutions — Home"
+      data-direction={isInternal ? 'backward' : undefined}
+      data-fresh-nav="true"
+      aria-label="Alpha Applied Analytics Solutions, Home"
       onClick={handleClick}
-      className={`inline-flex items-center gap-2 sm:gap-2.5 xl:gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm transition-opacity hover:opacity-95 active:scale-[0.99] shrink-0 ${className}`}
+      className={`inline-flex items-center gap-2 sm:gap-2.5 xl:gap-3 group focus:outline-none focus-visible:ring-2 ${
+        isTransparent ? 'focus-visible:ring-white' : 'focus-visible:ring-primary'
+      } focus-visible:ring-offset-2 rounded-sm transition-opacity hover:opacity-95 active:scale-[0.99] shrink-0 ${className}`}
     >
-      <OfficialLogoSymbol className="h-8 sm:h-9 xl:h-[42px] w-auto shrink-0" />
-      <CompanyWordmark />
+      <OfficialLogoSymbol className="h-8 sm:h-9 xl:h-[38px] 2xl:h-[42px] w-auto shrink-0" />
+      <CompanyWordmark navyColor={wordmarkNavy} />
     </a>
   );
 };

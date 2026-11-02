@@ -39,7 +39,7 @@ export const TermsOfServicePage: React.FC = () => {
             {/* Top Navigation & Breadcrumbs */}
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-surface-warm/70">
-                <a href="/#home" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <a href="/#home" data-direction="backward" data-restore-scroll="true" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>Home</span>
                 </a>
@@ -70,7 +70,7 @@ export const TermsOfServicePage: React.FC = () => {
                 <span>Client &amp; Service Agreement</span>
               </div>
 
-              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white leading-tight">
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white leading-tight">
                 Terms of Service
               </h1>
 
@@ -136,7 +136,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 1. Acceptance of Terms */}
               <section id="acceptance" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">1.</span>
                   <span>Acceptance of Terms</span>
                 </h2>
@@ -147,7 +147,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 2. Description of Services */}
               <section id="services" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">2.</span>
                   <span>Description of Services</span>
                 </h2>
@@ -173,7 +173,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 3. Client Relationship and Engagement */}
               <section id="engagement" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">3.</span>
                   <span>Client Relationship and Engagement</span>
                 </h2>
@@ -200,14 +200,14 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 4. Professional Standards and Limitations */}
               <section id="standards" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-4 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-4 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">4.</span>
                   <span>Professional Standards and Limitations</span>
                 </h2>
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-serif text-lg sm:text-xl text-primary font-normal tracking-tight mb-2">
+                    <h3 className="font-serif text-lg sm:text-xl text-primary font-medium tracking-tight mb-2">
                       4.1 Not Legal or Financial Advice
                     </h3>
                     <p className="text-[15px] sm:text-base text-brand-slate leading-relaxed font-normal">
@@ -216,7 +216,7 @@ export const TermsOfServicePage: React.FC = () => {
                   </div>
 
                   <div>
-                    <h3 className="font-serif text-lg sm:text-xl text-primary font-normal tracking-tight mb-2">
+                    <h3 className="font-serif text-lg sm:text-xl text-primary font-medium tracking-tight mb-2">
                       4.2 Expert Testimony
                     </h3>
                     <p className="text-[15px] sm:text-base text-brand-slate leading-relaxed font-normal">
@@ -225,7 +225,7 @@ export const TermsOfServicePage: React.FC = () => {
                   </div>
 
                   <div>
-                    <h3 className="font-serif text-lg sm:text-xl text-primary font-normal tracking-tight mb-2">
+                    <h3 className="font-serif text-lg sm:text-xl text-primary font-medium tracking-tight mb-2">
                       4.3 Quality and Accuracy
                     </h3>
                     <p className="text-[15px] sm:text-base text-brand-slate leading-relaxed font-normal">
@@ -237,7 +237,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 5. Confidentiality and Data Protection */}
               <section id="confidentiality" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">5.</span>
                   <span>Confidentiality and Data Protection</span>
                 </h2>
@@ -274,14 +274,14 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 6. Payment Terms */}
               <section id="payment" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-4 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-4 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">6.</span>
                   <span>Payment Terms</span>
                 </h2>
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-serif text-lg sm:text-xl text-primary font-normal tracking-tight mb-2">
+                    <h3 className="font-serif text-lg sm:text-xl text-primary font-medium tracking-tight mb-2">
                       6.1 Fees and Invoicing
                     </h3>
                     <p className="text-[15px] sm:text-base text-brand-slate leading-relaxed font-normal mb-3">
@@ -303,7 +303,7 @@ export const TermsOfServicePage: React.FC = () => {
                   </div>
 
                   <div>
-                    <h3 className="font-serif text-lg sm:text-xl text-primary font-normal tracking-tight mb-2">
+                    <h3 className="font-serif text-lg sm:text-xl text-primary font-medium tracking-tight mb-2">
                       6.2 Refund Policy
                     </h3>
                     <p className="text-[15px] sm:text-base text-brand-slate leading-relaxed font-normal">
@@ -315,14 +315,14 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 7. Intellectual Property */}
               <section id="ip" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-4 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-4 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">7.</span>
                   <span>Intellectual Property</span>
                 </h2>
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-serif text-lg sm:text-xl text-primary font-normal tracking-tight mb-2">
+                    <h3 className="font-serif text-lg sm:text-xl text-primary font-medium tracking-tight mb-2">
                       7.1 Client Data
                     </h3>
                     <p className="text-[15px] sm:text-base text-brand-slate leading-relaxed font-normal">
@@ -331,7 +331,7 @@ export const TermsOfServicePage: React.FC = () => {
                   </div>
 
                   <div>
-                    <h3 className="font-serif text-lg sm:text-xl text-primary font-normal tracking-tight mb-2">
+                    <h3 className="font-serif text-lg sm:text-xl text-primary font-medium tracking-tight mb-2">
                       7.2 Work Product
                     </h3>
                     <p className="text-[15px] sm:text-base text-brand-slate leading-relaxed font-normal">
@@ -340,7 +340,7 @@ export const TermsOfServicePage: React.FC = () => {
                   </div>
 
                   <div>
-                    <h3 className="font-serif text-lg sm:text-xl text-primary font-normal tracking-tight mb-2">
+                    <h3 className="font-serif text-lg sm:text-xl text-primary font-medium tracking-tight mb-2">
                       7.3 Website and Platform
                     </h3>
                     <p className="text-[15px] sm:text-base text-brand-slate leading-relaxed font-normal">
@@ -352,7 +352,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 8. Limitation of Liability */}
               <section id="liability" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">8.</span>
                   <span>Limitation of Liability</span>
                 </h2>
@@ -368,7 +368,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 9. Indemnification */}
               <section id="indemnification" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">9.</span>
                   <span>Indemnification</span>
                 </h2>
@@ -392,7 +392,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 10. Website Use and Restrictions */}
               <section id="website-use" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">10.</span>
                   <span>Website Use and Restrictions</span>
                 </h2>
@@ -417,7 +417,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 11. Third-Party Links and Services */}
               <section id="third-party" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">11.</span>
                   <span>Third-Party Links and Services</span>
                 </h2>
@@ -428,7 +428,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 12. Termination */}
               <section id="termination" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">12.</span>
                   <span>Termination</span>
                 </h2>
@@ -452,7 +452,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 13. Modifications to Terms */}
               <section id="modifications" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">13.</span>
                   <span>Modifications to Terms</span>
                 </h2>
@@ -463,7 +463,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 14. Governing Law and Dispute Resolution */}
               <section id="governing-law" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">14.</span>
                   <span>Governing Law and Dispute Resolution</span>
                 </h2>
@@ -486,7 +486,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 15. Severability */}
               <section id="severability" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">15.</span>
                   <span>Severability</span>
                 </h2>
@@ -497,7 +497,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 16. Entire Agreement */}
               <section id="entire-agreement" className="scroll-mt-28 mb-10 pb-8 border-b border-brand-border/60">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">16.</span>
                   <span>Entire Agreement</span>
                 </h2>
@@ -508,7 +508,7 @@ export const TermsOfServicePage: React.FC = () => {
 
               {/* 17. Contact Information */}
               <section id="contact" className="scroll-mt-28">
-                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-normal tracking-tight mb-3 flex items-baseline gap-2">
+                <h2 className="font-serif text-2xl sm:text-[1.65rem] text-primary font-semibold tracking-tight mb-3 flex items-baseline gap-2">
                   <span className="font-mono text-base sm:text-lg text-brand-taupe font-medium">17.</span>
                   <span>Contact Information</span>
                 </h2>

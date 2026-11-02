@@ -1,5 +1,5 @@
 /**
- * Alpha Applied Analytics Solutions — Centralized Content Model
+ * Alpha Applied Analytics Solutions: Centralized Content Model
  * 
  * Sourced directly from Alpha_Applied_Analytics_Content_Spec.md (c:\Users\jaiav\Downloads\text\text.md)
  * and the client reference website (https://alpha-website-dun.vercel.app/).
@@ -60,8 +60,14 @@ export interface AIConsultingBlock {
 
 export interface TargetAudience {
   id: string;
+  number?: string;
   title: string;
   description: string;
+  href?: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
 }
 
 export interface ExpertiseArea {
@@ -74,6 +80,7 @@ export interface EducationItem {
   degree: string;
   institution: string;
   period: string;
+  honors?: string | null;
 }
 
 export const siteContent = {
@@ -92,6 +99,7 @@ export const siteContent = {
       { label: "Alpha Lens Platform", href: "/alphalens.html" },
       { label: "Who We Serve", href: "/#who-we-serve" },
       { label: "About", href: "/#founder" },
+      { label: "Contact", href: "/#contact" },
     ] as NavItem[],
     cta: {
       label: "Book a Call",
@@ -101,27 +109,27 @@ export const siteContent = {
 
   hero: {
     eyebrow: "ENTERPRISE AI STRATEGY & SPECIALIZED ANALYTICS",
-    headlineText: "Advancing Business Through Artificial Intelligence.",
+    headlineText: "AI-Powered Legal and Business Solutions",
     headlineWords: [
-      { text: "Advancing", id: "advancing" },
+      { text: "AI-Powered", id: "ai-powered" },
+      { text: "Legal", id: "legal" },
+      { text: "and", id: "and" },
       { text: "Business", id: "business" },
-      { text: "Through", id: "through" },
-      { text: "Artificial", id: "artificial" },
-      { text: "Intelligence.", id: "intelligence" },
+      { text: "Solutions", id: "solutions" },
     ],
     // Backward compatibility for any legacy references
     headline: {
-      line1: "Advancing Business",
-      line2: "Through Artificial",
-      line3: "Intelligence.",
+      line1: "AI-Powered",
+      line2: "Legal and Business",
+      line3: "Solutions",
       line4: "",
     },
     supportingParagraph1:
-      "We partner with organizations to strategize, implement, and scale AI-driven solutions that enhance operational efficiency, strengthen decision-making, and create lasting business value.",
+      "We deliver specialized forensic data analytics, litigation support, and tailored artificial intelligence solutions for law firms, corporations, and advisory practices.",
     supportingParagraph2:
-      "From AI consulting and enterprise integration to intelligent automation and specialized analytics, we bridge the gap between technological innovation and business execution.",
+      "From rapid bank record extraction and court-ready damage schedules to custom AI workflow automation, we combine deep financial acumen with defensible analytics.",
     supportingCopy:
-      "We partner with organizations to strategize, implement, and scale AI-driven solutions that enhance operational efficiency, strengthen decision-making, and create lasting business value.",
+      "We deliver specialized forensic data analytics, litigation support, and tailored artificial intelligence solutions for law firms, corporations, and advisory practices.",
     primaryCta: {
       label: "Schedule AI Consultation",
       href: "/#contact",
@@ -255,9 +263,9 @@ export const siteContent = {
     headline: "Forensic document intelligence for litigation-grade financial analysis.",
     title: "AI Powered Tool Built for Litigation Support",
     subtitle:
-      "Every tool in our platform is purpose-built for litigation workflows. Not repurposed accounting software — real analytic engines.",
+      "Every tool in our platform is purpose-built for litigation workflows. Rather than repurposed accounting software, these are specialized analytical engines designed for legal evidence.",
     supportingCopy:
-      "Built for litigation, IP litigation, family law, CDFAs, and litigation support teams—turning financial documents into evidence.",
+      "Built for litigation attorneys, forensic accountants, CDFAs, and dispute advisory teams to convert complex financial records into court-ready evidence.",
     workflowTagline: "AI does the volume. Experts close the gap.",
     workflowOverview:
       "Four modules. Sixteen tools. One integrated pipeline.",
@@ -274,7 +282,7 @@ export const siteContent = {
         title: "Bank Statement Extraction",
         categoryLabel: "Multi-Bank Support",
         description:
-          "Automated transaction extraction from any bank format — Chase, AmEx, Wells Fargo, regional banks. Outputs structured Excel with 17-column schema, categorized and reconciled.",
+          "Automated transaction extraction across institutional and regional banking formats, including Chase, American Express, and Wells Fargo. Outputs structured, categorized, and fully reconciled Excel files with standard 17-column schemas.",
         tags: [
           "Any Bank Format",
           "Balance Reconciliation",
@@ -314,7 +322,7 @@ export const siteContent = {
         categoryLabel: "Litigation-Ready Reports",
         subheading: "For Divorce, Intellectual Property and Bankruptcy",
         description:
-          "Our flagship 3-layer engine: deterministic rule matching, AI-powered anomaly detection, and litigation-grade scoring — producing a comprehensive multi-tab Excel report.",
+          "Our flagship three-layer engine combines deterministic rule matching, anomaly detection algorithms, and litigation-grade scoring to generate comprehensive multi-tab analytical reports.",
         tags: [
           "Hidden Income Detection",
           "Anomaly Scoring",
@@ -557,27 +565,65 @@ export const siteContent = {
 
   whoWeServe: {
     badge: "WHO WE SERVE",
-    title: "Built for Legal & Financial Professionals",
+    title: "Who We Serve Across Modern Business",
     subtitle:
-      "Analytical support for professionals working with complex financial information and case-related questions.",
+      "We deliver tailored analytics, forensic support, and practical artificial intelligence solutions for specialized sectors, simplifying complex operational workflows and extracting defensible clarity from high-volume data.",
+    focusAreas: [
+      "Professional Services",
+      "Financial Services",
+      "Technology & SaaS",
+      "Healthcare & Life Sciences",
+      "Operations & Manufacturing",
+      "Legal & Dispute Resolution",
+    ],
     audiences: [
       {
-        id: "attorneys-law-firms",
-        title: "Attorneys & Law Firms",
+        id: "professional-services",
+        number: "01",
+        title: "Professional Services",
         description:
-          "Litigation analysis reports that uncover hidden income and asset dissipation — structured for depositions, mediations, and trial exhibits across multiple practice areas.",
+          "AI-assisted workflows, intelligent document processing, and operational automation designed to reduce manual friction and accelerate decision-making.",
+        href: "/aiconsulting.html",
+        image: {
+          src: "/images/cards/alphalens-project-tracking.webp",
+          alt: "Professional services workflow automation and operational intelligence",
+        },
       },
       {
-        id: "cdfa-practitioners",
-        title: "CDFA Practitioners",
+        id: "financial-services",
+        number: "02",
+        title: "Financial Services",
         description:
-          "Comprehensive financial analysis that supports your settlement recommendations with litigation-ready documentation and data-backed insights.",
+          "Structured transaction extraction, data reconciliation, and automated reporting workflows that strengthen analytical precision and audit readiness.",
+        href: "/alphalens.html",
+        image: {
+          src: "/images/cards/who-we-serve-cdfa.webp",
+          alt: "Financial data extraction and reporting automation",
+        },
       },
       {
-        id: "litigation-advisory-teams",
-        title: "Litigation & Advisory Teams",
+        id: "technology-enterprises",
+        number: "03",
+        title: "Technology & Growing Enterprises",
         description:
-          "Scalable document processing, bank statement extraction, and litigation analysis for firms handling complex multi-entity financial disputes.",
+          "Tailored AI consulting, custom analytical tooling, and scalable workflow implementation built to support strategic growth and operational agility.",
+        href: "/aiconsulting.html",
+        image: {
+          src: "/images/cards/alphalens-interactive-visualizations.webp",
+          alt: "Scalable AI integration and custom analytical tools",
+        },
+      },
+      {
+        id: "legal-litigation",
+        number: "04",
+        title: "Legal & Litigation Practices",
+        description:
+          "Specialized litigation support, forensic financial analysis, and court-ready work product structured for dispute resolution, mediation, and trial preparation.",
+        href: "/litigationservices.html",
+        image: {
+          src: "/images/cards/who-we-serve-attorneys.webp",
+          alt: "Litigation support and specialized legal evidence analysis",
+        },
       },
     ] as TargetAudience[],
   },
@@ -586,36 +632,93 @@ export const siteContent = {
     badge: "FOUNDER & PRINCIPAL",
     founderName: "Krishna Dornadula",
     founderRole: "Founder & Principal",
-    headline: "A Background in Analytics. A Focus on Defensible Outcomes.",
+    headline: "Krishna Dornadula",
     subtitle: "Founder of Alpha Applied Analytics Solutions and lead behind AlphaLens AI.",
-    bio: "Krishna Dornadula founded Alpha Applied Analytics Solutions to bring forensic analytics, financial investigation, and practical AI together to help clients make sense of complex evidence.",
+    bio: "Krishna Dornadula founded Alpha Applied Analytics Solutions to bring together forensic analytics, financial investigation, and practical AI. Before founding Alpha, he spent nearly a decade at Deloitte working on analytics projects involving investigations, financial audits, risk management, and compliance. He now leads the company's work across litigation support, financial analysis, and AI implementation.",
     linkedinUrl: "https://www.linkedin.com/in/krishna-dornadula-606b5113",
-    approachStatement: {
-      label: "OUR APPROACH",
-      copy: "Analytical rigor should lead to practical implementation—helping clients turn complex evidence into clearer, more confident decisions.",
-    },
-    principles: [
-      {
-        id: "analytical-thinking",
-        title: "Analytical Thinking",
-        description: "Turning complex information into clear, structured insights.",
-      },
-      {
-        id: "real-world-focus",
-        title: "Real-World Focus",
-        description: "Practical AI and analytics built around real client needs.",
-      },
-      {
-        id: "client-collaboration",
-        title: "Client Collaboration",
-        description: "Working closely with teams to understand complex questions.",
-      },
-      {
-        id: "continuous-learning",
-        title: "Continuous Learning",
-        description: "Staying curious as analytical tools and methods evolve.",
-      },
+    detailedBio: [
+      "Krishna Dornadula is the Founder and Principal of Alpha Applied Analytics Solutions and the founder behind AlphaLens AI, a forensic document analytics platform designed to help litigation teams handle complex financial and documentary information more efficiently.",
+      "His professional background combines forensic analytics, financial investigations, enterprise technology, data analysis, and practical artificial intelligence implementation.",
+      "Before establishing Alpha Applied Analytics Solutions in March 2021, Krishna spent nearly a decade with Deloitte's Forensic Analytics and Transactions & Business Analytics teams. During this period, he led cross-functional global analytics engagements involving investigations, regulatory responses, financial audits, risk management, compliance monitoring, and operational improvement.",
+      "At Alpha, he leads AI and Agentic AI implementations across litigation, investigations, and mergers and acquisitions. His work combines automation with human review to support forensic financial analysis, document processing, defensible analytical findings, and expert-related litigation support.",
+      "Krishna holds a Master of Science in Management Information Systems from the University of Illinois Chicago and a Computer Science degree from BITS Pilani. Earlier in his career, he worked at Northwestern University on data and statistical analysis for research initiatives, including the eMERGE project, and gained additional research experience in healthcare information technology.",
+      "Beyond Alpha, he also serves as Managing Director of Triple One Infra, a real estate and construction firm with assets across South India.",
     ],
+    experienceTimeline: [
+      {
+        company: "Alpha Applied Analytics Solutions",
+        role: "Founder and Principal",
+        period: "March 2021 – Present",
+        bullets: [
+          "Leads AI and Agentic AI implementations for litigation, investigations, and M&A.",
+          "Founded a boutique analytics firm providing litigation analytics and forensic support.",
+          "Supports defensible data analysis for complex disputes, expert witness reports, and rebuttal reports."
+        ]
+      },
+      {
+        company: "Triple One Infra Pvt. Ltd.",
+        role: "Managing Director",
+        period: "June 2022 – Present",
+        bullets: [
+          "Leads a real estate and construction business with assets across South India."
+        ]
+      },
+      {
+        company: "Deloitte",
+        role: "Forensic Analytics, Transactions and Business Analytics",
+        period: "June 2011 – January 2021",
+        bullets: [
+          "Led global analytics engagements and cross-functional teams.",
+          "Worked on investigations, regulatory responses, financial audits, risk management, compliance, and supply chain analytics.",
+          "Worked with technologies including SQL Server, R, .NET, Tableau, QlikView, Crystal Reports, and QlikSense.",
+          "Trained and mentored onshore and offshore analytics consultants."
+        ]
+      },
+      {
+        company: "Northwestern University",
+        role: "Data and Statistical Analyst",
+        period: "May 2010 – July 2011",
+        bullets: [
+          "Supported eMERGE and other research projects.",
+          "Extracted information from enterprise healthcare databases and performed statistical analysis using SPSS."
+        ]
+      },
+      {
+        company: "Chicago Health Information Technology Regional Extension Center",
+        role: "Research Intern",
+        period: "May 2010 – September 2010",
+        bullets: [
+          "Researched open-source electronic medical record systems and their suitability for smaller healthcare providers."
+        ]
+      },
+      {
+        company: "University of Illinois at Chicago",
+        role: "Teaching Assistant",
+        period: "January 2010 – May 2010",
+        bullets: [
+          "Assisted with Operations Management coursework and tutored students in advanced Microsoft Excel."
+        ]
+      }
+    ],
+    education: [
+      {
+        institution: "University of Illinois Chicago",
+        degree: "Master of Science in Management Information Systems",
+        period: "August 2009 – December 2010",
+        honors: null
+      },
+      {
+        institution: "Birla Institute of Technology and Science, Pilani",
+        degree: "B.E. (Hons.) in Computer Science",
+        period: "August 2005 – June 2009",
+        honors: null
+      }
+    ],
+    highlights: {
+      publication: "Legal Billing and Predictive Coding",
+      languages: ["English (Professional)", "Telugu (Native)"],
+      honors: "Magna Cum Laude (University of Illinois Chicago)"
+    },
     introduction:
       "Krishna works at the intersection of forensic analytics, artificial intelligence, and litigation support. He leads AI and agentic AI implementations for litigation, investigations, and M&A, delivering human-in-the-loop analytics to support forensic analysis and expert testimony.",
     experienceHeading: "Selected Experience",
@@ -656,27 +759,13 @@ export const siteContent = {
           "Analysis supporting divorce matters, probate, and asset tracing.",
       },
     ] as ExpertiseArea[],
-    educationHeading: "Education",
-    education: [
-      {
-        degree: "Master of Science — Management Information Systems",
-        institution: "University of Illinois Chicago",
-        period: "2009–2010",
-      },
-      {
-        degree: "B.E. (Hons) — Computer Science",
-        institution: "Birla Institute of Technology and Science, Pilani",
-        period: "2005–2009",
-      },
-    ] as EducationItem[],
-    honour: "Magna Cum Laude",
   },
 
   contact: {
     badge: "LET'S DISCUSS YOUR CASE",
-    title: "Let's Review Your Next Case Together",
+    title: "Let's Connect",
     subtitle:
-      "Book a 15-minute call. We'll walk through how our litigation analysis AI engine can support your practice — no commitment, no pitch deck.",
+      "Book a 15-minute call to discuss your business goals, explore practical AI and analytics solutions, and discover how Alpha Applied Analytics can help. No commitment required.",
     primaryCta: {
       label: "Book a Free Strategy Call",
       href: "#contact-form",

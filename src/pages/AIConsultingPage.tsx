@@ -18,6 +18,7 @@ import {
 import { siteContent } from '../content/siteContent';
 import { AnimatedContent } from '../components/ui/AnimatedContent';
 import { useHeroScrollExit } from '../hooks/useHeroScrollExit';
+import { AIAssessmentTimeline } from '../components/sections/AIAssessmentTimeline';
 
 export const AIConsultingPage: React.FC = () => {
   const { aiConsulting } = siteContent;
@@ -136,7 +137,7 @@ export const AIConsultingPage: React.FC = () => {
           {/* Breadcrumb Navigation */}
           <AnimatedContent distance={10} duration={0.4}>
             <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-mono uppercase tracking-wider text-brand-taupe mb-5 sm:mb-6">
-              <a href="/#home" className="hover:text-primary transition-colors">
+              <a href="/#home" data-direction="backward" data-restore-scroll="true" className="hover:text-primary transition-colors">
                 Home
               </a>
               <span className="text-brand-border/80 select-none">/</span>
@@ -150,7 +151,7 @@ export const AIConsultingPage: React.FC = () => {
               {/* Main Page Title */}
               <h1
                 ref={heroTitleRef}
-                className="font-serif text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] text-primary font-normal tracking-[-0.02em] leading-[1.14] will-change-[transform,opacity]"
+                className="font-serif text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] text-primary font-semibold tracking-[-0.02em] leading-[1.14] will-change-[transform,opacity]"
               >
                 {aiConsulting.title}
               </h1>
@@ -175,7 +176,9 @@ export const AIConsultingPage: React.FC = () => {
 
                 <a
                   href="/#home"
-                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary hover:text-accent transition-colors py-2 px-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
+                  data-direction="backward"
+                  data-restore-scroll="true"
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-primary hover:text-accent transition-colors py-2 px-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-primary rounded"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>Back to Homepage</span>
@@ -249,7 +252,7 @@ export const AIConsultingPage: React.FC = () => {
               {/* Left Column: Heading, Narrative & Benefit Callout */}
               <div className="lg:col-span-5 flex flex-col justify-start">
                 {/* Main Service Heading */}
-                <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] text-primary font-normal leading-[1.16] tracking-tight mb-3">
+                <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] text-primary font-semibold leading-[1.16] tracking-tight mb-3">
                   {s1.title}
                 </h2>
 
@@ -279,45 +282,11 @@ export const AIConsultingPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right Column: Connected Visual Timeline */}
-              <div className="lg:col-span-7">
-                <div className="mb-4 flex items-center justify-between text-xs font-mono uppercase tracking-wider text-brand-taupe px-1">
-                  <span className="font-semibold text-primary">Assessment Methodology Timeline</span>
-                  <span>5 Structured Milestones</span>
-                </div>
-
-                {/* Connected Vertical Timeline Track */}
-                <div className="relative pl-8 sm:pl-10 space-y-5">
-                  {/* Vertical Spine Line */}
-                  <div
-                    className="absolute left-[15px] sm:left-[19px] top-4 bottom-6 w-[2px] bg-gradient-to-b from-primary via-primary/45 to-primary/20 anim-assessment-line"
-                    aria-hidden="true"
-                  />
-
-                  {s1.items.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="relative group p-4 sm:p-5 rounded-xl bg-surface-warm/40 border border-brand-border/70 hover:border-primary/50 hover:bg-white hover:shadow-xs transition-all duration-200"
-                    >
-                      {/* Milestone Number Disc Node on Spine */}
-                      <div className="absolute -left-[33px] sm:-left-[41px] top-4 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-primary text-primary font-mono text-xs font-bold flex items-center justify-center shrink-0 z-10 shadow-xs group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-200">
-                        0{idx + 1}
-                      </div>
-
-                      <div className="flex flex-col">
-                        <div className="mb-1.5">
-                          <span className="text-xs font-mono font-bold uppercase tracking-wider text-primary">
-                            Phase 0{idx + 1} · {timelineTitles[idx]}
-                          </span>
-                        </div>
-                        <p className="text-sm sm:text-[14.5px] text-brand-dark leading-relaxed font-normal">
-                          {item}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {/* Right Column: Connected Visual Timeline with Scroll-Synchronized Arrow */}
+              <AIAssessmentTimeline
+                items={s1.items}
+                timelineTitles={timelineTitles}
+              />
             </div>
           </AnimatedContent>
         </div>
@@ -335,7 +304,7 @@ export const AIConsultingPage: React.FC = () => {
             {/* Header Row: Title, Headline, Narrative & Outcome */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-16 items-start mb-12">
               <div className="lg:col-span-6">
-                <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] text-primary font-normal leading-[1.16] tracking-tight mb-3">
+                <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] text-primary font-semibold leading-[1.16] tracking-tight mb-3">
                   {s2.title}
                 </h2>
 
@@ -396,7 +365,7 @@ export const AIConsultingPage: React.FC = () => {
                         )}
                       </div>
 
-                      <h3 className="font-serif text-xl sm:text-[22px] text-primary font-normal tracking-tight mb-5">
+                      <h3 className="font-serif text-xl sm:text-[22px] text-primary font-medium tracking-tight mb-5">
                         {phase.title}
                       </h3>
 
@@ -438,7 +407,7 @@ export const AIConsultingPage: React.FC = () => {
               {/* Left Column: Heading, Narrative, Approved Capabilities & Outcome */}
               <div className="lg:col-span-5 flex flex-col justify-between">
                 <div>
-                  <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] text-primary font-normal leading-[1.16] tracking-tight mb-3">
+                  <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] text-primary font-semibold leading-[1.16] tracking-tight mb-3">
                     {s3.title}
                   </h2>
 
@@ -663,7 +632,7 @@ export const AIConsultingPage: React.FC = () => {
               {/* Left Column: Heading, Narrative, Tailoring Note & Outcome */}
               <div className="lg:col-span-5 flex flex-col justify-between">
                 <div>
-                  <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] text-primary font-normal leading-[1.16] tracking-tight mb-3">
+                  <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] text-primary font-semibold leading-[1.16] tracking-tight mb-3">
                     {s4.title}
                   </h2>
 
@@ -747,8 +716,8 @@ export const AIConsultingPage: React.FC = () => {
       {/* ========================================================================= */}
       <section className="py-16 sm:py-20 lg:py-24 bg-primary text-white relative overflow-hidden">
         <div className="site-container text-center max-w-2xl mx-auto relative z-10">
-          <AnimatedContent distance={20} duration={0.65} threshold={0.15}>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.65rem] font-normal tracking-tight text-white leading-tight mb-4">
+          <AnimatedContent distance={16} duration={0.55} threshold={0.15}>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.65rem] font-semibold tracking-tight text-white leading-tight mb-4">
               Discuss Your Advisory Requirements
             </h2>
 

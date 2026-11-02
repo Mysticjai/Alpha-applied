@@ -33,8 +33,11 @@ export default {
         'brand-border': '#E4E2DA',
       },
       fontFamily: {
-        serif: ['"Instrument Serif"', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
-        sans: ['Manrope', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        heading: ["'Poppins'", 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        serif: ["'Poppins'", 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        sans: ["'Poppins'", 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        body: ["'Bespoke Slab'", 'Georgia', '"Times New Roman"', 'serif'],
+        slab: ["'Bespoke Slab'", 'Georgia', '"Times New Roman"', 'serif'],
       },
       screens: {
         'xs': '480px',

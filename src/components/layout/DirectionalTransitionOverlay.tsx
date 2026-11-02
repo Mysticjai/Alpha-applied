@@ -85,22 +85,38 @@ export const DirectionalTransitionOverlay = forwardRef<
 
         isTransitioningRef.current = true;
 
+        // Watchdog timeout to prevent stuck overlay under any unhandled edge condition
+        const watchdogTimer = setTimeout(() => {
+          if (isTransitioningRef.current) {
+            console.warn('[DirectionalTransitionOverlay] Watchdog cleanup triggered');
+            container.style.visibility = 'hidden';
+            container.style.pointerEvents = 'none';
+            gsap.set(panel, { x: '100%' });
+            isTransitioningRef.current = false;
+          }
+        }, 2200);
+
         if (prefersReducedMotion) {
-          // Instant / subtle fast fade for reduced motion users
-          container.style.visibility = 'visible';
-          container.style.pointerEvents = 'all';
-          gsap.set(panel, { x: '0%', opacity: 0 });
+          try {
+            // Instant / subtle fast fade for reduced motion users
+            container.style.visibility = 'visible';
+            container.style.pointerEvents = 'all';
+            gsap.set(panel, { x: '0%', opacity: 0 });
 
-          await gsap.to(panel, { opacity: 1, duration: 0.12, ease: 'power1.out' });
-          if (onCoverComplete) await onCoverComplete();
-          await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-          await gsap.to(panel, { opacity: 0, duration: 0.15, ease: 'power1.in' });
-
-          container.style.visibility = 'hidden';
-          container.style.pointerEvents = 'none';
-          gsap.set(panel, { x: '100%', opacity: 1 });
-          isTransitioningRef.current = false;
-          if (onRevealComplete) onRevealComplete();
+            await gsap.to(panel, { opacity: 1, duration: 0.12, ease: 'power1.out' });
+            if (onCoverComplete) await onCoverComplete();
+            await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+            await gsap.to(panel, { opacity: 0, duration: 0.15, ease: 'power1.in' });
+          } catch (err) {
+            console.error('Reduced motion transition error:', err);
+          } finally {
+            clearTimeout(watchdogTimer);
+            container.style.visibility = 'hidden';
+            container.style.pointerEvents = 'none';
+            gsap.set(panel, { x: '100%', opacity: 1 });
+            isTransitioningRef.current = false;
+            if (onRevealComplete) onRevealComplete();
+          }
           return;
         }
 
@@ -127,41 +143,50 @@ export const DirectionalTransitionOverlay = forwardRef<
         container.style.visibility = 'visible';
         container.style.pointerEvents = 'all';
 
-        // ── Phase A: Cover ──
-        gsap.set(panel, { x: enterStart, opacity: 1 });
-        await gsap.to(panel, {
-          x: '0%',
-          duration: coverDuration,
-          ease: ease,
-        });
-
-        // ── Phase B: Route change & scroll sync (Viewport 100% covered) ──
-        if (onCoverComplete) {
-          await onCoverComplete();
-        }
-
-        // Ensure next animation frames commit the new page layout under the panel
-        await new Promise((resolve) => {
-          requestAnimationFrame(() => {
-            requestAnimationFrame(resolve);
+        try {
+          // ── Phase A: Cover ──
+          gsap.set(panel, { x: enterStart, opacity: 1 });
+          await gsap.to(panel, {
+            x: '0%',
+            duration: coverDuration,
+            ease: ease,
           });
-        });
 
-        // ── Phase C: Reveal ──
-        await gsap.to(panel, {
-          x: exitEnd,
-          duration: revealDuration,
-          ease: 'power3.out',
-        });
+          // ── Phase B: Route change & scroll sync (Viewport 100% covered) ──
+          if (onCoverComplete) {
+            await onCoverComplete();
+          }
 
-        // ── Final Settlement & Cleanup ──
-        container.style.visibility = 'hidden';
-        container.style.pointerEvents = 'none';
-        gsap.set(panel, { x: '100%' }); // reset ready for next forward transition
-        isTransitioningRef.current = false;
+          // Ensure next animation frames commit the new page layout under the panel with 80ms safety fallback
+          await new Promise((resolve) => {
+            const timeout = setTimeout(resolve, 80);
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                clearTimeout(timeout);
+                resolve(null);
+              });
+            });
+          });
 
-        if (onRevealComplete) {
-          onRevealComplete();
+          // ── Phase C: Reveal ──
+          await gsap.to(panel, {
+            x: exitEnd,
+            duration: revealDuration,
+            ease: 'power3.out',
+          });
+        } catch (err) {
+          console.error('Transition animation error:', err);
+        } finally {
+          // ── Final Settlement & Cleanup (Always reset overlay to prevent frozen states) ──
+          clearTimeout(watchdogTimer);
+          container.style.visibility = 'hidden';
+          container.style.pointerEvents = 'none';
+          gsap.set(panel, { x: '100%' }); // reset ready for next forward transition
+          isTransitioningRef.current = false;
+
+          if (onRevealComplete) {
+            onRevealComplete();
+          }
         }
       },
     }));
@@ -170,7 +195,7 @@ export const DirectionalTransitionOverlay = forwardRef<
       <div
         ref={containerRef}
         aria-hidden="true"
-        className="fixed inset-0 z-[100] pointer-events-none overflow-hidden"
+        className="fixed inset-0 w-full h-[100dvh] z-[100] pointer-events-none overflow-hidden"
         style={{ visibility: 'hidden' }}
       >
         <div

@@ -9,9 +9,9 @@ export const ExpertiseStrip: React.FC = () => {
   const { serviceSummaryStrip } = siteContent;
 
   // Explicit pillar configuration for all three Core Practice Pillars:
-  // 01 — AI Consulting & Implementation: Cyprus green #004643 with white Cpu icon
-  // 02 — Litigation Services: Cyprus green #004643 with white Scales icon
-  // 03 — Alpha Lens Platform: Muted taupe #A79277 with white Stack icon
+  // 01: AI Consulting & Implementation: Cyprus green #004643 with white Cpu icon
+  // 02: Litigation Services: Cyprus green #004643 with white Scales icon
+  // 03: Alpha Lens Platform: Muted taupe #A79277 with white Stack icon
   const pillarConfigs: Record<string, { bg: string; icon: React.ReactNode }> = {
     'ai-consulting': {
       bg: '#004643',
@@ -40,10 +40,10 @@ export const ExpertiseStrip: React.FC = () => {
       className="bg-white border-b border-brand-border/60 py-16 sm:py-20 lg:py-24 relative z-20 scroll-mt-20"
     >
       <div className="site-container">
-        {/* Section Heading — Eyebrow removed with natural top spacing */}
-        <AnimatedContent distance={20} duration={0.65} threshold={0.2}>
+        {/* Section Heading: Eyebrow removed with natural top spacing */}
+        <AnimatedContent distance={16} duration={0.55} threshold={0.15}>
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-14 lg:mb-16">
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.65rem] text-primary font-normal tracking-tight leading-[1.12]">
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[2.65rem] text-primary font-semibold tracking-tight leading-[1.12]">
               {serviceSummaryStrip.title}
             </h2>
             <p className="mt-3.5 text-sm sm:text-base text-brand-slate leading-relaxed max-w-xl mx-auto">
@@ -53,7 +53,7 @@ export const ExpertiseStrip: React.FC = () => {
         </AnimatedContent>
 
         {/* Prominent 3-Column Interactive Image Cards Grid */}
-        <AnimatedContent distance={24} duration={0.65} stagger={0.09} threshold={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <AnimatedContent distance={16} duration={0.55} stagger={0.08} threshold={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {serviceSummaryStrip.items.map((item) => {
             const imgMeta = pillarImageMap[item.id] || cardImages.pillars.aiConsulting;
             const config = pillarConfigs[item.id];
@@ -73,6 +73,7 @@ export const ExpertiseStrip: React.FC = () => {
                   surfaceBg="#F8F7F4"
                   minHeightClass="min-h-[410px] sm:min-h-[440px]"
                   className="border border-brand-border/80"
+                  titleClassName="font-heading text-2xl sm:text-[25px] md:text-[23px] lg:text-[28px] xl:text-[29px] font-semibold text-primary tracking-tight leading-[1.24] group-hover:text-primary-dark transition-colors duration-200 transform-none"
                 />
               </div>
             );
