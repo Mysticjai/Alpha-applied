@@ -125,7 +125,7 @@ export const App: React.FC = () => {
   // Continuously record homepage scroll offset so returning to home restores exact scroll position
   useEffect(() => {
     const route = getRouteFromPath(currentPath);
-    if (route !== 'home') return;
+    if (route !== 'home' || (typeof window !== 'undefined' && getRouteFromPath(window.location.pathname) !== 'home')) return;
 
     let ticking = false;
     const handleScroll = () => {
@@ -310,13 +310,16 @@ export const App: React.FC = () => {
       if (href.includes('#')) {
         const hash = href.split('#')[1];
         if (window.location.hash !== `#${hash}`) {
-          window.history.pushState({ idx: ++historyIdxRef.current }, '', href);
-          setCurrentPath(href);
+          const fullPath = (typeof window !== 'undefined' ? window.location.pathname : '') + `#${hash}`;
+          window.history.pushState({ idx: ++historyIdxRef.current }, '', fullPath);
+          currentPathRef.current = fullPath;
+          setCurrentPath(fullPath);
         }
         const el = document.getElementById(hash);
         const lenis = (window as any).__lenis;
         if (el) {
-          const targetY = Math.max(0, Math.round(el.getBoundingClientRect().top + window.scrollY - 80));
+          const headerOffset = 88;
+          const targetY = Math.max(0, Math.round(el.getBoundingClientRect().top + window.scrollY - headerOffset));
           if (lenis) lenis.scrollTo(targetY);
           else window.scrollTo({ top: targetY, behavior: 'smooth' });
         }
@@ -490,6 +493,7 @@ export const App: React.FC = () => {
       }
 
       if (targetRoute === currentRoute && !isContactPop) {
+        currentPathRef.current = newPath;
         setCurrentPath(newPath);
         return;
       }
@@ -588,6 +592,33 @@ export const App: React.FC = () => {
         target.getAttribute('target') === '_blank' ||
         target.hasAttribute('download')
       ) {
+        return;
+      }
+
+      // In-page navigation controls (e.g. Practice Disciplines cards on AI Consulting page):
+      // Smoothly scroll to the target section within current page while keeping route and URL unchanged.
+      if (target.getAttribute('data-inpage-scroll') === 'true' || target.closest('[data-inpage-scroll="true"]')) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const scrollTarget = (target.hasAttribute('data-inpage-scroll')
+          ? target
+          : target.closest('[data-inpage-scroll="true"]')) as HTMLElement;
+        const targetId = scrollTarget.getAttribute('data-target') || (href.startsWith('#') ? href.slice(1) : '');
+
+        if (targetId) {
+          const el = document.getElementById(targetId);
+          if (el) {
+            const headerOffset = 88;
+            const targetY = Math.max(0, Math.round(el.getBoundingClientRect().top + window.scrollY - headerOffset));
+            const lenis = (window as any).__lenis;
+            if (lenis) {
+              lenis.scrollTo(targetY, { duration: 0.9 });
+            } else {
+              window.scrollTo({ top: targetY, behavior: 'smooth' });
+            }
+          }
+        }
         return;
       }
 

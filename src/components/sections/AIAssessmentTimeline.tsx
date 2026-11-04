@@ -37,11 +37,6 @@ export const AIAssessmentTimeline: React.FC<AIAssessmentTimelineProps> = ({
 
   return (
     <div className="lg:col-span-7">
-      <div className="mb-4 flex items-center justify-between text-xs font-mono uppercase tracking-wider text-brand-taupe px-1">
-        <span className="font-semibold text-primary">Assessment Methodology Timeline</span>
-        <span>5 Structured Milestones</span>
-      </div>
-
       {/* Connected Vertical Timeline Track */}
       <div ref={containerRef} className="relative pl-8 sm:pl-10 space-y-5">
         <TimelineTrack
@@ -102,7 +97,7 @@ export const AIAssessmentTimeline: React.FC<AIAssessmentTimelineProps> = ({
                       isActive ? 'text-accent' : 'text-primary'
                     }`}
                   >
-                    Phase 0{idx + 1} · {timelineTitles[idx]}
+                    {timelineTitles[idx]}
                   </span>
                 </div>
                 <p className="text-sm sm:text-[14.5px] text-brand-dark leading-relaxed font-normal">

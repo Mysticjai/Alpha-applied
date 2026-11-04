@@ -13,7 +13,27 @@ export type AppRoute =
   | 'privacy-policy';
 
 export function getRouteFromPath(pathname: string): AppRoute {
+  if (!pathname) return 'home';
   const p = pathname.toLowerCase();
+
+  // If passed an in-page section ID belonging to AI Consulting, resolve to 'ai-consulting'
+  if (
+    p.includes('ai-assessment') ||
+    p.includes('ai-implementation') ||
+    p.includes('ai-integration') ||
+    p.includes('ai-training')
+  ) {
+    return 'ai-consulting';
+  }
+
+  // If passed only a hash without pathname, resolve against current window pathname if available
+  if (p.startsWith('#') && typeof window !== 'undefined' && window.location.pathname) {
+    const windowRoute = getRouteFromPath(window.location.pathname);
+    if (windowRoute !== 'home') {
+      return windowRoute;
+    }
+  }
+
   if (p.includes('terms-of-service') || p.includes('termsofservice')) return 'terms-of-service';
   if (p.includes('privacy-policy') || p.includes('privacypolicy')) return 'privacy-policy';
   if (p.includes('divorcefamilylaw') || p.includes('divorce-family-law')) return 'divorce-family-law';

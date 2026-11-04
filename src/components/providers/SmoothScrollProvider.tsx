@@ -50,7 +50,7 @@ const RouteScrollManager: React.FC<RouteScrollManagerProps> = ({ currentPath }) 
       const scrollToHash = () => {
         const el = document.getElementById(hash);
         if (el) {
-          const targetY = Math.max(0, Math.round(el.getBoundingClientRect().top + window.scrollY - 80));
+          const targetY = Math.max(0, Math.round(el.getBoundingClientRect().top + window.scrollY - 88));
           if (hash === 'contact') {
             // For contact anchor, immediate positioning prevents intermediate jump
             if (lenis) {

@@ -13,7 +13,6 @@ import {
   Gear,
   CheckCircle,
   CaretRight,
-  ShieldCheck,
 } from '@phosphor-icons/react';
 import { siteContent } from '../content/siteContent';
 import { AnimatedContent } from '../components/ui/AnimatedContent';
@@ -72,6 +71,32 @@ export const AIConsultingPage: React.FC = () => {
   const s2 = aiConsulting.services[1]; // AI Implementation & Integration
   const s3 = aiConsulting.services[2]; // AI Integrations & Plugin Implementation
   const s4 = aiConsulting.services[3]; // AI Training & Professional Courses
+
+  // In-page navigation handler for Practice Disciplines cards
+  // Smoothly scrolls to target section without modifying route or URL
+  const handleScrollToDiscipline = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const targetEl = document.getElementById(targetId);
+    if (!targetEl) return;
+
+    const headerOffset = 88;
+    const targetY = Math.max(
+      0,
+      Math.round(targetEl.getBoundingClientRect().top + window.scrollY - headerOffset)
+    );
+
+    const lenis = (window as any).__lenis;
+    if (lenis) {
+      lenis.scrollTo(targetY, { duration: 0.9 });
+    } else {
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+    }
+  };
 
   // Timeline stage titles for Service 01 (Assessment & Strategy)
   const timelineTitles = [
@@ -188,12 +213,7 @@ export const AIConsultingPage: React.FC = () => {
           </div>
 
           {/* Refined Connected Service Shortcuts (Unified 4-Stage Pathway Track) */}
-          <div ref={heroPathwayRef} className="mt-12 pt-8 border-t border-brand-border/70">
-            <div className="flex items-center justify-between mb-3 text-[11px] font-mono uppercase tracking-wider text-brand-taupe">
-              <span className="font-semibold text-primary">Practice Disciplines</span>
-              <span className="hidden sm:inline">Select a discipline to explore methodology</span>
-            </div>
-
+          <div ref={heroPathwayRef} className="mt-10 pt-7 border-t border-brand-border/70">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
               {aiConsulting.services.map((svc, i) => {
                 const icons = [
@@ -209,7 +229,10 @@ export const AIConsultingPage: React.FC = () => {
                   <a
                     key={svc.id}
                     href={`#${svc.id}`}
-                    className="group relative p-4 rounded-xl bg-white border border-brand-border/80 hover:border-primary/50 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-between gap-3 text-left overflow-hidden"
+                    data-inpage-scroll="true"
+                    data-target={svc.id}
+                    onClick={(e) => handleScrollToDiscipline(e, svc.id)}
+                    className="group relative p-4 rounded-xl bg-white border border-brand-border/80 hover:border-primary/50 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-between gap-3 text-left overflow-hidden cursor-pointer"
                   >
                     {/* Hover indicator accent bar */}
                     <div className="absolute top-0 left-0 bottom-0 w-[3px] bg-primary opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -269,11 +292,8 @@ export const AIConsultingPage: React.FC = () => {
                 {/* Strategic Outcome Deliverable Callout */}
                 <div className="mt-8 pt-6 border-t border-brand-border/80">
                   <div className="p-4 sm:p-5 rounded-xl bg-surface-warm/60 border border-brand-border/80 flex items-start gap-3.5 shadow-2xs">
-                    <span className="w-2.5 h-2.5 rounded-full bg-accent shrink-0 mt-1.5 shadow-xs" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-accent shrink-0 mt-1 shadow-xs" />
                     <div>
-                      <div className="text-[11px] font-mono uppercase tracking-wider text-brand-taupe font-semibold mb-1">
-                        Key Strategic Deliverable
-                      </div>
                       <p className="text-sm font-medium text-brand-dark leading-relaxed">
                         {s1.outcome}
                       </p>
@@ -339,7 +359,7 @@ export const AIConsultingPage: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative">
-                {implementationPhases.map((phase, pIdx) => (
+                {implementationPhases.map((phase) => (
                   <div
                     key={phase.phase}
                     className="relative rounded-2xl bg-white border border-brand-border/80 p-6 sm:p-7 shadow-xs hover:shadow-md hover:border-primary/50 transition-all duration-300 flex flex-col justify-between group overflow-hidden"
@@ -348,24 +368,7 @@ export const AIConsultingPage: React.FC = () => {
                     <div className="absolute top-0 left-0 right-0 h-[3px] bg-primary" />
 
                     <div>
-                      {/* Phase Header */}
-                      <div className="flex items-center justify-between pb-4 mb-5 border-b border-brand-border/60">
-                        <div className="flex items-center gap-2">
-                          <span className="px-2.5 py-1 rounded-md bg-primary/10 text-primary font-mono text-xs font-bold">
-                            {phase.phase}
-                          </span>
-                          <span className="text-xs font-mono text-brand-taupe font-semibold uppercase tracking-wider">
-                            {phase.subtitle}
-                          </span>
-                        </div>
-                        {pIdx < 2 && (
-                          <div className="hidden lg:flex items-center text-brand-taupe group-hover:text-primary transition-colors">
-                            <ArrowRight className="w-4 h-4" />
-                          </div>
-                        )}
-                      </div>
-
-                      <h3 className="font-serif text-xl sm:text-[22px] text-primary font-medium tracking-tight mb-5">
+                      <h3 className="font-serif text-xl sm:text-[22px] text-primary font-medium tracking-tight mb-5 pt-1">
                         {phase.title}
                       </h3>
 
@@ -437,9 +440,6 @@ export const AIConsultingPage: React.FC = () => {
                     <div className="flex items-start gap-3 p-4 rounded-xl bg-surface-warm/60 border border-brand-border/70 shadow-2xs">
                       <span className="w-2.5 h-2.5 rounded-full bg-accent shrink-0 mt-1 shadow-xs" />
                       <div>
-                        <div className="text-[11px] font-mono uppercase tracking-wider text-brand-taupe font-semibold mb-0.5">
-                          Integration Outcome
-                        </div>
                         <p className="text-xs sm:text-sm font-medium text-brand-dark leading-relaxed">
                           {s3.outcome}
                         </p>
@@ -452,15 +452,6 @@ export const AIConsultingPage: React.FC = () => {
               {/* Right Column: Prominent Technical Architecture Showcase */}
               <div ref={networkRef} className="lg:col-span-7 w-full">
                 <div className="rounded-2xl bg-surface-warm/50 border border-brand-border/80 p-6 sm:p-8 lg:p-10 shadow-xs relative overflow-hidden">
-                  {/* Diagram Header Bar */}
-                  <div className="flex items-center justify-between pb-4 mb-6 border-b border-brand-border/70 text-xs font-mono uppercase tracking-wider">
-                    <span className="font-bold text-primary flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-primary" />
-                      <span>Technical Architecture Showcase</span>
-                    </span>
-                    <span className="text-brand-taupe text-[11px] hidden sm:inline">Secure Hub &amp; Spoke</span>
-                  </div>
-
                   {/* Architecture Diagram Canvas */}
                   <div className="flex flex-col items-center">
                     {/* Central Core Hub Node: AI Assistant */}
@@ -529,16 +520,13 @@ export const AIConsultingPage: React.FC = () => {
                       {/* Domain 1: Tools and systems */}
                       <div className="p-4 sm:p-5 rounded-xl bg-white border border-brand-border/80 flex flex-col justify-between hover:border-primary/50 hover:shadow-xs transition-all duration-200 group">
                         <div>
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-2">
-                              <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-surface-warm text-primary font-mono text-xs font-bold border border-brand-border/60 shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
-                                <Gear className="w-4 h-4" />
-                              </span>
-                              <span className="text-xs font-bold text-primary">
-                                Tools and systems
-                              </span>
-                            </div>
-                            <span className="text-[10px] font-mono text-brand-taupe uppercase">API Connectors</span>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-surface-warm text-primary font-mono text-xs font-bold border border-brand-border/60 shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                              <Gear className="w-4 h-4" />
+                            </span>
+                            <span className="text-xs font-bold text-primary">
+                              Tools and systems
+                            </span>
                           </div>
                           <p className="text-xs sm:text-[13px] text-brand-slate leading-relaxed font-normal">
                             Integration with relevant tools and operational platforms, where supported.
@@ -549,16 +537,13 @@ export const AIConsultingPage: React.FC = () => {
                       {/* Domain 2: Knowledge sources */}
                       <div className="p-4 sm:p-5 rounded-xl bg-white border border-brand-border/80 flex flex-col justify-between hover:border-primary/50 hover:shadow-xs transition-all duration-200 group">
                         <div>
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-2">
-                              <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-surface-warm text-primary font-mono text-xs font-bold border border-brand-border/60 shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
-                                <Database className="w-4 h-4" />
-                              </span>
-                              <span className="text-xs font-bold text-primary">
-                                Knowledge sources
-                              </span>
-                            </div>
-                            <span className="text-[10px] font-mono text-brand-taupe uppercase">Data Repositories</span>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-surface-warm text-primary font-mono text-xs font-bold border border-brand-border/60 shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                              <Database className="w-4 h-4" />
+                            </span>
+                            <span className="text-xs font-bold text-primary">
+                              Knowledge sources
+                            </span>
                           </div>
                           <p className="text-xs sm:text-[13px] text-brand-slate leading-relaxed font-normal">
                             Connecting firm repositories, document indices, and knowledge bases.
@@ -569,16 +554,13 @@ export const AIConsultingPage: React.FC = () => {
                       {/* Domain 3: AI-powered workflows */}
                       <div className="p-4 sm:p-5 rounded-xl bg-white border border-brand-border/80 flex flex-col justify-between hover:border-primary/50 hover:shadow-xs transition-all duration-200 group">
                         <div>
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-2">
-                              <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-surface-warm text-primary font-mono text-xs font-bold border border-brand-border/60 shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
-                                <FlowArrow className="w-4 h-4" />
-                              </span>
-                              <span className="text-xs font-bold text-primary">
-                                AI-powered workflows
-                              </span>
-                            </div>
-                            <span className="text-[10px] font-mono text-brand-taupe uppercase">Task Logic</span>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-surface-warm text-primary font-mono text-xs font-bold border border-brand-border/60 shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                              <FlowArrow className="w-4 h-4" />
+                            </span>
+                            <span className="text-xs font-bold text-primary">
+                              AI-powered workflows
+                            </span>
                           </div>
                           <p className="text-xs sm:text-[13px] text-brand-slate leading-relaxed font-normal">
                             Configuration of AI-assisted task execution and multi-step business logic.
@@ -589,16 +571,13 @@ export const AIConsultingPage: React.FC = () => {
                       {/* Domain 4: Research, analysis, and documentation */}
                       <div className="p-4 sm:p-5 rounded-xl bg-white border border-brand-border/80 flex flex-col justify-between hover:border-primary/50 hover:shadow-xs transition-all duration-200 group">
                         <div>
-                          <div className="flex items-center justify-between mb-2">
-                            <div className="flex items-center gap-2">
-                              <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-surface-warm text-primary font-mono text-xs font-bold border border-brand-border/60 shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
-                                <FileText className="w-4 h-4" />
-                              </span>
-                              <span className="text-xs font-bold text-primary">
-                                Research &amp; Documentation
-                              </span>
-                            </div>
-                            <span className="text-[10px] font-mono text-brand-taupe uppercase">Work Product</span>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="w-7 h-7 rounded-lg flex items-center justify-center bg-surface-warm text-primary font-mono text-xs font-bold border border-brand-border/60 shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                              <FileText className="w-4 h-4" />
+                            </span>
+                            <span className="text-xs font-bold text-primary">
+                              Research &amp; Documentation
+                            </span>
                           </div>
                           <p className="text-xs sm:text-[13px] text-brand-slate leading-relaxed font-normal">
                             Structured AI-assisted processes for analytical synthesis, drafting, and review.
@@ -647,9 +626,6 @@ export const AIConsultingPage: React.FC = () => {
                   {/* Tailored Training Note */}
                   {s4.additionalNote && (
                     <div className="p-4 sm:p-5 rounded-xl bg-white border border-brand-border/80 mb-6 shadow-2xs">
-                      <div className="text-[11px] font-mono font-semibold uppercase tracking-wider text-brand-taupe mb-1">
-                        Tailored Delivery Note
-                      </div>
                       <p className="text-xs sm:text-[13.5px] text-brand-dark leading-relaxed italic">
                         "{s4.additionalNote}"
                       </p>
@@ -662,9 +638,6 @@ export const AIConsultingPage: React.FC = () => {
                   <div className="flex items-start gap-3 p-4 rounded-xl bg-white border border-brand-border/80 shadow-2xs">
                     <span className="w-2.5 h-2.5 rounded-full bg-accent shrink-0 mt-1 shadow-xs" />
                     <div>
-                      <div className="text-[11px] font-mono uppercase tracking-wider text-brand-taupe font-semibold mb-0.5">
-                        Educational Outcome
-                      </div>
                       <p className="text-xs sm:text-sm font-medium text-brand-dark leading-relaxed">
                         {s4.outcome}
                       </p>
@@ -675,11 +648,6 @@ export const AIConsultingPage: React.FC = () => {
 
               {/* Right Column: Executive Masterclass Curriculum Layout (7 Modular Topics) */}
               <div className="lg:col-span-7">
-                <div className="mb-4 flex items-center justify-between text-xs font-mono uppercase tracking-wider text-brand-taupe px-1">
-                  <span className="font-semibold text-primary">Executive Curriculum Syllabus</span>
-                  <span>7 Professional Modules</span>
-                </div>
-
                 {/* Structured Curriculum Track Cards */}
                 <div className="space-y-3.5">
                   {s4.items.map((topic, idx) => (
@@ -695,7 +663,7 @@ export const AIConsultingPage: React.FC = () => {
                       <div className="flex-1 min-w-0">
                         <div className="mb-1">
                           <span className="text-[11px] font-mono uppercase tracking-wider text-primary font-bold">
-                            Module 0{idx + 1} · {moduleCategories[idx]}
+                            {moduleCategories[idx]}
                           </span>
                         </div>
                         <p className="text-xs sm:text-[14px] text-brand-dark leading-relaxed font-normal">
